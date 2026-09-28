@@ -223,9 +223,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Giant Faded IMPLEWAY Wordmark at the Very End of Footer */}
-        <div className="pt-6 pb-2 overflow-hidden select-none pointer-events-none text-center">
-          <span className="block font-black text-transparent bg-clip-text bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent text-[17vw] sm:text-[16vw] lg:text-[15.5vw] uppercase tracking-tighter leading-none select-none font-sans">
+        {/* Giant Faded Red IMPLEWAY Wordmark at the Very End of Footer */}
+        <div className="pt-6 pb-2 overflow-hidden select-none pointer-events-none text-center relative">
+          {/* Subtle Ambient Red Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-24 bg-[#E50914]/10 blur-3xl pointer-events-none rounded-full"></div>
+          
+          <span className="relative z-10 block font-black text-transparent bg-clip-text bg-gradient-to-b from-[#E50914]/30 via-[#E50914]/12 to-transparent text-[17vw] sm:text-[16vw] lg:text-[15.5vw] uppercase tracking-tighter leading-none select-none font-sans">
             IMPLEWAY
           </span>
         </div>
