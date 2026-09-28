@@ -138,14 +138,14 @@ export const TestimonialsSlider = () => {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F6F6F6] border-b border-[#e7e7e7] relative overflow-hidden">
+    <section className="py-14 sm:py-20 bg-[#F6F6F6] border-b border-[#e7e7e7] relative overflow-hidden">
       {/* Background Subtle Tech Mesh Texture */}
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-100 text-xs font-black uppercase tracking-wider text-[#E50914]">
             <span className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></span>
             <span>Client Validation & Regional Endorsements</span>
@@ -159,24 +159,24 @@ export const TestimonialsSlider = () => {
         </div>
 
         {/* Interactive Flippable Testimonial Stage with Left/Right Buttons */}
-        <div className="relative max-w-4xl mx-auto flex items-center justify-center">
+        <div className="relative max-w-4xl mx-auto">
           
           {/* Left Navigation Button */}
           <button
             onClick={handlePrev}
             aria-label="Previous Testimonial"
-            className="absolute -left-4 sm:-left-7 lg:-left-12 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-neutral-800 hover:text-white hover:bg-[#E50914] border border-neutral-300 shadow-xl hover:shadow-red-600/30 flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
+            className="absolute -left-3 sm:-left-6 lg:-left-12 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-neutral-800 hover:text-white hover:bg-[#E50914] border border-neutral-300 shadow-xl hover:shadow-red-600/30 flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
           >
-            <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Right Navigation Button */}
           <button
             onClick={handleNext}
             aria-label="Next Testimonial"
-            className="absolute -right-4 sm:-right-7 lg:-right-12 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-neutral-800 hover:text-white hover:bg-[#E50914] border border-neutral-300 shadow-xl hover:shadow-red-600/30 flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
+            className="absolute -right-3 sm:-right-6 lg:-right-12 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-neutral-800 hover:text-white hover:bg-[#E50914] border border-neutral-300 shadow-xl hover:shadow-red-600/30 flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
           >
-            <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* 3D Flip Card Container */}
@@ -184,7 +184,7 @@ export const TestimonialsSlider = () => {
             className="w-full [perspective:1400px]"
           >
             <div 
-              className={`relative w-full min-h-[460px] sm:min-h-[400px] transition-all duration-500 ease-out transform-style-3d ${
+              className={`relative w-full h-[430px] sm:h-[350px] transition-all duration-500 ease-out transform-style-3d ${
                 isTransitioning 
                   ? flipDirection === 'next'
                     ? '[transform:rotateY(-90deg)_scale(0.92)] opacity-20' 
@@ -197,12 +197,12 @@ export const TestimonialsSlider = () => {
 
               {/* ===== FRONT SIDE OF CARD: Executive Quote ===== */}
               <div 
-                className="absolute inset-0 w-full h-full bg-white rounded-3xl p-8 sm:p-12 border border-[#e7e7e7] shadow-2xl flex flex-col justify-between [backface-visibility:hidden] relative overflow-hidden"
+                className="absolute inset-0 w-full h-full bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#e7e7e7] shadow-xl flex flex-col justify-between backface-hidden overflow-hidden"
               >
                 {/* Top Accent Gradient Bar */}
                 <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-[#E50914] via-red-500 to-[#9F0712]"></div>
 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Top Bar: Stars, Region & Flip Button */}
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-1.5 text-amber-400">
@@ -239,16 +239,16 @@ export const TestimonialsSlider = () => {
                 </div>
 
                 {/* Author Executive Bio */}
-                <div className="pt-6 mt-6 border-t border-neutral-100 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${current.avatarBg} text-white flex items-center justify-center font-black text-lg shadow-md`}>
+                <div className="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between">
+                  <div className="flex items-center gap-3.5">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${current.avatarBg} text-white flex items-center justify-center font-black text-base shadow-md flex-shrink-0`}>
                       {current.avatar}
                     </div>
                     <div>
-                      <div className="font-black text-[#111111] text-base sm:text-lg">
+                      <div className="font-black text-[#111111] text-base leading-tight">
                         {current.name}
                       </div>
-                      <div className="text-xs sm:text-sm font-semibold text-[#5F6368]">
+                      <div className="text-xs font-semibold text-[#5F6368] mt-0.5">
                         {current.role} • <span className="text-[#E50914] font-bold">{current.company}</span>
                       </div>
                     </div>
@@ -263,12 +263,12 @@ export const TestimonialsSlider = () => {
 
               {/* ===== BACK SIDE OF CARD: Verified Implementation Metrics ===== */}
               <div 
-                className="absolute inset-0 w-full h-full bg-[#050505] text-white rounded-3xl p-8 sm:p-12 border border-neutral-800 shadow-2xl flex flex-col justify-between [transform:rotateY(180deg)] [backface-visibility:hidden] relative overflow-hidden"
+                className="absolute inset-0 w-full h-full bg-[#050505] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-neutral-800 shadow-xl flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden overflow-hidden"
               >
                 {/* Top Accent Gradient Bar */}
                 <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-[#E50914] to-[#9F0712]"></div>
 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Top Bar: Verification Badge & Flip Back Button */}
                   <div className="flex items-center justify-between">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase tracking-wider">
@@ -287,24 +287,24 @@ export const TestimonialsSlider = () => {
                   </div>
 
                   {/* Project Details */}
-                  <div className="space-y-2">
-                    <div className="text-xs font-mono text-neutral-400 uppercase">Enterprise Engagement:</div>
-                    <h3 className="text-2xl font-black text-white">
+                  <div className="space-y-1.5">
+                    <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">Enterprise Engagement:</div>
+                    <h3 className="text-xl sm:text-2xl font-black text-white">
                       {current.company} ({current.location.split(' ')[1] || 'KSA/PK'})
                     </h3>
-                    <p className="text-sm text-neutral-300">
+                    <p className="text-xs sm:text-sm text-neutral-300">
                       <strong>Scope:</strong> {current.projectScope}
                     </p>
                   </div>
 
                   {/* 3 Measurable KPI Metrics */}
-                  <div className="grid grid-cols-3 gap-3 pt-2">
+                  <div className="grid grid-cols-3 gap-2.5 pt-1">
                     {current.metrics.map((m, mIdx) => (
-                      <div key={mIdx} className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
-                        <div className="text-lg sm:text-2xl font-black text-[#E50914]">
+                      <div key={mIdx} className="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4 text-center">
+                        <div className="text-base sm:text-xl font-black text-[#E50914]">
                           {m.val}
                         </div>
-                        <div className="text-[10px] sm:text-xs font-bold text-neutral-400 mt-1 uppercase tracking-wider">
+                        <div className="text-[9.5px] sm:text-[11px] font-bold text-neutral-400 mt-1 uppercase tracking-wider">
                           {m.label}
                         </div>
                       </div>
@@ -313,13 +313,13 @@ export const TestimonialsSlider = () => {
                 </div>
 
                 {/* Bottom Platform & Stakeholder Signature */}
-                <div className="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                <div className="pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Production System Live & SLA Supported</span>
+                    <span className="text-[11px] sm:text-xs">Production System Live & SLA Supported</span>
                   </div>
-                  <div className="font-mono text-neutral-300">
-                    Sign-off: {current.name} ({current.role})
+                  <div className="font-mono text-neutral-300 text-[11px] sm:text-xs hidden sm:block">
+                    Sign-off: {current.name}
                   </div>
                 </div>
 
@@ -331,7 +331,7 @@ export const TestimonialsSlider = () => {
         </div>
 
         {/* Carousel Dots & Counter */}
-        <div className="flex flex-col items-center justify-center gap-3 mt-10">
+        <div className="flex flex-col items-center justify-center gap-2 mt-6 sm:mt-8">
           <div className="flex items-center gap-2">
             {TESTIMONIALS.map((_, idx) => (
               <button
