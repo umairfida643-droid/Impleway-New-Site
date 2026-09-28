@@ -8,6 +8,7 @@ import {
   Briefcase, Search, ArrowRight, Layers, Sparkles, Globe, 
   CheckCircle2, ShieldCheck 
 } from 'lucide-react';
+import { ServiceIcon } from '../components/ui/ServiceIcon';
 
 const CATEGORIES = ["All Services", "ERP Services", "Digital Presence", "Software & IT"];
 
@@ -107,8 +108,13 @@ export const ServicesPage = () => {
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#E50914] to-[#9F0712] opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                 <div className="space-y-4">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-neutral-100 text-neutral-700">
-                    <span>{service.category}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-2xl bg-red-50 text-[#E50914] flex items-center justify-center group-hover:bg-[#E50914] group-hover:text-white transition-all shadow-sm">
+                      <ServiceIcon slug={service.slug} className="w-5 h-5" />
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-neutral-100 text-neutral-700">
+                      <span>{service.category}</span>
+                    </div>
                   </div>
 
                   <h3 className="text-xl font-black text-[#111111] group-hover:text-[#E50914] transition-colors">

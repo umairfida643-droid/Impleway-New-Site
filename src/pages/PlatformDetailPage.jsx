@@ -8,6 +8,13 @@ import {
   CheckCircle2, ArrowRight, ShieldCheck, Layers, 
   Sparkles, HelpCircle, Activity 
 } from 'lucide-react';
+import { OracleIcon, OdooIcon, Dynamics365Icon } from '../components/ui/PlatformIcons';
+
+const PLATFORM_SVG_MAP = {
+  "oracle-erp-services": OracleIcon,
+  "odoo-erp-services": OdooIcon,
+  "dynamics-365-services": Dynamics365Icon
+};
 
 export const PlatformDetailPage = ({ forcedSlug }) => {
   const { slug } = useParams();
@@ -18,6 +25,8 @@ export const PlatformDetailPage = ({ forcedSlug }) => {
   if (!platform) {
     return <Navigate to="/services" replace />;
   }
+
+  const SvgIcon = PLATFORM_SVG_MAP[currentSlug] || ShieldCheck;
 
   return (
     <>
@@ -30,8 +39,8 @@ export const PlatformDetailPage = ({ forcedSlug }) => {
       <section className="bg-radial-hero text-white py-16 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
-            <ShieldCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-wider backdrop-blur-md">
+            <SvgIcon className="w-5 h-5 rounded" />
             <span>{platform.eyebrow}</span>
           </div>
 

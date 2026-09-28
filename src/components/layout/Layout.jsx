@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { FloatingCompanyProfile } from './FloatingCompanyProfile';
+import { FloatingWhatsApp } from './FloatingWhatsApp';
 import { ScrollToTop } from '../ui/ScrollToTop';
 
 export const Layout = () => {
@@ -14,6 +15,7 @@ export const Layout = () => {
         <Outlet />
       </main>
       <FloatingCompanyProfile />
+      <FloatingWhatsApp />
       <Footer />
     </div>
   );

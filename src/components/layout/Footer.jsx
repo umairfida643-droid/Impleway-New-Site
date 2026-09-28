@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, MessageSquare, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { siteConfig } from '../../data/siteConfig';
 import { navigation } from '../../data/navigation';
+import { BrandLogo } from '../ui/BrandLogo';
 
 export const Footer = () => {
   return (
@@ -14,12 +15,8 @@ export const Footer = () => {
           
           {/* Column 1: Brand & KSA Regional Vision */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="inline-flex items-center select-none py-1">
-              <img 
-                src="/logo-white.png" 
-                alt="Impleway – Enterprise ERP & IT" 
-                className="h-8 sm:h-9 w-auto object-contain"
-              />
+            <Link to="/" className="inline-flex items-center select-none py-1" aria-label="Impleway – Enterprise ERP & IT">
+              <BrandLogo variant="light" className="h-8 sm:h-9" />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
               Empowering enterprise growth through practical ERP consulting, zero data-loss migration, and certified electronic invoicing solutions across the Kingdom of Saudi Arabia and global markets.

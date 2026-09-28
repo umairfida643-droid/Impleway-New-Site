@@ -8,6 +8,7 @@ import {
   CheckCircle2, ArrowRight, ShieldCheck, ChevronDown, 
   Layers, Sparkles, Building2, HelpCircle 
 } from 'lucide-react';
+import { ServiceIcon } from '../components/ui/ServiceIcon';
 
 export const ServiceDetailPage = () => {
   const { slug } = useParams();
@@ -35,7 +36,8 @@ export const ServiceDetailPage = () => {
       <section className="bg-radial-hero text-white py-16 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
+            <ServiceIcon slug={service.slug} className="w-4 h-4 text-red-300" />
             <span>{service.category}</span>
           </div>
 

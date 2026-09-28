@@ -9,7 +9,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/why-erp-implementation-is-critical-for-business-growth-in-2025.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -24,7 +24,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/oracle-erp-vs-odoo-erp-which-platform-is-right-for-your-business.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -39,7 +39,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/how-microsoft-dynamics-365-improves-operational-efficiency.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -54,7 +54,7 @@ export const blogsData = [
     "publishedDate": "July 8, 2026",
     "author": "Impleway Team",
     "readTime": "15 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_18_22-PM.png",
+    "featuredImage": "/images/blogs/erp-migration-best-practices-for-growing-enterprises.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -110,7 +110,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/common-erp-implementation-challenges-and-how-to-avoid-them.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -125,7 +125,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/erp-integration-strategies-for-modern-businesses.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -140,7 +140,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/digital-transformation-through-erp-solutions.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -155,7 +155,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/choosing-the-right-erp-consulting-partner.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -170,7 +170,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/top-benefits-of-odoo-erp-for-smes.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -185,7 +185,7 @@ export const blogsData = [
     "publishedDate": "June 11, 2026",
     "author": "Impleway Team",
     "readTime": "4 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/how-impleway-helps-businesses-achieve-erp-success.png",
     "tableOfContents": [],
     "contentHtml": "<p>[impleway_article]</p>",
     "isLegacy": true
@@ -200,7 +200,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "6 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_41_45-PM.png",
+    "featuredImage": "/images/blogs/erp-implementation-checklist-for-growing-businesses.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -256,7 +256,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_46_54-PM.png",
+    "featuredImage": "/images/blogs/how-to-reduce-erp-implementation-risk.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -312,7 +312,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "7 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_49_43-PM.png",
+    "featuredImage": "/images/blogs/erp-data-migration-strategy.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -368,7 +368,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "7 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_50_42-PM.png",
+    "featuredImage": "/images/blogs/erp-integration-best-practices.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -424,7 +424,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_52_41-PM.png",
+    "featuredImage": "/images/blogs/why-user-training-determines-erp-success.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -480,7 +480,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_54_06-PM.png",
+    "featuredImage": "/images/blogs/odoo-erp-for-smes.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -536,7 +536,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_55_33-PM.png",
+    "featuredImage": "/images/blogs/microsoft-dynamics-365-for-modern-operations.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -592,7 +592,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "9 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_56_47-PM.png",
+    "featuredImage": "/images/blogs/oracle-erp-for-enterprise-finance.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -648,7 +648,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-01_58_03-PM.png",
+    "featuredImage": "/images/blogs/managed-erp-support-after-go-live.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -704,7 +704,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "6 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-02_02_49-PM.png",
+    "featuredImage": "/images/blogs/erp-for-manufacturing-companies.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -760,7 +760,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "7 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-02_05_12-PM.png",
+    "featuredImage": "/images/blogs/erp-for-retail-and-e-commerce.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -816,7 +816,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "7 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-02_15_52-PM.png",
+    "featuredImage": "/images/blogs/erp-for-distribution-and-logistics.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -872,7 +872,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "8 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-02_11_27-PM.png",
+    "featuredImage": "/images/blogs/cybersecurity-considerations-for-erp-systems.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -928,7 +928,7 @@ export const blogsData = [
     "publishedDate": "June 12, 2026",
     "author": "Impleway Team",
     "readTime": "7 min read",
-    "featuredImage": "https://impleway.com/wp-content/uploads/2026/06/ChatGPT-Image-Jul-8-2026-02_18_16-PM.png",
+    "featuredImage": "/images/blogs/ai-and-automation-in-erp.png",
     "tableOfContents": [
       {
         "level": "h2",
@@ -981,7 +981,7 @@ export const blogsData = [
     "publishedDate": "August 14, 2026",
     "author": "Impleway KSA Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/zatca-phase-2-e-invoicing-integration-erp-guide-saudi-arabia.png",
     "metaDescription": "A complete technical implementation guide for integrating ZATCA Phase-2 (FATOORA) electronic invoicing with Oracle Cloud, Odoo, and Microsoft Dynamics 365 in Saudi Arabia.",
     "excerpt": "Learn how Saudi enterprises are successfully achieving ZATCA Phase 2 FATOORA clearance compliance through automated ERP cryptographic stamping and XML API integration.",
     "toc": [
@@ -1020,7 +1020,7 @@ export const blogsData = [
     "publishedDate": "August 18, 2026",
     "author": "Impleway Research",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/saudi-vision-2030-cloud-erp-transformation-playbook.png",
     "metaDescription": "Discover how Saudi Vision 2030 is accelerating the adoption of Cloud ERP and intelligent automation across Riyadh, Jeddah, and Eastern Province business hubs.",
     "excerpt": "A strategic analysis of how government digitalization initiatives and the Saudi Cloud First Policy are redefining modern enterprise operations.",
     "toc": [
@@ -1055,7 +1055,7 @@ export const blogsData = [
     "publishedDate": "September 1, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500000000000?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/erp-cost-estimation-saudi-arabia-budgeting-guide.png",
     "metaDescription": "Expert technical analysis on erp implementation cost in saudi arabia: complete budgeting & roi blueprint by Impleway.",
     "excerpt": "Cost of ERP software licenses, implementation consulting, cloud hosting, and ZATCA compliance in KSA.",
     "tableOfContents": [
@@ -1086,7 +1086,7 @@ export const blogsData = [
     "publishedDate": "September 2, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500001234567?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/saudi-labor-law-gosi-payroll-erp-compliance.png",
     "metaDescription": "Expert technical analysis on managing saudi labor law, gosi & wps payroll in modern erp systems by Impleway.",
     "excerpt": "How automated ERP payroll engines ensure compliance with the Wage Protection System (WPS) and General Organization for Social Insurance (GOSI).",
     "tableOfContents": [
@@ -1117,7 +1117,7 @@ export const blogsData = [
     "publishedDate": "September 3, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500002469134?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/supply-chain-localization-saudi-arabia-nidlp-erp.png",
     "metaDescription": "Expert technical analysis on supply chain localization in saudi arabia: how erp drives nidlp success by Impleway.",
     "excerpt": "Accelerating domestic sourcing, supplier relationship management, and in-Kingdom warehousing.",
     "tableOfContents": [
@@ -1148,7 +1148,7 @@ export const blogsData = [
     "publishedDate": "September 4, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500003703701?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/manufacturing-execution-systems-mes-vs-erp.png",
     "metaDescription": "Expert technical analysis on mes vs. erp: bridging shop floor operations with financial control by Impleway.",
     "excerpt": "Comparing Manufacturing Execution Systems with ERP production modules for real-time factory oversight.",
     "tableOfContents": [
@@ -1179,7 +1179,7 @@ export const blogsData = [
     "publishedDate": "September 5, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500004938268?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/warehouse-management-system-wms-automation-gcc.png",
     "metaDescription": "Expert technical analysis on automating warehouse management (wms) in gcc distribution hubs by Impleway.",
     "excerpt": "Deploying barcoding, automated guided vehicles (AGV), and wave picking to optimize distribution centers.",
     "tableOfContents": [
@@ -1210,7 +1210,7 @@ export const blogsData = [
     "publishedDate": "September 6, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500006172835?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/oracle-fusion-cloud-vs-sap-s4hana-saudi-enterprise.png",
     "metaDescription": "Expert technical analysis on oracle fusion cloud vs. sap s/4hana: the enterprise decision guide for saudi corporations by Impleway.",
     "excerpt": "An objective comparison of total cost of ownership, deployment speed, and localized Middle East features.",
     "tableOfContents": [
@@ -1241,7 +1241,7 @@ export const blogsData = [
     "publishedDate": "September 7, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500007407402?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/odoo-enterprise-vs-odoo-community-edition-saudi-business.png",
     "metaDescription": "Expert technical analysis on odoo enterprise vs. community: which is right for your saudi company? by Impleway.",
     "excerpt": "Deep dive into licensing differences, accounting features, mobile apps, and ZATCA readiness.",
     "tableOfContents": [
@@ -1272,7 +1272,7 @@ export const blogsData = [
     "publishedDate": "September 8, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500008641969?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/microsoft-dynamics-365-copilot-ai-finance-operations.png",
     "metaDescription": "Expert technical analysis on leveraging microsoft copilot ai in dynamics 365 for predictive cash flow by Impleway.",
     "excerpt": "How generative AI and machine learning inside Dynamics 365 transform cash flow forecasting and automated vendor reconciliation.",
     "tableOfContents": [
@@ -1303,7 +1303,7 @@ export const blogsData = [
     "publishedDate": "September 9, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500009876536?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/data-governance-erp-migration-best-practices-ksa.png",
     "metaDescription": "Expert technical analysis on data governance & cleansing: the non-negotiable foundation for erp migration by Impleway.",
     "excerpt": "Why poor master data destroys ERP implementations and how structured ETL pipelines ensure clean transitions.",
     "tableOfContents": [
@@ -1334,7 +1334,7 @@ export const blogsData = [
     "publishedDate": "September 10, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500011111103?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/role-based-access-control-sod-erp-security.png",
     "metaDescription": "Expert technical analysis on role-based access control (rbac) & segregation of duties (sod) in erp by Impleway.",
     "excerpt": "Preventing internal fraud and audit penalties through automated access segregation in financial systems.",
     "tableOfContents": [
@@ -1365,7 +1365,7 @@ export const blogsData = [
     "publishedDate": "September 11, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500012345670?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/business-process-reengineering-before-erp.png",
     "metaDescription": "Expert technical analysis on business process reengineering (bpr): fix your processes before automating them by Impleway.",
     "excerpt": "Why digitizing a broken process only creates faster mistakes, and how process mapping drives ERP success.",
     "tableOfContents": [
@@ -1396,7 +1396,7 @@ export const blogsData = [
     "publishedDate": "September 12, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500013580237?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/omnichannel-retail-pos-erp-integration-saudi-arabia.png",
     "metaDescription": "Expert technical analysis on omnichannel retail: integrating physical pos with online marketplaces in ksa by Impleway.",
     "excerpt": "Unifying inventory, click-and-collect, and payment gateways across retail store chains.",
     "tableOfContents": [
@@ -1427,7 +1427,7 @@ export const blogsData = [
     "publishedDate": "September 13, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500014814804?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/construction-job-costing-erp-milestone-billing.png",
     "metaDescription": "Expert technical analysis on construction job costing: accurate milestone & progress billing with erp by Impleway.",
     "excerpt": "Controlling equipment utilization, subcontractor retention, and material takeoff in contracting firms.",
     "tableOfContents": [
@@ -1458,7 +1458,7 @@ export const blogsData = [
     "publishedDate": "September 14, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500016049371?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/pharmaceutical-healthcare-erp-fefo-traceability.png",
     "metaDescription": "Expert technical analysis on fefo inventory & cold chain compliance for saudi pharmaceutical distributors by Impleway.",
     "excerpt": "Ensuring strict SFDA track-and-trace compliance and expiration date management in healthcare logistics.",
     "tableOfContents": [
@@ -1489,7 +1489,7 @@ export const blogsData = [
     "publishedDate": "September 15, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500017283938?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/change-management-framework-erp-adoption-employees.png",
     "metaDescription": "Expert technical analysis on the psychology of erp change management: overcoming employee resistance by Impleway.",
     "excerpt": "Practical strategies for training, executive sponsorship, and incentives that guarantee 100% user adoption.",
     "tableOfContents": [
@@ -1520,7 +1520,7 @@ export const blogsData = [
     "publishedDate": "September 16, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500018518505?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/disaster-recovery-business-continuity-cloud-erp.png",
     "metaDescription": "Expert technical analysis on disaster recovery & business continuity architecture for cloud erp systems by Impleway.",
     "excerpt": "Designing RTO and RPO targets, multi-region database failovers, and backup strategies.",
     "tableOfContents": [
@@ -1551,7 +1551,7 @@ export const blogsData = [
     "publishedDate": "September 17, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500019753072?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/iot-telematics-fleet-management-erp-integration.png",
     "metaDescription": "Expert technical analysis on connecting iot telematics & fleet tracking directly to your logistics erp by Impleway.",
     "excerpt": "Real-time dispatch, fuel optimization, and automated delivery confirmation through connected sensors.",
     "tableOfContents": [
@@ -1582,7 +1582,7 @@ export const blogsData = [
     "publishedDate": "September 18, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500020987639?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/iso-27001-compliance-cloud-erp-hosting-saudi.png",
     "metaDescription": "Expert technical analysis on achieving iso/iec 27001 compliance with your cloud erp infrastructure by Impleway.",
     "excerpt": "Security controls, encryption standards, and threat monitoring protocols for enterprise business systems.",
     "tableOfContents": [
@@ -1613,7 +1613,7 @@ export const blogsData = [
     "publishedDate": "September 19, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500022222206?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/custom-software-vs-commercial-off-the-shelf-erp.png",
     "metaDescription": "Expert technical analysis on custom software vs. commercial erp: strategic architecture decisions by Impleway.",
     "excerpt": "When to build bespoke proprietary applications versus buying and customizing commercial off-the-shelf software.",
     "tableOfContents": [
@@ -1644,7 +1644,7 @@ export const blogsData = [
     "publishedDate": "September 20, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500023456773?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/zatca-qr-code-tlv-encoding-technical-deep-dive.png",
     "metaDescription": "Expert technical analysis on technical deep dive: tlv encoding and ecdsa signatures in saudi e-invoicing by Impleway.",
     "excerpt": "How Tag-Length-Value (TLV) base64 structures are constructed and signed according to ZATCA standards.",
     "tableOfContents": [
@@ -1675,7 +1675,7 @@ export const blogsData = [
     "publishedDate": "September 21, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "6 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500024691340?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/api-microservices-headless-erp-architecture.png",
     "metaDescription": "Expert technical analysis on headless erp & microservices: the future of scalable enterprise it by Impleway.",
     "excerpt": "Decoupling user interfaces from transaction engines using REST and GraphQL API gateways.",
     "tableOfContents": [
@@ -1706,7 +1706,7 @@ export const blogsData = [
     "publishedDate": "September 22, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "7 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500025925907?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/post-go-live-erp-sla-managed-support-handbook.png",
     "metaDescription": "Expert technical analysis on the post go-live playbook: establishing tier-1 to tier-3 erp support by Impleway.",
     "excerpt": "SLA metrics, incident triage, bug escalation paths, and proactive system performance tuning.",
     "tableOfContents": [
@@ -1737,7 +1737,7 @@ export const blogsData = [
     "publishedDate": "September 23, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "8 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500027160474?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/b2b-ecommerce-portal-erp-integration-guide.png",
     "metaDescription": "Expert technical analysis on building a self-service b2b customer portal integrated with enterprise erp by Impleway.",
     "excerpt": "Automating wholesale orders, customer-specific pricing tiers, and credit limit validations.",
     "tableOfContents": [
@@ -1768,7 +1768,7 @@ export const blogsData = [
     "publishedDate": "September 24, 2026",
     "author": "Impleway Technical Advisory",
     "readTime": "9 min read",
-    "featuredImage": "https://images.unsplash.com/photo-1500028395041?auto=format&fit=crop&w=1200&q=80",
+    "featuredImage": "/images/blogs/predictive-maintenance-industrial-iot-erp-assets.png",
     "metaDescription": "Expert technical analysis on predictive asset maintenance: integrating iot telemetry with erp fixed assets by Impleway.",
     "excerpt": "Preventing unexpected industrial downtime through sensor alerts and automated work order dispatch.",
     "tableOfContents": [

@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, TrendingUp, Shield, Activity, BarChart3, Database } from 'lucide-react';
+import { 
+  ArrowRight, CheckCircle2, TrendingUp, Shield, Activity, 
+  BarChart3, Database, ChevronRight, Layers, Sparkles 
+} from 'lucide-react';
+import { industriesList } from '../../data/industriesData';
+import { IndustryIcon } from '../ui/IndustryIcon';
+import { OracleIcon, OdooIcon, Dynamics365Icon, ZatcaIcon } from '../ui/PlatformIcons';
 
 const TYPEWRITER_WORDS = [
   "Oracle ERP Cloud",
   "Odoo ERP Solutions",
-  "Microsoft Dynamics 365"
+  "Microsoft Dynamics 365",
+  "ZATCA E-Invoicing Phase 2",
+  "Zero-Downtime Data Migration"
 ];
 
 const MODULE_DATA = {
@@ -48,7 +56,7 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const currentWord = TYPEWRITER_WORDS[wordIndex];
-    const typingSpeed = isDeleting ? 40 : 80;
+    const typingSpeed = isDeleting ? 35 : 75;
 
     const timer = setTimeout(() => {
       if (!isDeleting && displayedText.length < currentWord.length) {
@@ -79,10 +87,12 @@ export const HeroSection = () => {
           {/* Left Column: Hero Copy & Value Proposition */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></span>
+            {/* Eyebrow Pill with Pulsing Dot */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#E50914] animate-ping"></span>
               <span>ERP & Digital Transformation Partner</span>
+              <span className="text-white/40">•</span>
+              <span className="text-red-400 font-bold">20 Industries Served</span>
             </div>
 
             {/* H1 Heading with Dynamic Typewriter */}
@@ -96,7 +106,7 @@ export const HeroSection = () => {
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl text-neutral-300 max-w-2xl leading-relaxed">
-              Impleway helps enterprises and growing businesses across Saudi Arabia and international markets simplify operations, eliminate data silos, achieve ZATCA compliance, and build scalable digital foundations.
+              Impleway empowers leading enterprises across the Kingdom of Saudi Arabia and international markets to simplify operations, eliminate data silos, achieve certified ZATCA Phase-2 compliance, and scale on Oracle, Odoo, and Microsoft Dynamics 365.
             </p>
 
             {/* CTA Buttons */}
@@ -116,24 +126,35 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            {/* Trust Badges */}
-            <div className="pt-4">
-              <div className="text-xs uppercase font-extrabold text-neutral-400 tracking-wider mb-2.5">
-                Core Specialization:
-              </div>
-              <div className="flex flex-wrap gap-2.5 text-xs font-bold text-neutral-200">
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors">
-                  Oracle Fusion Cloud
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors">
-                  Odoo ERP Solutions
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors">
-                  Microsoft Dynamics 365
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors">
-                  Cloud IT & Web Development
-                </span>
+            {/* Platform Badges with Official SVG Icons */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link 
+                to="/oracle-erp-services"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 transition-all group"
+              >
+                <OracleIcon className="w-4 h-4 rounded" />
+                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Oracle Fusion Cloud</span>
+              </Link>
+
+              <Link 
+                to="/odoo-erp-services"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all group"
+              >
+                <OdooIcon className="w-4 h-4 rounded" />
+                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Odoo ERP</span>
+              </Link>
+
+              <Link 
+                to="/dynamics-365-services"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all group"
+              >
+                <Dynamics365Icon className="w-4 h-4 rounded" />
+                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Microsoft Dynamics 365</span>
+              </Link>
+
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">
+                <ZatcaIcon className="w-4 h-4 rounded" />
+                <span className="text-xs font-bold">ZATCA Phase 2 Ready</span>
               </div>
             </div>
 
@@ -183,7 +204,7 @@ export const HeroSection = () => {
                   <span>Resource Utilization Index</span>
                   <span className="text-emerald-400 font-mono">99.8% Optimal</span>
                 </div>
-                <div className="h-28 flex items-end justify-between gap-3 px-2">
+                <div className="h-24 flex items-end justify-between gap-3 px-2">
                   {currentMod.bars.map((height, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
                       <div 
@@ -198,18 +219,18 @@ export const HeroSection = () => {
 
               {/* Interactive Pipeline Module Selector */}
               <div>
-                <div className="text-[11px] uppercase tracking-wider font-extrabold text-neutral-400 mb-2">
-                  Interactive Module Simulation:
+                <div className="text-[11px] uppercase font-bold text-neutral-400 tracking-wider mb-2">
+                  Select Business Stream:
                 </div>
-                <div className="grid grid-cols-4 gap-2">
-                  {["Finance", "Inventory", "Sales", "Ops"].map((mod) => (
+                <div className="grid grid-cols-4 gap-1.5 bg-black/40 p-1.5 rounded-xl border border-white/10">
+                  {Object.keys(MODULE_DATA).map((mod) => (
                     <button
                       key={mod}
                       onClick={() => setActiveModule(mod)}
-                      className={`py-2 px-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      className={`py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                         activeModule === mod 
-                          ? 'bg-[#E50914] text-white shadow-lg shadow-red-600/30 scale-105' 
-                          : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white border border-white/10'
+                          ? 'bg-gradient-to-r from-[#E50914] to-[#9F0712] text-white shadow-md' 
+                          : 'text-neutral-400 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {mod}
@@ -222,6 +243,37 @@ export const HeroSection = () => {
           </div>
 
         </div>
+
+        {/* 20 Industries Interactive Ribbon */}
+        <div className="mt-14 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-neutral-400">
+              <Layers className="w-4 h-4 text-[#E50914]" />
+              <span>Proven Implementations Across 20 Specialized Industries:</span>
+            </div>
+            <Link 
+              to="/industries" 
+              className="text-xs font-bold text-red-400 hover:text-white transition-colors flex items-center gap-1"
+            >
+              <span>Explore All 20 Industries</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {industriesList.map((ind) => (
+              <Link
+                key={ind.slug}
+                to={`/industries`}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-[#E50914] border border-white/10 hover:border-transparent text-xs font-bold text-neutral-300 hover:text-white transition-all group"
+              >
+                <IndustryIcon slug={ind.slug} className="w-3.5 h-3.5 text-red-400 group-hover:text-white transition-colors" />
+                <span>{ind.shortTitle || ind.title.split('for ')[1]}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

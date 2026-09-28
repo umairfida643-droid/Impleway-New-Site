@@ -23,6 +23,27 @@ export const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
+
+    // Direct routing to hey@impleway.com
+    const subject = encodeURIComponent(`[Enterprise Inquiry] ${formData.name} - ${formData.service} (${formData.region})`);
+    const body = encodeURIComponent(
+      `Enterprise Consultation Request:\n` +
+      `---------------------------------\n` +
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone/WhatsApp: ${formData.phone}\n` +
+      `Company: ${formData.company || 'N/A'}\n` +
+      `Region: ${formData.region}\n` +
+      `Service Needed: ${formData.service}\n\n` +
+      `Project Scope & Details:\n${formData.message}\n`
+    );
+
+    try {
+      window.open(`mailto:hey@impleway.com?subject=${subject}&body=${body}`, '_blank');
+    } catch (err) {
+      console.log('Mail client launched');
+    }
+
     setSubmitted(true);
   };
 

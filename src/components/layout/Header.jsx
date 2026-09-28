@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { siteConfig } from '../../data/siteConfig';
 import { navigation } from '../../data/navigation';
+import { BrandLogo } from '../ui/BrandLogo';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,13 +94,9 @@ export const Header = () => {
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#e7e7e7] transition-all duration-200 ${isScrolled ? 'py-3' : 'py-4'}`}>
         <div className="flex items-center justify-between gap-6">
           
-          {/* Logo */}
-          <Link to="/" className="flex items-center select-none py-1">
-            <img 
-              src="/logo.png" 
-              alt="Impleway – Simplify, Implementation" 
-              className="h-8 sm:h-9 w-auto object-contain"
-            />
+          {/* Logo with Animated Pulsing Red Dot */}
+          <Link to="/" className="flex items-center select-none py-1" aria-label="Impleway – Simplify, Implementation">
+            <BrandLogo variant="dark" className="h-8 sm:h-9" />
           </Link>
 
           {/* Desktop Navigation */}
