@@ -1,10 +1,133 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const FloatingWhatsApp = () => {
   const ksaWhatsAppUrl = "https://wa.me/966598145042";
+  const [isDarkBg, setIsDarkBg] = useState(true);
+  const asideRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const checkBackground = () => {
+      if (!asideRef.current) return;
+      const rect = asideRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      // Top of page is always hero (dark / red gradient)
+      if (window.scrollY < 200) {
+        setIsDarkBg(true);
+        return;
+      }
+
+      // Check near bottom (footer is dark / red)
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      if (docHeight - scrollBottom < 450) {
+        setIsDarkBg(true);
+        return;
+      }
+
+      const elements = document.elementsFromPoint(x, y);
+      const target = elements.find(
+        (el) => el !== asideRef.current && !asideRef.current.contains(el)
+      );
+
+      if (!target) return;
+
+      // 1. Direct check for known dark / red containers
+      if (
+        target.closest('footer') ||
+        target.closest('.bg-radial-hero') ||
+        target.closest('.bg-\\[\\#050505\\]') ||
+        target.closest('.bg-\\[\\#080808\\]') ||
+        target.closest('.bg-\\[\\#0a0a0a\\]') ||
+        target.closest('.bg-neutral-900') ||
+        target.closest('.bg-neutral-950') ||
+        target.closest('.bg-black') ||
+        target.closest('.bg-\\[\\#E50914\\]') ||
+        target.closest('.bg-\\[\\#9F0712\\]') ||
+        target.closest('[data-theme="dark"]')
+      ) {
+        setIsDarkBg(true);
+        return;
+      }
+
+      // 2. Computed background color & luminance check
+      let curr = target;
+      let foundDark = false;
+      while (curr && curr !== document.documentElement && curr !== document.body) {
+        const style = window.getComputedStyle(curr);
+
+        // Check background image for gradients
+        const bgImg = style.backgroundImage;
+        if (bgImg && bgImg !== 'none') {
+          if (
+            bgImg.includes('radial-hero') ||
+            bgImg.includes('rgb(5, 5, 5)') ||
+            bgImg.includes('rgb(159, 7, 18)') ||
+            bgImg.includes('rgb(229, 9, 20)')
+          ) {
+            foundDark = true;
+            break;
+          }
+        }
+
+        // Check backgroundColor
+        const bg = style.backgroundColor;
+        if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
+          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          if (match) {
+            const r = parseInt(match[1], 10);
+            const g = parseInt(match[2], 10);
+            const b = parseInt(match[3], 10);
+
+            // Red background check (dominant red)
+            const isRed = r > 160 && g < 80 && b < 80;
+            // Relative luminance (standard formula)
+            const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            if (isRed || luminance < 140) {
+              foundDark = true;
+            } else {
+              foundDark = false;
+            }
+            break;
+          }
+        }
+        curr = curr.parentElement;
+      }
+
+      setIsDarkBg(foundDark);
+    };
+
+    checkBackground();
+    const timer = setTimeout(checkBackground, 150);
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkBackground();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [location.pathname]);
 
   return (
     <aside 
+      ref={asideRef}
       aria-label="Direct WhatsApp Support"
       className="fixed bottom-6 right-6 z-40 flex items-center justify-center select-none"
     >
@@ -15,7 +138,7 @@ export const FloatingWhatsApp = () => {
         className="relative group flex items-center justify-center w-28 h-28"
         aria-label="Chat with Impleway KSA on WhatsApp (+966 59 814 5042)"
       >
-        {/* Rotating Circular Text SVG */}
+        {/* Rotating Circular Text SVG with Dynamic Color Switching */}
         <div className="absolute inset-0 w-full h-full animate-[spin_14s_linear_infinite] group-hover:animate-[spin_7s_linear_infinite] transition-all">
           <svg viewBox="0 0 120 120" className="w-full h-full overflow-visible">
             <defs>
@@ -25,7 +148,15 @@ export const FloatingWhatsApp = () => {
                 fill="none"
               />
             </defs>
-            <text className="text-[9.5px] font-black tracking-[0.19em] uppercase fill-[#111111] dark:fill-white drop-shadow-sm">
+            <text 
+              className="text-[9.5px] font-black tracking-[0.19em] uppercase select-none transition-all duration-300"
+              style={{
+                fill: isDarkBg ? '#FFFFFF' : '#E50914',
+                filter: isDarkBg 
+                  ? 'drop-shadow(0 1px 3px rgba(0,0,0,0.9))' 
+                  : 'drop-shadow(0 1px 2px rgba(229,9,20,0.25)) drop-shadow(0 0 1px rgba(255,255,255,0.8))'
+              }}
+            >
               <textPath href="#circlePath" startOffset="0%">
                 YOU'RE ONE CLICK AWAY FROM IMPLEWAY •{" "}
               </textPath>
