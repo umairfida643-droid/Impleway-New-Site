@@ -14,9 +14,12 @@ export const Footer = () => {
           
           {/* Column 1: Brand & KSA Regional Vision */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="inline-flex items-center gap-1.5 text-3xl font-black tracking-tighter text-white">
-              <span>Impleway</span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#E50914] inline-block mb-1"></span>
+            <Link to="/" className="inline-flex items-center select-none py-1">
+              <img 
+                src="/logo-white.png" 
+                alt="Impleway – Enterprise ERP & IT" 
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
               Empowering enterprise growth through practical ERP consulting, zero data-loss migration, and certified electronic invoicing solutions across the Kingdom of Saudi Arabia and global markets.

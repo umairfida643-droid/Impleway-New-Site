@@ -94,9 +94,12 @@ export const Header = () => {
         <div className="flex items-center justify-between gap-6">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1.5 text-2xl sm:text-3xl font-black tracking-tighter text-[#050505] select-none">
-            <span>Impleway</span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#E50914] inline-block mb-1 animate-pulse"></span>
+          <Link to="/" className="flex items-center select-none py-1">
+            <img 
+              src="/logo.png" 
+              alt="Impleway – Simplify, Implementation" 
+              className="h-8 sm:h-9 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
