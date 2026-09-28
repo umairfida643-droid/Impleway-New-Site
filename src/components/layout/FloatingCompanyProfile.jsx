@@ -7,15 +7,36 @@ export const FloatingCompanyProfile = () => {
 
   return (
     <>
-      {/* Fixed Sticky Trigger Button (Bottom Left) */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 left-6 z-40 btn-shine inline-flex items-center gap-2.5 px-5 py-3 rounded-full font-bold text-sm text-white bg-gradient-to-r from-[#E50914] to-[#9F0712] shadow-2xl shadow-red-600/40 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/20"
-        aria-label="View Impleway Enterprise Company Profile"
+      {/* Fixed Sticky Trigger Button (Bottom Left - Perfect Round Shape) */}
+      <aside 
+        aria-label="Enterprise Company Profile"
+        className="fixed bottom-6 left-6 z-40 select-none flex items-center"
+        style={{ position: 'fixed', bottom: '24px', left: '24px', zIndex: 40 }}
       >
-        <FileText className="w-4 h-4 text-white animate-pulse" />
-        <span>Company Profile</span>
-      </button>
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#E50914] via-red-600 to-[#9F0712] text-white shadow-2xl shadow-red-600/50 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white cursor-pointer"
+          aria-label="View Impleway Enterprise Company Profile"
+        >
+          {/* Subtle Pulse Ring */}
+          <span className="absolute -inset-1 rounded-full bg-red-500 opacity-40 animate-ping pointer-events-none"></span>
+
+          {/* Center Content: Icon + Label */}
+          <div className="relative z-10 flex flex-col items-center justify-center">
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-tight text-white leading-none mt-0.5">
+              Profile
+            </span>
+          </div>
+
+          {/* Hover Tooltip on Right */}
+          <div className="absolute left-full ml-3 px-3 py-1.5 bg-[#050505] text-white text-xs font-bold rounded-xl shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none border border-neutral-800 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span>
+            <span>Company Profile</span>
+          </div>
+        </button>
+      </aside>
 
       {/* Interactive Modal */}
       {isOpen && (
