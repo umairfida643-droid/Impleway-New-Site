@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { 
-  MessageSquare, ChevronDown, Menu, X, ArrowRight, 
+  Mail, MessageSquare, ChevronDown, Menu, X, ArrowRight, 
   Layers, ShieldCheck, Sparkles, Globe
 } from 'lucide-react';
 import { navigation } from '../../data/navigation';
