@@ -141,9 +141,10 @@ export const Footer = () => {
                 </div>
                 <a 
                   href={`tel:${siteConfig.contact.ksa.phone.replace(/\s+/g, '')}`} 
-                  className="block text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
+                  className="flex items-center gap-2 text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
                 >
-                  {siteConfig.contact.ksa.phone}
+                  <Phone className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                  <span>{siteConfig.contact.ksa.phone}</span>
                 </a>
                 <a 
                   href={siteConfig.contact.ksa.whatsappUrl} 
@@ -167,9 +168,10 @@ export const Footer = () => {
                 </div>
                 <a 
                   href={`tel:${siteConfig.contact.pk.phone.replace(/\s+/g, '')}`} 
-                  className="block text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
+                  className="flex items-center gap-2 text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
                 >
-                  {siteConfig.contact.pk.phone}
+                  <Phone className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                  <span>{siteConfig.contact.pk.phone}</span>
                 </a>
                 <a 
                   href={siteConfig.contact.pk.whatsappUrl} 
