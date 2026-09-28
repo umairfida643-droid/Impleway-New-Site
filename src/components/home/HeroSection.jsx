@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Activity 
 } from 'lucide-react';
-import { OracleIcon, OdooIcon, Dynamics365Icon } from '../ui/PlatformIcons';
 
 const TYPEWRITER_WORDS = [
   "Oracle ERP",
@@ -136,31 +135,68 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            {/* Platform Badges with Official Logos */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <Link 
-                to="/oracle-erp-services"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 transition-all group"
-              >
-                <OracleIcon className="w-4 h-4 rounded" />
-                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Oracle Fusion Cloud</span>
-              </Link>
+            {/* Platform Ecosystem Logos Strip matching user reference */}
+            <div className="pt-5 sm:pt-6">
+              <div className="flex flex-wrap items-center gap-7 sm:gap-9 lg:gap-10 pb-4">
+                {/* 1. Oracle Fusion */}
+                <Link 
+                  to="/oracle-erp-services"
+                  className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
+                  title="Oracle Fusion Cloud ERP"
+                >
+                  <svg viewBox="0 0 79 16" className="h-4 sm:h-4.5 w-auto fill-white" fill="currentColor">
+                    <path d="M7.8 15.5C3.5 15.5 0 12 0 7.8 0 3.5 3.5 0 7.8 0c4.3 0 7.8 3.5 7.8 7.8 0 4.3-3.5 7.7-7.8 7.7zm0-3.3c2.4 0 4.4-2 4.4-4.4 0-2.4-2-4.4-4.4-4.4-2.4 0-4.4 2-4.4 4.4 0 2.4 2 4.4 4.4 4.4zm16.5-4.4c1.8-.5 3.1-2 3.1-4 0-2.3-1.8-3.8-4.4-3.8H17v15.5h3.4V10h1.7l3.6 5.5h4.1l-4.5-6.7c-.3-.4-.7-.8-1-1zm-2.8-1.5H20.4V3.3h1.1c1 0 1.7.5 1.7 1.5 0 1.1-.7 1.5-1.7 1.5zm13.6 9.2h3.6l-5.6-15.5h-3.6L24 15.5h3.6l1-3h5.5l1 3zm-5.7-5.9l1.9-5.4 1.9 5.4h-3.8zm19.3.9c-.8.8-1.8 1.3-3 1.3-2.4 0-4.4-2-4.4-4.4 0-2.4 2-4.4 4.4-4.4 1.2 0 2.3.5 3 1.3l2.4-2.3C49.9.8 48.5 0 46.8 0c-4.3 0-7.8 3.5-7.8 7.8 0 4.3 3.5 7.7 7.8 7.7 1.7 0 3.2-.8 4.2-2.1l-2.3-2.1zM53.4 0h3.4v12.2h6.7v3.3H53.4V0zm14.8 0h11.2v3.3H71.6v2.8h6.5v3.3h-6.5v2.8h7.8v3.3H68.2V0z"/>
+                  </svg>
+                  <span className="text-xs sm:text-sm font-medium tracking-normal text-neutral-200">Fusion</span>
+                </Link>
 
-              <Link 
-                to="/odoo-erp-services"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all group"
-              >
-                <OdooIcon className="w-4 h-4 rounded" />
-                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Odoo ERP</span>
-              </Link>
+                {/* 2. Odoo */}
+                <Link 
+                  to="/odoo-erp-services"
+                  className="flex items-center opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
+                  title="Odoo ERP Solutions"
+                >
+                  <img 
+                    src="/logos/odoo-official.svg" 
+                    alt="odoo" 
+                    className="h-4 sm:h-5 w-auto brightness-0 invert" 
+                  />
+                </Link>
 
-              <Link 
-                to="/dynamics-365-services"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 transition-all group"
-              >
-                <Dynamics365Icon className="w-4 h-4 rounded" />
-                <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Microsoft Dynamics 365</span>
-              </Link>
+                {/* 3. SAP Business One */}
+                <Link 
+                  to="/services"
+                  className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
+                  title="SAP Business One ERP"
+                >
+                  <svg viewBox="0 0 38 20" className="h-4 sm:h-5 w-auto" fill="none">
+                    <path d="M0 0H38L27 20H0V0Z" fill="#FFFFFF" />
+                    <path d="M6 14.5c-2.2 0-3.6-1.2-3.6-3.2h2c0 .9.6 1.4 1.6 1.4s1.5-.5 1.5-1.2c0-.8-.6-1-1.8-1.3-2-.4-3-1.1-3-2.5 0-1.8 1.4-2.9 3.3-2.9s3.2 1.1 3.2 2.8h-2c0-.8-.5-1.2-1.3-1.2s-1.2.4-1.2 1.1c0 .6.5.9 1.6 1.2 2.1.4 3.3 1 3.3 2.6 0 2-1.4 3.2-3.6 3.2zm6.9-9.2h2.1l3.3 9h-2.1l-.6-2h-3.2l-.6 2h-2l3.1-9zm2 5.5l-1.1-3.4-1.1 3.4h2.2zm5.8-5.5h3.8c2.2 0 3.5 1.2 3.5 3s-1.3 3-3.5 3h-1.7v3h-2.1V5.3zm2.1 4.2h1.6c1 0 1.6-.5 1.6-1.2s-.6-1.2-1.6-1.2H22.8v2.4z" fill="#050505" />
+                  </svg>
+                  <div className="flex flex-col justify-center leading-none text-left">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Business</span>
+                    <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">One</span>
+                  </div>
+                </Link>
+
+                {/* 4. Dynamics 365 */}
+                <Link 
+                  to="/dynamics-365-services"
+                  className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
+                  title="Microsoft Dynamics 365"
+                >
+                  <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" fill="currentColor">
+                    <rect x="0" y="0" width="7" height="7" />
+                    <rect x="9" y="0" width="7" height="7" />
+                    <rect x="0" y="9" width="7" height="7" />
+                    <rect x="9" y="9" width="7" height="7" />
+                  </svg>
+                  <span className="text-xs sm:text-sm font-semibold tracking-tight text-white">Dynamics 365</span>
+                </Link>
+              </div>
+
+              {/* Thin horizontal line matching reference */}
+              <div className="w-full h-px bg-white/20"></div>
             </div>
 
           </div>
