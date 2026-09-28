@@ -10,11 +10,11 @@ export const Footer = () => {
     <footer className="bg-[#050505] text-[#e5e5e5] pt-16 pb-0 border-t border-neutral-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-800">
+        {/* Main Footer Grid: 5 Separate Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 lg:gap-8 pb-12 border-b border-neutral-800">
           
           {/* Column 1: Brand & KSA Regional Vision */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3 space-y-4">
             <Link to="/" className="inline-flex items-center select-none py-1" aria-label="Impleway – Enterprise ERP & IT">
               <BrandLogo variant="light" className="h-8 sm:h-9" />
             </Link>
@@ -51,7 +51,7 @@ export const Footer = () => {
                 className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-white hover:border-[#E50914] transition-all"
                 aria-label="LinkedIn"
               >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
               </a>
               <a 
                 href={siteConfig.contact.ksa.whatsappUrl} 
@@ -66,7 +66,7 @@ export const Footer = () => {
           </div>
 
           {/* Column 2: Core Services */}
-          <div>
+          <div className="lg:col-span-2">
             <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">ERP Services</h4>
             <ul className="space-y-2.5 text-sm text-neutral-400">
               {navigation.footerNav.services.map((item, idx) => (
@@ -79,30 +79,36 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: PLATFORMS & INFO (Exact match to media_1790582566284.png) */}
-          <div>
+          {/* Column 3: PLATFORMS */}
+          <div className="lg:col-span-2">
             <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">
-              PLATFORMS &amp; INFO
+              PLATFORMS
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-300">
+            <ul className="space-y-2.5 text-sm text-neutral-400">
               <li>
-                <Link to="/oracle-erp-cloud" className="hover:text-[#E50914] transition-colors block">
+                <Link to="/oracle-erp-services" className="hover:text-[#E50914] transition-colors block">
                   Oracle ERP Cloud
                 </Link>
               </li>
               <li>
-                <Link to="/odoo-erp" className="hover:text-[#E50914] transition-colors block">
+                <Link to="/odoo-erp-services" className="hover:text-[#E50914] transition-colors block">
                   Odoo ERP Solutions
                 </Link>
               </li>
               <li>
-                <Link to="/microsoft-dynamics-365" className="hover:text-[#E50914] transition-colors block">
+                <Link to="/dynamics-365-services" className="hover:text-[#E50914] transition-colors block">
                   Microsoft Dynamics 365
                 </Link>
               </li>
-              
-              <li className="pt-2 border-t border-neutral-800/80"></li>
+            </ul>
+          </div>
 
+          {/* Column 4: ABOUT */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">
+              ABOUT
+            </h4>
+            <ul className="space-y-2.5 text-sm text-neutral-400">
               <li>
                 <Link to="/about" className="hover:text-[#E50914] transition-colors block">
                   About Us
@@ -123,11 +129,16 @@ export const Footer = () => {
                   Insights &amp; Articles
                 </Link>
               </li>
+              <li>
+                <Link to="/contact" className="hover:text-[#E50914] transition-colors block">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 4: OFFICIAL CONTACT (Exact match to media_1790582533706.png) */}
-          <div>
+          {/* Column 5: OFFICIAL CONTACT */}
+          <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3">
             <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">
               OFFICIAL CONTACT
             </h4>
