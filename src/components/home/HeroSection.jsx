@@ -152,9 +152,14 @@ export const HeroSection = () => {
                 <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Microsoft Dynamics 365</span>
               </Link>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400">
-                <ZatcaIcon className="w-4 h-4 rounded" />
-                <span className="text-xs font-bold">ZATCA Phase 2 Ready</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300">
+                <img src="/logos/zatca-logo.svg" alt="ZATCA Official" className="h-4 w-auto brightness-0 invert opacity-95" />
+                <span className="text-xs font-bold">Phase 2 Certified</span>
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300">
+                <img src="/logos/saudi-vision-2030.svg" alt="Saudi Vision 2030" className="h-4 w-auto brightness-0 invert opacity-95" />
+                <span className="text-xs font-bold">Vision 2030</span>
               </div>
             </div>
 

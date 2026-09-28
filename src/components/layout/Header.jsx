@@ -13,6 +13,7 @@ export const Header = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [platformsDropdownOpen, setPlatformsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   
   const location = useLocation();
   const megaMenuRef = useRef(null);
@@ -25,9 +26,12 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -65,9 +69,27 @@ export const Header = () => {
             </a>
           </div>
 
-          {/* Direct WhatsApp Quick Connects */}
+          {/* Direct WhatsApp Quick Connects & Official Saudi Compliance Badges */}
           <div className="flex items-center gap-3">
-            <span className="text-white/60 text-xs hidden lg:inline">Instant WhatsApp Support:</span>
+            {/* Original ZATCA & Saudi Vision 2030 Logos */}
+            <div className="hidden lg:flex items-center gap-2 pr-3 border-r border-white/15">
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 border border-white/10" title="ZATCA Phase-2 Certified">
+                <img 
+                  src="/logos/zatca-logo.svg" 
+                  alt="ZATCA Official" 
+                  className="h-3.5 w-auto object-contain brightness-0 invert opacity-95" 
+                />
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 border border-white/10" title="Saudi Vision 2030 Partner">
+                <img 
+                  src="/logos/saudi-vision-2030.svg" 
+                  alt="Saudi Vision 2030 Official" 
+                  className="h-3.5 w-auto object-contain brightness-0 invert opacity-95" 
+                />
+              </div>
+            </div>
+
+            <span className="text-white/60 text-xs hidden xl:inline">Instant WhatsApp Support:</span>
             <a 
               href="https://wa.me/966598145042" 
               target="_blank" 
@@ -306,6 +328,20 @@ export const Header = () => {
           </div>
         </div>
       )}
+
+      {/* Sleek Scroll Progress Bar directly underneath the sticky header */}
+      <div 
+        className="absolute bottom-0 left-0 w-full h-[3px] bg-neutral-200/50 overflow-hidden pointer-events-none"
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div 
+          className="h-full bg-gradient-to-r from-[#E50914] via-red-500 to-[#9F0712] transition-[width] duration-100 ease-out shadow-[0_0_10px_rgba(229,9,20,0.9)]"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
     </header>
   );
 };

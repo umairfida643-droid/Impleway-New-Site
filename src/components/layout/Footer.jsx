@@ -7,7 +7,7 @@ import { BrandLogo } from '../ui/BrandLogo';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#050505] text-[#e5e5e5] pt-16 pb-10 border-t border-neutral-900">
+    <footer className="bg-[#050505] text-[#e5e5e5] pt-16 pb-0 border-t border-neutral-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
@@ -22,14 +22,24 @@ export const Footer = () => {
               Empowering enterprise growth through practical ERP consulting, zero data-loss migration, and certified electronic invoicing solutions across the Kingdom of Saudi Arabia and global markets.
             </p>
 
-            <div className="pt-2 flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-semibold text-neutral-300">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#E50914]" />
-                <span>ZATCA Phase 2 Ready</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-semibold text-neutral-300">
-                <span>🇸🇦 KSA Vision 2030 Partner</span>
-              </span>
+            {/* Original ZATCA & Saudi Vision 2030 Logos */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-emerald-500/50 transition-colors">
+                <img 
+                  src="/logos/zatca-logo.svg" 
+                  alt="Official ZATCA Logo" 
+                  className="h-5 w-auto object-contain brightness-0 invert opacity-95" 
+                />
+                <span className="text-[11px] font-bold text-neutral-300">Phase 2 Certified</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-emerald-500/50 transition-colors">
+                <img 
+                  src="/logos/saudi-vision-2030.svg" 
+                  alt="Official Saudi Vision 2030 Logo" 
+                  className="h-5 w-auto object-contain brightness-0 invert opacity-95" 
+                />
+                <span className="text-[11px] font-bold text-neutral-300">Vision 2030</span>
+              </div>
             </div>
 
             {/* Social Links */}
@@ -69,41 +79,40 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Platforms & Company */}
+          {/* Column 3: Ecosystem Platforms */}
           <div>
-            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Platforms & Info</h4>
+            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Ecosystem</h4>
             <ul className="space-y-2.5 text-sm text-neutral-400">
               {navigation.footerNav.platforms.map((item, idx) => (
                 <li key={idx}>
-                  <Link to={item.path} className="hover:text-[#E50914] transition-colors">
-                    {item.name}
+                  <Link to={item.path} className="hover:text-[#E50914] transition-colors flex items-center gap-1">
+                    <span>{item.name}</span>
                   </Link>
                 </li>
               ))}
-              <li className="pt-2 border-t border-neutral-900">
-                <Link to="/about" className="hover:text-[#E50914] transition-colors">About Us</Link>
+              <li>
+                <Link to="/industries" className="hover:text-[#E50914] transition-colors flex items-center gap-1">
+                  <span>20 Industries Served</span>
+                </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="hover:text-[#E50914] transition-colors">Portfolio & Case Studies</Link>
-              </li>
-              <li>
-                <Link to="/industries" className="hover:text-[#E50914] transition-colors">Industries Served</Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-[#E50914] transition-colors">Insights & Articles</Link>
+                <Link to="/portfolio" className="hover:text-[#E50914] transition-colors flex items-center gap-1">
+                  <span>Portfolio & Case Studies</span>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Official Contact Information */}
+          {/* Column 4: Official Direct Contacts */}
           <div>
-            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Official Contact</h4>
-            <div className="space-y-4 text-sm text-neutral-300">
+            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Direct Contact</h4>
+            <div className="space-y-4 text-sm text-neutral-400">
               
               {/* KSA Contact */}
               <div className="space-y-1">
-                <div className="text-xs font-bold text-[#E50914] flex items-center gap-1">
-                  <span>🇸🇦 IMPLEWAY KSA</span>
+                <div className="text-xs font-bold text-neutral-300 flex items-center gap-1.5">
+                  <span>🇸🇦</span>
+                  <span>IMPLEWAY KSA</span>
                 </div>
                 <a 
                   href={`tel:${siteConfig.contact.ksa.phone.replace(/\\s+/g, '')}`} 
@@ -123,8 +132,9 @@ export const Footer = () => {
 
               {/* PK Contact */}
               <div className="space-y-1 pt-2 border-t border-neutral-900">
-                <div className="text-xs font-bold text-neutral-400 flex items-center gap-1">
-                  <span>🇵🇰 IMPLEWAY PK</span>
+                <div className="text-xs font-bold text-neutral-300 flex items-center gap-1.5">
+                  <span>🇵🇰</span>
+                  <span>IMPLEWAY PK</span>
                 </div>
                 <a 
                   href={`tel:${siteConfig.contact.pk.phone.replace(/\\s+/g, '')}`} 
@@ -159,7 +169,7 @@ export const Footer = () => {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+        <div className="pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <div>
             © {new Date().getFullYear()} Impleway. All rights reserved. Enterprise ERP & IT Digital Solutions.
           </div>
@@ -168,6 +178,13 @@ export const Footer = () => {
             <Link to="/about" className="hover:text-neutral-300 transition-colors">Terms of Service</Link>
             <Link to="/contact" className="hover:text-neutral-300 transition-colors">Support SLA</Link>
           </div>
+        </div>
+
+        {/* Giant Faded IMPLEWAY Wordmark at the Very End of Footer */}
+        <div className="pt-6 pb-2 overflow-hidden select-none pointer-events-none text-center">
+          <span className="block font-black text-transparent bg-clip-text bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent text-[17vw] sm:text-[16vw] lg:text-[15.5vw] uppercase tracking-tighter leading-none select-none font-sans">
+            IMPLEWAY
+          </span>
         </div>
 
       </div>
