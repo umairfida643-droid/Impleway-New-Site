@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --red: #E50914;
+    --red-dark: #9F0712;
+    --black: #050505;
+    --ink: #111111;
+    --muted: #5F6368;
+    --soft: #F6F6F6;
+    --line: #E7E7E7;
+    --white: #FFFFFF;
+    --grad: linear-gradient(135deg, #050505 0%, #151515 44%, #9F0712 100%);
+    --redgrad: linear-gradient(135deg, #E50914 0%, #9F0712 100%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--ink);
+    background-color: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom Grid Background & Texture */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-radial-hero {
+  background: radial-gradient(circle at 78% 15%, rgba(229, 9, 20, 0.28), transparent 35%),
+              linear-gradient(135deg, #050505 0%, #121212 50%, #9F0712 100%);
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at center, rgba(229, 9, 20, 0.45) 0%, rgba(229, 9, 20, 0.15) 40%, transparent 75%);
+}
+
+/* Shine Hover Effect for CTAs */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-25deg);
+  transition: all 0.75s ease;
+}
+.btn-shine:hover::before {
+  left: 175%;
+}
+
+/* Pulse Animation for Live Status */
+@keyframes pulseDot {
+  0%, 80%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulseDot 1.6s infinite ease-in-out;
+}
+
+/* Infinite Marquee Animation */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 35s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
