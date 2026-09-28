@@ -147,7 +147,7 @@ export const Header = () => {
 
               {/* Mega Menu Overlay Dropdown */}
               {servicesDropdownOpen && (
-                <div className="absolute top-full -left-48 w-[860px] bg-white rounded-2xl shadow-2xl border border-[#e7e7e7] p-7 grid grid-cols-3 gap-6 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                <div className="absolute top-full -left-48 w-[920px] bg-white rounded-2xl shadow-2xl border border-[#e7e7e7] p-7 grid grid-cols-3 gap-6 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                   {navigation.mainNav[1].sections.map((section, idx) => (
                     <div key={idx} className="space-y-3">
                       <div className="text-xs uppercase tracking-wider font-extrabold text-[#E50914] border-b border-[#e7e7e7] pb-2 flex items-center gap-2">
@@ -161,19 +161,17 @@ export const Header = () => {
                           <Link 
                             key={itemIdx} 
                             to={item.path} 
-                            className="group/item flex items-center justify-between p-2 rounded-lg hover:bg-[#F6F6F6] transition-all"
+                            className="group/item flex items-center justify-between p-2 rounded-xl hover:bg-[#F6F6F6] transition-all"
                           >
-                            <div className="flex items-center min-w-0">
-                              <div className="w-0 group-hover/item:w-7 transition-all duration-200 overflow-hidden opacity-0 group-hover/item:opacity-100 flex-shrink-0 flex items-center justify-start">
-                                <div className="w-6 h-6 rounded-md bg-red-50 text-[#E50914] flex items-center justify-center mr-2">
-                                  <ServiceIcon slug={item.path.replace('/', '')} className="w-3.5 h-3.5" />
-                                </div>
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className="w-8 h-8 rounded-lg bg-red-50 text-[#E50914] group-hover/item:bg-[#E50914] group-hover/item:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-xs">
+                                <ServiceIcon slug={item.path.replace('/', '')} className="w-4 h-4" />
                               </div>
-                              <div className="transition-transform duration-200">
-                                <div className="text-[14px] font-bold text-[#111111] group-hover/item:text-[#E50914] transition-colors leading-tight">
+                              <div className="min-w-0">
+                                <div className="text-[13.5px] font-bold text-[#111111] group-hover/item:text-[#E50914] transition-colors leading-tight">
                                   {item.name}
                                 </div>
-                                <div className="text-[11px] text-[#5F6368] leading-tight truncate">
+                                <div className="text-[11px] text-[#5F6368] leading-tight truncate mt-0.5">
                                   {item.desc}
                                 </div>
                               </div>
@@ -393,16 +391,29 @@ export const Header = () => {
           {/* Services Accordion List in Mobile */}
           <div className="space-y-2 border-b border-[#e7e7e7] pb-4">
             <div className="text-xs uppercase font-extrabold text-[#E50914] tracking-wider">ERP &amp; Digital Services</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 pt-1">
-              <Link to="/erp-consulting" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Consulting</Link>
-              <Link to="/erp-implementation" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Implementation</Link>
-              <Link to="/erp-migration" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Migration</Link>
-              <Link to="/data-migration" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Data Migration</Link>
-              <Link to="/managed-support" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Managed Support</Link>
-              <Link to="/web-development" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Web Development</Link>
-              <Link to="/cloud-solutions" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Cloud Solutions</Link>
-              <Link to="/cyber-security" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Cyber Security</Link>
-              <Link to="/ai-automation-solutions" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">AI Automation</Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
+              {[
+                { name: "ERP Consulting", path: "/erp-consulting" },
+                { name: "ERP Implementation", path: "/erp-implementation" },
+                { name: "ERP Migration", path: "/erp-migration" },
+                { name: "Data Migration", path: "/data-migration" },
+                { name: "Managed Support", path: "/managed-support" },
+                { name: "Web Development", path: "/web-development" },
+                { name: "Cloud Solutions", path: "/cloud-solutions" },
+                { name: "Cyber Security", path: "/cyber-security" },
+                { name: "AI Automation", path: "/ai-automation-solutions" }
+              ].map((service, sIdx) => (
+                <Link 
+                  key={sIdx}
+                  to={service.path} 
+                  className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-red-50 text-sm font-semibold text-neutral-700 hover:text-[#E50914] transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-red-50 text-[#E50914] flex items-center justify-center flex-shrink-0">
+                    <ServiceIcon slug={service.path.replace('/', '')} className="w-3.5 h-3.5" />
+                  </div>
+                  <span>{service.name}</span>
+                </Link>
+              ))}
             </div>
             <div className="pt-2">
               <Link to="/services" className="text-xs font-bold text-[#E50914] hover:underline flex items-center gap-1">
