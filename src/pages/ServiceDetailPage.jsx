@@ -81,7 +81,7 @@ export const ServiceDetailPage = () => {
                 The Challenge
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-                Problem Statement
+                Problem <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Statement</span>
               </h2>
               <p className="text-base sm:text-lg text-[#5F6368] leading-relaxed">
                 {service.problemStatement}
@@ -122,7 +122,7 @@ export const ServiceDetailPage = () => {
               Business Value
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-              {service.whyItMatters.title}
+              Why This Service <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Matters to Your Business</span>
             </h2>
           </div>
 
@@ -228,7 +228,7 @@ export const ServiceDetailPage = () => {
                 Practical Applications
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-                Industry Use Cases
+                Industry <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Use Cases</span>
               </h2>
               <p className="text-sm sm:text-base text-[#5F6368]">
                 Real-world operational scenarios where this service produces measurable business impact.
@@ -254,7 +254,7 @@ export const ServiceDetailPage = () => {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2">
               <h3 className="text-2xl sm:text-3xl font-black text-[#111111]">
-                Frequently Asked Questions
+                Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Questions</span>
               </h3>
             </div>
             <div className="space-y-4">

@@ -23,7 +23,7 @@ export const PlatformsSection = () => {
             Enterprise Ecosystems
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111111] tracking-tight">
-            Expertise Across the Platforms Your Business Depends On
+            Expertise Across the Platforms Your Business <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Depends On</span>
           </h2>
           <p className="text-base sm:text-lg text-[#5F6368] leading-relaxed">
             We provide vendor-neutral advisory and certified engineering across the world's leading ERP architectures, customized for the regulatory and operational landscape of Saudi Arabia.

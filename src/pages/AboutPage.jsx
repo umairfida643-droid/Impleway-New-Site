@@ -48,7 +48,7 @@ export const AboutPage = () => {
               Organizational Purpose
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-              Built for Companies That Need Clarity, Not Complexity
+              Built for Companies That Need Clarity, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Not Complexity</span>
             </h2>
             <p className="text-base text-[#5F6368] leading-relaxed">
               Impleway focuses on business outcomes first. We combine senior ERP consulting with hands-on technical architecture to ensure systems actually get adopted.
@@ -105,7 +105,7 @@ export const AboutPage = () => {
                 Our Background
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight leading-tight">
-                From Operational Pain Points to Measurable Business Improvement
+                From Operational Pain Points to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Business Improvement</span>
               </h2>
               <p className="text-sm sm:text-base text-[#5F6368] leading-relaxed">
                 Too many ERP implementations fail because software is chosen before the business operations and regulatory environment are truly understood. Teams get overwhelmed by rigid, generic templates and surprise consulting bills.
@@ -162,7 +162,7 @@ export const AboutPage = () => {
               Global Delivery Footprint
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-              Where We Operate & Serve Our Clients
+              Where We Operate & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Serve Our Clients</span>
             </h2>
             <p className="text-base text-[#5F6368]">
               Strategic hubs delivering round-the-clock technical architecture and localized on-the-ground support.

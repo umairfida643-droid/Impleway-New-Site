@@ -84,7 +84,7 @@ export const ContactPage = () => {
                   DIRECT CHANNELS
                 </div>
                 <h2 className="text-3xl font-black text-[#111111] tracking-tight">
-                  Regional Offices
+                  Regional <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Offices</span>
                 </h2>
                 <p className="text-xs sm:text-sm text-[#5F6368] leading-relaxed">
                   Connect with our dedicated teams across Saudi Arabia and Pakistan during standard business hours or via 24/7 emergency support channels.
@@ -196,7 +196,7 @@ export const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-2xl font-black text-[#111111] tracking-tight">
-                      Send Requirements
+                      Send <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Requirements</span>
                     </h3>
                     <p className="text-xs sm:text-sm text-[#5F6368] mt-1">
                       Fill out the form below and our regional team will respond promptly.

@@ -46,6 +46,14 @@
   background: radial-gradient(circle at center, rgba(229, 9, 20, 0.45) 0%, rgba(229, 9, 20, 0.15) 40%, transparent 75%);
 }
 
+/* Signature Brand Gradient for Headings (Charcoal to Crimson Red) */
+.text-brand-gradient {
+  background-image: linear-gradient(to right, #111111, #E50914, #9F0712);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Shine Hover Effect for CTAs */
 .btn-shine {
   position: relative;

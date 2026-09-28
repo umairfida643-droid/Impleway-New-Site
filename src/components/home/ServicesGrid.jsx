@@ -33,7 +33,7 @@ export const ServicesGrid = () => {
               <span>End-to-End Solutions</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111111] tracking-tight">
-              Everything Required to Plan, Build and Support Enterprise ERP
+              Everything Required to Plan, Build and Support <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Enterprise ERP</span>
             </h2>
             <p className="text-base text-[#5F6368]">
               Comprehensive functional consulting, technical architecture, and post-go-live managed services built for zero disruption.

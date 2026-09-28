@@ -80,8 +80,9 @@ export const ProjectDetailPage = () => {
           
           {/* Project Overview */}
           <div className="space-y-4">
-            <div className="text-xs uppercase font-extrabold tracking-wider text-[#E50914]">Executive Summary</div>
-            <h2 className="text-3xl font-black text-[#111111]">Project Overview</h2>
+            <h2 className="text-3xl font-black text-[#111111]">
+              Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Overview</span>
+            </h2>
             <p className="text-base sm:text-lg text-[#5F6368] leading-relaxed">
               {project.overview}
             </p>
@@ -115,8 +116,9 @@ export const ProjectDetailPage = () => {
 
           {/* Technologies Architecture */}
           <div className="space-y-4 pt-6 border-t border-neutral-200">
-            <div className="text-xs uppercase font-extrabold tracking-wider text-neutral-500">Architecture & Tools</div>
-            <h3 className="text-2xl font-black text-[#111111]">Technologies Deployed</h3>
+            <h3 className="text-2xl font-black text-[#111111]">
+              Technologies <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Deployed</span>
+            </h3>
             <div className="flex flex-wrap gap-3 pt-2">
               {project.technologies.map((tech, idx) => (
                 <span key={idx} className="px-5 py-2.5 rounded-full bg-[#F6F6F6] border border-[#e7e7e7] text-sm font-extrabold text-[#111111]">

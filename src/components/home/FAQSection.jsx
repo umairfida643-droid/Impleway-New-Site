@@ -37,7 +37,7 @@ export const FAQSection = () => {
             Frequently Asked Questions
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight">
-            Clear Answers to Critical ERP Questions
+            Clear Answers to Critical <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">ERP Questions</span>
           </h2>
           <p className="text-sm sm:text-base text-[#5F6368]">
             Everything leadership teams need to know before initiating their enterprise digital transformation.

@@ -83,7 +83,7 @@ export const PlatformDetailPage = ({ forcedSlug }) => {
                 Enterprise Capabilities
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#111111] tracking-tight leading-tight">
-                Designed for Operationally Complex Businesses
+                Designed for Operationally <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Complex Businesses</span>
               </h2>
               <p className="text-base sm:text-lg text-[#5F6368] leading-relaxed">
                 {platform.overview}
@@ -132,7 +132,7 @@ export const PlatformDetailPage = ({ forcedSlug }) => {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2">
               <h3 className="text-2xl sm:text-3xl font-black text-[#111111]">
-                Platform FAQs
+                Platform <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">FAQs</span>
               </h3>
             </div>
             <div className="space-y-4">

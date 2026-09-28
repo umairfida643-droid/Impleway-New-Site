@@ -14,7 +14,7 @@ export const TechStackMarquee = () => {
           <span>Enterprise Technology Ecosystem</span>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#141414] tracking-tight">
-          20+ Certified Technology Stacks & Integration Frameworks
+          20+ Certified Technology Stacks & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[#E50914] to-[#9F0712]">Integration Frameworks</span>
         </h2>
         <p className="text-xs sm:text-sm text-[#5F6368] font-normal max-w-2xl mx-auto leading-relaxed">
           From Tier-1 ERP architectures to high-throughput cloud streaming APIs, we build scalable foundations that power modern Saudi enterprises.
