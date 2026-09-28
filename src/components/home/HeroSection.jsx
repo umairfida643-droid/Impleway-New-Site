@@ -9,8 +9,8 @@ const TYPEWRITER_WORDS = [
   "Oracle ERP Cloud",
   "Odoo ERP Solutions",
   "Microsoft Dynamics 365",
-  "ZATCA E-Invoicing Phase 2",
-  "Zero-Downtime Data Migration"
+  "ZATCA Phase 2 E-Invoicing",
+  "Zero-Downtime Migration"
 ];
 
 const MODULE_DATA = {
@@ -90,13 +90,13 @@ export const HeroSection = () => {
               <span>ERP & Digital Transformation Partner</span>
             </div>
 
-            {/* H1 Heading with Dynamic Typewriter */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-white">
-              Transform Your Business With{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-red-100 to-[#E50914] drop-shadow-[0_0_24px_rgba(229,9,20,0.5)] block sm:inline">
-                {displayedText || "\u00A0"}
+            {/* H1 Heading with Dynamic Typewriter - Height locked to prevent layout jump */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white min-h-[140px] sm:min-h-[165px] lg:min-h-[195px] flex flex-col justify-start">
+              <span>Transform Your Business With</span>
+              <span className="mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-red-100 to-[#E50914] drop-shadow-[0_0_24px_rgba(229,9,20,0.5)] block min-h-[2.3em] sm:min-h-[1.25em]">
+                <span>{displayedText || "\u00A0"}</span>
+                <span className="text-[#E50914] animate-pulse font-normal ml-0.5 inline-block">|</span>
               </span>
-              <span className="text-[#E50914] animate-pulse font-normal">|</span>
             </h1>
 
             {/* Subtitle */}
