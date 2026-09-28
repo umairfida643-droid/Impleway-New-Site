@@ -75,100 +75,104 @@ export const ContactPage = () => {
       {/* Main Contact Section */}
       <section className="py-20 sm:py-24 bg-white border-b border-[#e7e7e7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             
             {/* Left Column: Official Contact Cards */}
-            <div className="lg:col-span-5 space-y-8">
-              <div className="space-y-3">
+            <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-5">
+              <div className="space-y-2">
                 <div className="text-xs uppercase font-extrabold tracking-wider text-[#E50914]">
                   DIRECT CHANNELS
                 </div>
-                <h2 className="text-3xl font-black text-[#111111]">
+                <h2 className="text-3xl font-black text-[#111111] tracking-tight">
                   Regional Offices
                 </h2>
-                <p className="text-sm text-[#5F6368] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#5F6368] leading-relaxed">
                   Connect with our dedicated teams across Saudi Arabia and Pakistan during standard business hours or via 24/7 emergency support channels.
                 </p>
               </div>
 
-              {/* KSA Contact Card */}
-              <div className="bg-[#F6F6F6] rounded-3xl p-8 border border-[#e7e7e7] space-y-4 hover:border-red-500/40 transition-all">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                  <span>SA IMPLEWAY KSA (KINGDOM OF SAUDI ARABIA)</span>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-neutral-600">
-                    <MapPin className="w-4 h-4 text-[#E50914]" />
-                    <span>Riyadh & Eastern Province, Saudi Arabia</span>
+              {/* 3 Contact Cards Stack with Synchronized Height */}
+              <div className="space-y-3.5 flex-1 flex flex-col justify-between">
+                
+                {/* KSA Contact Card */}
+                <div className="bg-[#F6F6F6] rounded-2xl p-5 border border-[#e7e7e7] space-y-3 hover:border-red-500/40 transition-all flex flex-col justify-between">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold uppercase tracking-wider w-fit">
+                    <span>SA IMPLEWAY KSA (KINGDOM OF SAUDI ARABIA)</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#E50914]" />
-                    <a href="tel:+966598145042" className="text-lg font-black text-[#111111] hover:text-[#E50914] transition-colors">
-                      +966 59 814 5042
-                    </a>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-600">
+                      <MapPin className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                      <span>Riyadh &amp; Eastern Province, Saudi Arabia</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                      <a href="tel:+966598145042" className="text-base sm:text-lg font-black text-[#111111] hover:text-[#E50914] transition-colors">
+                        +966 59 814 5042
+                      </a>
+                    </div>
                   </div>
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <a
                       href="https://wa.me/966598145042"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-colors"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>Chat on WhatsApp KSA</span>
                     </a>
                   </div>
                 </div>
-              </div>
 
-              {/* PK Contact Card */}
-              <div className="bg-[#F6F6F6] rounded-3xl p-8 border border-[#e7e7e7] space-y-4 hover:border-red-500/40 transition-all">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-200 text-neutral-800 text-xs font-bold uppercase tracking-wider">
-                  <span>PK IMPLEWAY PK (TECHNICAL OPERATIONS)</span>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-neutral-600">
-                    <MapPin className="w-4 h-4 text-[#E50914]" />
-                    <span>Lahore & Islamabad, Pakistan</span>
+                {/* PK Contact Card */}
+                <div className="bg-[#F6F6F6] rounded-2xl p-5 border border-[#e7e7e7] space-y-3 hover:border-red-500/40 transition-all flex flex-col justify-between">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-200 text-neutral-800 text-[11px] font-bold uppercase tracking-wider w-fit">
+                    <span>PK IMPLEWAY PK (TECHNICAL OPERATIONS)</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#E50914]" />
-                    <a href="tel:+923392244790" className="text-lg font-black text-[#111111] hover:text-[#E50914] transition-colors">
-                      +92 339 2244790
-                    </a>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-600">
+                      <MapPin className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                      <span>Lahore &amp; Islamabad, Pakistan</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#E50914] flex-shrink-0" />
+                      <a href="tel:+923392244790" className="text-base sm:text-lg font-black text-[#111111] hover:text-[#E50914] transition-colors">
+                        +92 339 2244790
+                      </a>
+                    </div>
                   </div>
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <a
                       href="https://wa.me/923392244790"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-neutral-800 bg-white border border-neutral-300 hover:bg-neutral-50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-neutral-800 bg-white border border-neutral-300 hover:bg-neutral-50 transition-colors"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>Chat on WhatsApp PK</span>
                     </a>
                   </div>
                 </div>
-              </div>
 
-              {/* Email Card */}
-              <div className="bg-[#050505] text-white rounded-3xl p-6 border border-neutral-800 flex items-center justify-between">
-                <div>
-                  <span className="text-xs text-neutral-400 block font-bold">Email Inquiries:</span>
-                  <a href="mailto:hey@impleway.com" className="text-base sm:text-lg font-black hover:text-[#E50914] transition-colors">
-                    hey@impleway.com
-                  </a>
+                {/* Email Card */}
+                <div className="bg-[#050505] text-white rounded-2xl p-5 border border-neutral-800 flex items-center justify-between">
+                  <div>
+                    <span className="text-[11px] text-neutral-400 block font-bold uppercase tracking-wider">Email Inquiries:</span>
+                    <a href="mailto:hey@impleway.com" className="text-base sm:text-lg font-black hover:text-[#E50914] transition-colors">
+                      hey@impleway.com
+                    </a>
+                  </div>
+                  <Mail className="w-6 h-6 text-[#E50914] flex-shrink-0" />
                 </div>
-                <Mail className="w-6 h-6 text-[#E50914]" />
-              </div>
 
+              </div>
             </div>
 
             {/* Right Column: Interactive Consultation Form */}
-            <div className="lg:col-span-7 bg-[#F6F6F6] rounded-3xl p-8 sm:p-10 border border-[#e7e7e7]">
+            <div className="lg:col-span-7 bg-[#F6F6F6] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#e7e7e7] shadow-sm flex flex-col justify-between h-full">
               
               {submitted ? (
-                <div className="py-16 text-center space-y-4 animate-in zoom-in-95 duration-200">
+                <div className="py-16 text-center space-y-4 animate-in zoom-in-95 duration-200 my-auto">
                   <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
@@ -189,9 +193,9 @@ export const ContactPage = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl font-black text-[#111111]">
+                    <h3 className="text-2xl font-black text-[#111111] tracking-tight">
                       Send Requirements
                     </h3>
                     <p className="text-xs sm:text-sm text-[#5F6368] mt-1">
@@ -199,9 +203,9 @@ export const ContactPage = () => {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Your Full Name *
                       </label>
                       <input
@@ -210,12 +214,12 @@ export const ContactPage = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Tariq Al-Mansoor"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Business Email *
                       </label>
                       <input
@@ -224,14 +228,14 @@ export const ContactPage = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="tariq@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Phone / WhatsApp *
                       </label>
                       <input
@@ -240,12 +244,12 @@ export const ContactPage = () => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+966 5X XXX XXXX"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Company Name
                       </label>
                       <input
@@ -253,20 +257,20 @@ export const ContactPage = () => {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="e.g. Al-Mansoor Industrial"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Your Region
                       </label>
                       <select
                         value={formData.region}
                         onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       >
                         <option value="Saudi Arabia (KSA)">Saudi Arabia (KSA)</option>
                         <option value="Pakistan">Pakistan</option>
@@ -277,13 +281,13 @@ export const ContactPage = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Service of Interest
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                        className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
                       >
                         <option value="Oracle ERP Cloud">Oracle ERP Cloud</option>
                         <option value="Odoo ERP Solutions">Odoo ERP Solutions</option>
@@ -298,21 +302,21 @@ export const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-[#111111] mb-1.5">
-                      Project Scope & Expected Timeline
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      Project Scope &amp; Expected Timeline
                     </label>
                     <textarea
-                      rows="4"
+                      rows="3"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Please summarize your current systems, pain points, estimated users, and key project goals..."
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#e7e7e7] text-sm text-[#111111] focus:outline-none focus:border-[#E50914]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full btn-shine inline-flex items-center justify-center gap-2 py-4 rounded-xl font-black text-sm text-white bg-gradient-to-r from-[#E50914] to-[#9F0712] shadow-xl shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
+                    className="w-full btn-shine inline-flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-xl font-black text-sm text-white bg-gradient-to-r from-[#E50914] to-[#9F0712] shadow-xl shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer mt-1"
                   >
                     <Send className="w-4 h-4" />
                     <span>Submit Consultation Request</span>
