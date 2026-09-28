@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Activity 
@@ -44,6 +44,21 @@ const MODULE_DATA = {
 };
 
 export const HeroSection = () => {
+  const videoRef = useRef(null);
+
+  // Ensure video autoplay starts reliably across all browsers
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.defaultMuted = true;
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }
+  }, []);
+
   // Typewriter logic
   const [wordIndex, setWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -77,24 +92,29 @@ export const HeroSection = () => {
       {/* Faded Ambient Corporate Background Video */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-[0.16] sm:opacity-[0.22] filter grayscale contrast-125 brightness-90 transition-opacity duration-1000 scale-105"
+          preload="auto"
+          className="w-full h-full object-cover opacity-50 sm:opacity-55 filter contrast-110 brightness-100 scale-105 transition-opacity duration-1000"
         >
           <source src="/videos/hero-corporate.webm" type="video/webm" />
           <source src="/videos/hero-corporate.mp4" type="video/mp4" />
         </video>
         
-        {/* Signature Brand Radial Glow & Gradient Overlay */}
-        <div className="absolute inset-0 bg-radial-hero opacity-90"></div>
+        {/* Directional Gradient: Darker on Left for Text Readability, Clear on Right for Video Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/95 via-[#050505]/75 to-[#050505]/40"></div>
 
-        {/* Ambient Dark Vignette & Edge Blend */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-transparent to-[#050505]"></div>
+        {/* Signature Brand Crimson Glow Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(229,9,20,0.35)_0%,transparent_60%)]"></div>
+
+        {/* Ambient Dark Top & Bottom Edge Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-transparent to-[#050505]"></div>
 
         {/* Subtle Tech Grid Texture */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-50"></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
