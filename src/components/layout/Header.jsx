@@ -197,7 +197,7 @@ export const Header = () => {
               )}
             </div>
 
-            {/* Platforms Dropdown */}
+            {/* Platforms Dropdown with Original Logos */}
             <div 
               className="relative group"
               onMouseEnter={() => setPlatformsDropdownOpen(true)}
@@ -212,28 +212,102 @@ export const Header = () => {
               </button>
 
               {platformsDropdownOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-[#e7e7e7] p-2 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                <div className="absolute top-full -left-12 w-80 bg-white rounded-2xl shadow-2xl border border-[#e7e7e7] p-2.5 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                  <div className="px-3 py-1.5 text-[11px] font-black uppercase tracking-wider text-neutral-400 border-b border-neutral-100 flex items-center justify-between">
+                    <span>Certified ERP Platforms</span>
+                    <span className="text-[9.5px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full font-bold">KSA Ready</span>
+                  </div>
+
+                  {/* Oracle ERP Cloud */}
                   <Link 
                     to="/oracle-erp-services" 
-                    className="block p-2.5 rounded-lg hover:bg-[#F6F6F6] transition-colors"
+                    className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
-                    <div className="text-sm font-bold text-[#111111] hover:text-[#E50914]">Oracle ERP Cloud</div>
-                    <span className="text-[10px] uppercase font-extrabold text-[#E50914] bg-red-50 px-1.5 py-0.5 rounded">Enterprise Tier</span>
+                    <div className="w-10 h-10 rounded-xl bg-[#F80000] p-1 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
+                      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 7c-3.3 0-6 2.2-6 5s2.7 5 6 5 6-2.2 6-5-2.7-5-6-5zm0 8c-2.2 0-4-1.3-4-3s1.8-3 4-3 4 1.3 4 3-1.8 3-4 3z" fill="#FFFFFF" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-bold text-[#111111] group-hover/platform:text-[#E50914] transition-colors leading-tight">
+                          Oracle ERP Cloud
+                        </span>
+                        <span className="text-[9.5px] uppercase font-extrabold text-[#E50914] bg-red-50 border border-red-100 px-1.5 py-0.5 rounded">
+                          Enterprise
+                        </span>
+                      </div>
+                      <div className="text-[11px] text-[#5F6368] leading-tight mt-0.5">
+                        Tier-1 Multi-Entity &amp; Treasury
+                      </div>
+                    </div>
                   </Link>
+
+                  {/* Odoo ERP Solutions */}
                   <Link 
                     to="/odoo-erp-services" 
-                    className="block p-2.5 rounded-lg hover:bg-[#F6F6F6] transition-colors"
+                    className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
-                    <div className="text-sm font-bold text-[#111111] hover:text-[#E50914]">Odoo ERP Solutions</div>
-                    <span className="text-[10px] uppercase font-extrabold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">Agile & Scalable</span>
+                    <div className="w-10 h-10 rounded-xl bg-[#714B67] p-1.5 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
+                      <img 
+                        src="/logos/odoo-official.svg" 
+                        alt="Official Odoo Logo" 
+                        className="w-full h-full object-contain filter brightness-0 invert" 
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-bold text-[#111111] group-hover/platform:text-[#E50914] transition-colors leading-tight">
+                          Odoo ERP Solutions
+                        </span>
+                        <span className="text-[9.5px] uppercase font-extrabold text-purple-700 bg-purple-50 border border-purple-100 px-1.5 py-0.5 rounded">
+                          Agile SMB
+                        </span>
+                      </div>
+                      <div className="text-[11px] text-[#5F6368] leading-tight mt-0.5">
+                        Modular ERP &amp; Fast 8-12 Wk Launch
+                      </div>
+                    </div>
                   </Link>
+
+                  {/* Microsoft Dynamics 365 */}
                   <Link 
                     to="/dynamics-365-services" 
-                    className="block p-2.5 rounded-lg hover:bg-[#F6F6F6] transition-colors"
+                    className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
-                    <div className="text-sm font-bold text-[#111111] hover:text-[#E50914]">Microsoft Dynamics 365</div>
-                    <span className="text-[10px] uppercase font-extrabold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">Cloud Native</span>
+                    <div className="w-10 h-10 rounded-xl bg-[#002050] p-1.5 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
+                      <img 
+                        src="/logos/dynamics-365-official.svg" 
+                        alt="Official Microsoft Dynamics 365 Logo" 
+                        className="w-full h-full object-contain" 
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-bold text-[#111111] group-hover/platform:text-[#E50914] transition-colors leading-tight">
+                          Microsoft Dynamics 365
+                        </span>
+                        <span className="text-[9.5px] uppercase font-extrabold text-blue-700 bg-blue-50 border border-blue-100 px-1.5 py-0.5 rounded">
+                          Copilot AI
+                        </span>
+                      </div>
+                      <div className="text-[11px] text-[#5F6368] leading-tight mt-0.5">
+                        Finance, Supply Chain &amp; BC
+                      </div>
+                    </div>
                   </Link>
+
+                  {/* Dropdown Bottom Banner */}
+                  <div className="pt-2 border-t border-neutral-100 px-2 flex items-center justify-between text-[11px] text-[#5F6368]">
+                    <span className="flex items-center gap-1 font-semibold text-neutral-600">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      ZATCA Phase 2 Ready
+                    </span>
+                    <Link to="/services" className="font-bold text-[#E50914] hover:underline flex items-center gap-1">
+                      <span>All Services</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -289,13 +363,37 @@ export const Header = () => {
             <Link to="/contact" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Contact Us</Link>
           </div>
 
+          {/* Platforms in Mobile Drawer with Original Logos */}
+          <div className="space-y-2 border-b border-[#e7e7e7] pb-4">
+            <div className="text-xs uppercase font-extrabold text-[#E50914] tracking-wider">Enterprise Platforms</div>
+            <div className="space-y-1.5 pt-1">
+              <Link to="/oracle-erp-services" className="flex items-center gap-3 p-2 rounded-xl bg-neutral-50 hover:bg-red-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+                <div className="w-7 h-7 rounded-lg bg-[#F80000] p-1 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 7c-3.3 0-6 2.2-6 5s2.7 5 6 5 6-2.2 6-5-2.7-5-6-5zm0 8c-2.2 0-4-1.3-4-3s1.8-3 4-3 4 1.3 4 3-1.8 3-4 3z" fill="#FFFFFF" />
+                  </svg>
+                </div>
+                <span>Oracle ERP Cloud</span>
+              </Link>
+              <Link to="/odoo-erp-services" className="flex items-center gap-3 p-2 rounded-xl bg-neutral-50 hover:bg-purple-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+                <div className="w-7 h-7 rounded-lg bg-[#714B67] p-1 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/odoo-official.svg" alt="Odoo" className="w-full h-full object-contain filter brightness-0 invert" />
+                </div>
+                <span>Odoo ERP Solutions</span>
+              </Link>
+              <Link to="/dynamics-365-services" className="flex items-center gap-3 p-2 rounded-xl bg-neutral-50 hover:bg-blue-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+                <div className="w-7 h-7 rounded-lg bg-[#002050] p-1 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/dynamics-365-official.svg" alt="Dynamics 365" className="w-full h-full object-contain" />
+                </div>
+                <span>Microsoft Dynamics 365</span>
+              </Link>
+            </div>
+          </div>
+
           {/* Services Accordion List in Mobile */}
           <div className="space-y-2 border-b border-[#e7e7e7] pb-4">
-            <div className="text-xs uppercase font-extrabold text-[#E50914] tracking-wider">ERP & Digital Services</div>
+            <div className="text-xs uppercase font-extrabold text-[#E50914] tracking-wider">ERP &amp; Digital Services</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 pt-1">
-              <Link to="/oracle-erp-services" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Oracle ERP Cloud</Link>
-              <Link to="/odoo-erp-services" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Odoo ERP</Link>
-              <Link to="/dynamics-365-services" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">Microsoft Dynamics 365</Link>
               <Link to="/erp-consulting" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Consulting</Link>
               <Link to="/erp-implementation" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Implementation</Link>
               <Link to="/erp-migration" className="py-1 text-sm font-semibold text-neutral-700 hover:text-[#E50914]">ERP Migration</Link>
