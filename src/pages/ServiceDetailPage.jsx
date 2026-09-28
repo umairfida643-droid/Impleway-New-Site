@@ -9,6 +9,7 @@ import {
   Layers, Sparkles, Building2, HelpCircle 
 } from 'lucide-react';
 import { ServiceIcon } from '../components/ui/ServiceIcon';
+import { ServiceTechStack } from '../components/services/ServiceTechStack';
 
 export const ServiceDetailPage = () => {
   const { slug } = useParams();
@@ -109,33 +110,8 @@ export const ServiceDetailPage = () => {
         </div>
       </section>
 
-      {/* 3. Technology Stack Badges */}
-      {service.techStack && service.techStack.length > 0 && (
-        <section className="py-12 bg-neutral-900 text-white border-b border-neutral-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-1 text-center md:text-left">
-                <div className="text-xs uppercase font-extrabold tracking-wider text-[#E50914]">
-                  Ecosystem Alignment
-                </div>
-                <div className="text-lg font-bold">
-                  Technologies Evaluated & Integrated
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center justify-center gap-2.5">
-                {service.techStack.map((tech, idx) => (
-                  <span 
-                    key={idx} 
-                    className="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs font-bold text-white hover:border-[#E50914] transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* 3. Comprehensive Service-Specific Technology Stack & Architecture */}
+      <ServiceTechStack service={service} />
 
       {/* 4. Why It Matters (4-Benefit Grid) */}
       <section className="py-20 sm:py-24 bg-[#F6F6F6] border-b border-[#e7e7e7]">

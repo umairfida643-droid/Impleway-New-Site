@@ -9,6 +9,7 @@ import {
   Sparkles, HelpCircle, Activity 
 } from 'lucide-react';
 import { OracleIcon, OdooIcon, Dynamics365Icon } from '../components/ui/PlatformIcons';
+import { ServiceTechStack } from '../components/services/ServiceTechStack';
 
 const PLATFORM_SVG_MAP = {
   "oracle-erp-services": OracleIcon,
@@ -111,6 +112,19 @@ export const PlatformDetailPage = ({ forcedSlug }) => {
           </div>
         </div>
       </section>
+
+      {/* Certified Technology Stack & Architecture Section */}
+      <ServiceTechStack 
+        service={{ 
+          title: platform.title, 
+          category: platform.badge || "Certified Enterprise Platform", 
+          techStack: currentSlug === 'oracle-erp-services'
+            ? ["Oracle", "ZATCA", "Power BI", "PostgreSQL", "FastAPI", "Python"]
+            : currentSlug === 'odoo-erp-services'
+            ? ["Odoo", "Python", "PostgreSQL", "ZATCA", "Docker", "Redis"]
+            : ["Dynamics", "Azure", "Power BI", "ZATCA", "OpenAI", "Kafka"]
+        }} 
+      />
 
       {/* Platform FAQs */}
       {platform.faqs && (
