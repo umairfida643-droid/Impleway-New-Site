@@ -84,6 +84,21 @@ export const HeroSection = () => {
           {/* Left Column: Hero Copy & Value Proposition */}
           <div className="lg:col-span-7 space-y-6">
             
+            {/* Official KSA National & Regulatory Authority Logos (ZATCA & Saudi Vision 2030) */}
+            <div className="flex items-center gap-5 sm:gap-7 pb-1">
+              <img 
+                src="/logos/zatca-logo.svg" 
+                alt="ZATCA Official" 
+                className="h-9 sm:h-11 w-auto brightness-0 invert opacity-95 hover:opacity-100 transition-opacity drop-shadow-md" 
+              />
+              <div className="h-8 w-px bg-white/20"></div>
+              <img 
+                src="/logos/saudi-vision-2030.svg" 
+                alt="Saudi Vision 2030" 
+                className="h-9 sm:h-11 w-auto opacity-95 hover:opacity-100 transition-opacity drop-shadow-md" 
+              />
+            </div>
+
             {/* Eyebrow Pill with Pulsing Dot */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
               <span className="w-2.5 h-2.5 rounded-full bg-[#E50914] animate-ping"></span>
@@ -146,16 +161,6 @@ export const HeroSection = () => {
                 <Dynamics365Icon className="w-4 h-4 rounded" />
                 <span className="text-xs font-bold text-neutral-200 group-hover:text-white">Microsoft Dynamics 365</span>
               </Link>
-
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300">
-                <img src="/logos/zatca-logo.svg" alt="ZATCA Official" className="h-4 w-auto brightness-0 invert opacity-95" />
-                <span className="text-xs font-bold">Phase 2 Certified</span>
-              </div>
-
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300">
-                <img src="/logos/saudi-vision-2030.svg" alt="Saudi Vision 2030" className="h-4 w-auto brightness-0 invert opacity-95" />
-                <span className="text-xs font-bold">Vision 2030</span>
-              </div>
             </div>
 
           </div>
