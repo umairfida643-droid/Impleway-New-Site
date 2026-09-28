@@ -73,11 +73,31 @@ export const HeroSection = () => {
   const currentMod = MODULE_DATA[activeModule];
 
   return (
-    <section className="relative overflow-hidden bg-radial-hero text-white py-16 sm:py-24 lg:py-28">
-      {/* Background Subtle Tech Mesh Texture */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"></div>
+    <section className="relative overflow-hidden bg-[#050505] text-white py-16 sm:py-24 lg:py-28">
+      {/* Faded Ambient Corporate Background Video */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-[0.16] sm:opacity-[0.22] filter grayscale contrast-125 brightness-90 transition-opacity duration-1000 scale-105"
+        >
+          <source src="/videos/hero-corporate.webm" type="video/webm" />
+          <source src="/videos/hero-corporate.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Signature Brand Radial Glow & Gradient Overlay */}
+        <div className="absolute inset-0 bg-radial-hero opacity-90"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Ambient Dark Vignette & Edge Blend */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-transparent to-[#050505]"></div>
+
+        {/* Subtle Tech Grid Texture */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-50"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Hero Copy & Value Proposition */}
