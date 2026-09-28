@@ -9,6 +9,11 @@ export const BrandLogo = ({ variant = 'dark', className = 'h-8 sm:h-9' }) => {
       <img
         src={src}
         alt="Impleway – Simplify, Implementation"
+        width="160"
+        height="36"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
         className="h-full w-auto object-contain block"
       />
       {/* Pulsing Red Dot over the logo's dot (at ~90.1% X, ~61.1% Y) */}

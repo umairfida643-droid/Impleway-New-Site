@@ -21,12 +21,24 @@ export const HomePage = () => {
         <HeroSection />
         <StatsSection />
         <PlatformsSection />
-        <ServicesGrid />
-        <ProcessTimeline />
-        <TechStackMarquee />
-        <TestimonialsSlider />
-        <FAQSection />
-        <CTABanner />
+        <div className="content-auto">
+          <ServicesGrid />
+        </div>
+        <div className="content-auto">
+          <ProcessTimeline />
+        </div>
+        <div className="content-auto">
+          <TechStackMarquee />
+        </div>
+        <div className="content-auto">
+          <TestimonialsSlider />
+        </div>
+        <div className="content-auto">
+          <FAQSection />
+        </div>
+        <div className="content-auto">
+          <CTABanner />
+        </div>
       </div>
     </>
   );

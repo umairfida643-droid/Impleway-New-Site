@@ -97,6 +97,7 @@
   display: flex;
   width: max-content;
   animation: marqueeLeft 38s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee:hover {
@@ -107,10 +108,17 @@
   display: flex;
   width: max-content;
   animation: marqueeRight 38s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-reverse:hover {
   animation-play-state: paused;
+}
+
+/* Off-screen Content Rendering Optimization (skips rendering till scrolled near) */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 /* 3D Flip Card Utilities */

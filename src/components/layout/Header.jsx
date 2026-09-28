@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { 
-  Phone, Mail, MessageSquare, ChevronDown, Menu, X, ArrowRight, 
-  ExternalLink, Layers, ShieldCheck, Sparkles, Building2, Globe
+  MessageSquare, ChevronDown, Menu, X, ArrowRight, 
+  Layers, ShieldCheck, Sparkles, Globe
 } from 'lucide-react';
-import { siteConfig } from '../../data/siteConfig';
 import { navigation } from '../../data/navigation';
 import { BrandLogo } from '../ui/BrandLogo';
 import { ServiceIcon } from '../ui/ServiceIcon';
+import { prefetchRoute } from '../../utils/prefetchRoutes';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +17,6 @@ export const Header = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   
   const location = useLocation();
-  const megaMenuRef = useRef(null);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -26,11 +25,18 @@ export const Header = () => {
   }, [location.pathname]);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
-      setScrollProgress(Math.min(100, Math.max(0, progress)));
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+          setScrollProgress(Math.min(100, Math.max(0, progress)));
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -219,6 +225,7 @@ export const Header = () => {
                   {/* Oracle ERP Cloud */}
                   <Link 
                     to="/oracle-erp-services" 
+                    onMouseEnter={() => prefetchRoute('oracle')}
                     className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
                     <div className="w-10 h-10 rounded-xl bg-[#F80000] p-1 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
@@ -244,6 +251,7 @@ export const Header = () => {
                   {/* Odoo ERP Solutions */}
                   <Link 
                     to="/odoo-erp-services" 
+                    onMouseEnter={() => prefetchRoute('odoo')}
                     className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
                     <div className="w-10 h-10 rounded-xl bg-[#714B67] p-1.5 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
@@ -271,6 +279,7 @@ export const Header = () => {
                   {/* Microsoft Dynamics 365 */}
                   <Link 
                     to="/dynamics-365-services" 
+                    onMouseEnter={() => prefetchRoute('dynamics')}
                     className="group/platform flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F6F6F6] transition-all"
                   >
                     <div className="w-10 h-10 rounded-xl bg-[#002050] p-1.5 flex items-center justify-center flex-shrink-0 shadow-xs group-hover/platform:scale-105 transition-transform">
@@ -301,7 +310,7 @@ export const Header = () => {
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                       ZATCA Phase 2 Ready
                     </span>
-                    <Link to="/services" className="font-bold text-[#E50914] hover:underline flex items-center gap-1">
+                    <Link to="/services" onMouseEnter={() => prefetchRoute('services')} className="font-bold text-[#E50914] hover:underline flex items-center gap-1">
                       <span>All Services</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
@@ -310,19 +319,19 @@ export const Header = () => {
               )}
             </div>
 
-            <NavLink to="/industries" className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
+            <NavLink to="/industries" onMouseEnter={() => prefetchRoute('industries')} className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
               Industries
             </NavLink>
-            <NavLink to="/portfolio" className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
+            <NavLink to="/portfolio" onMouseEnter={() => prefetchRoute('portfolio')} className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
               Portfolio
             </NavLink>
-            <NavLink to="/about" className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
+            <NavLink to="/about" onMouseEnter={() => prefetchRoute('about')} className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
               About
             </NavLink>
-            <NavLink to="/blog" className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
+            <NavLink to="/blog" onMouseEnter={() => prefetchRoute('blog')} className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
               Blog
             </NavLink>
-            <NavLink to="/contact" className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
+            <NavLink to="/contact" onMouseEnter={() => prefetchRoute('contact')} className={({ isActive }) => `hover:text-[#E50914] transition-colors py-2 ${isActive ? 'text-[#E50914]' : ''}`}>
               Contact
             </NavLink>
           </nav>
@@ -331,6 +340,7 @@ export const Header = () => {
           <div className="hidden sm:flex items-center gap-3">
             <Link 
               to="/book-free-consultation" 
+              onMouseEnter={() => prefetchRoute('consultation')}
               className="btn-shine inline-flex items-center justify-center px-6 py-2.5 rounded-full font-black text-sm text-white bg-gradient-to-r from-[#E50914] to-[#9F0712] shadow-lg shadow-red-600/25 hover:shadow-red-600/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               Book Consultation

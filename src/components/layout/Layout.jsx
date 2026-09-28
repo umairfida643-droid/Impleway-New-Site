@@ -16,7 +16,9 @@ export const Layout = () => {
       </main>
       <FloatingCompanyProfile />
       <FloatingWhatsApp />
-      <Footer />
+      <div className="content-auto">
+        <Footer />
+      </div>
     </div>
   );
 };

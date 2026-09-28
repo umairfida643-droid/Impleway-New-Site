@@ -88,12 +88,22 @@ export const HeroSection = () => {
               <img 
                 src="/logos/zatca-logo.svg" 
                 alt="ZATCA Official" 
+                width="140"
+                height="44"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 className="h-9 sm:h-11 w-auto brightness-0 invert opacity-95 hover:opacity-100 transition-opacity drop-shadow-md" 
               />
               <div className="h-8 w-px bg-white/20"></div>
               <img 
                 src="/logos/saudi-vision-2030.svg" 
                 alt="Saudi Vision 2030" 
+                width="140"
+                height="44"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 className="h-9 sm:h-11 w-auto opacity-95 hover:opacity-100 transition-opacity drop-shadow-md" 
               />
             </div>
@@ -159,6 +169,10 @@ export const HeroSection = () => {
                   <img 
                     src="/logos/odoo-official.svg" 
                     alt="odoo" 
+                    width="60"
+                    height="20"
+                    loading="eager"
+                    decoding="async"
                     className="h-4 sm:h-5 w-auto brightness-0 invert" 
                   />
                 </Link>
