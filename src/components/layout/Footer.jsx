@@ -79,44 +79,69 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Ecosystem Platforms */}
+          {/* Column 3: PLATFORMS & INFO (Exact match to media_1790582566284.png) */}
           <div>
-            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Ecosystem</h4>
-            <ul className="space-y-2.5 text-sm text-neutral-400">
-              {navigation.footerNav.platforms.map((item, idx) => (
-                <li key={idx}>
-                  <Link to={item.path} className="hover:text-[#E50914] transition-colors flex items-center gap-1">
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">
+              PLATFORMS &amp; INFO
+            </h4>
+            <ul className="space-y-2.5 text-sm text-neutral-300">
               <li>
-                <Link to="/industries" className="hover:text-[#E50914] transition-colors flex items-center gap-1">
-                  <span>20 Industries Served</span>
+                <Link to="/oracle-erp-cloud" className="hover:text-[#E50914] transition-colors block">
+                  Oracle ERP Cloud
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="hover:text-[#E50914] transition-colors flex items-center gap-1">
-                  <span>Portfolio & Case Studies</span>
+                <Link to="/odoo-erp" className="hover:text-[#E50914] transition-colors block">
+                  Odoo ERP Solutions
+                </Link>
+              </li>
+              <li>
+                <Link to="/microsoft-dynamics-365" className="hover:text-[#E50914] transition-colors block">
+                  Microsoft Dynamics 365
+                </Link>
+              </li>
+              
+              <li className="pt-2 border-t border-neutral-800/80"></li>
+
+              <li>
+                <Link to="/about" className="hover:text-[#E50914] transition-colors block">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio" className="hover:text-[#E50914] transition-colors block">
+                  Portfolio &amp; Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link to="/industries" className="hover:text-[#E50914] transition-colors block">
+                  Industries Served
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-[#E50914] transition-colors block">
+                  Insights &amp; Articles
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Official Direct Contacts */}
+          {/* Column 4: OFFICIAL CONTACT (Exact match to media_1790582533706.png) */}
           <div>
-            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">Direct Contact</h4>
-            <div className="space-y-4 text-sm text-neutral-400">
+            <h4 className="text-white font-extrabold text-sm uppercase tracking-wider mb-4">
+              OFFICIAL CONTACT
+            </h4>
+            <div className="space-y-4 text-sm">
               
               {/* KSA Contact */}
               <div className="space-y-1">
-                <div className="text-xs font-bold text-neutral-300 flex items-center gap-1.5">
-                  <span>🇸🇦</span>
+                <div className="text-xs font-black text-[#E50914] flex items-center gap-1.5 uppercase tracking-wide">
+                  <span className="font-extrabold">SA</span>
                   <span>IMPLEWAY KSA</span>
                 </div>
                 <a 
-                  href={`tel:${siteConfig.contact.ksa.phone.replace(/\\s+/g, '')}`} 
-                  className="block font-semibold hover:text-[#E50914] transition-colors text-white"
+                  href={`tel:${siteConfig.contact.ksa.phone.replace(/\s+/g, '')}`} 
+                  className="block text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
                 >
                   {siteConfig.contact.ksa.phone}
                 </a>
@@ -124,21 +149,25 @@ export const Footer = () => {
                   href={siteConfig.contact.ksa.whatsappUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-xs text-emerald-400 hover:underline flex items-center gap-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#10B981] hover:text-emerald-300 transition-colors"
                 >
-                  <MessageSquare className="w-3 h-3" /> WhatsApp KSA
+                  <MessageSquare className="w-3.5 h-3.5 fill-[#10B981]" />
+                  <span>WhatsApp KSA</span>
                 </a>
               </div>
 
+              {/* Thin Divider Line */}
+              <div className="border-t border-neutral-800/80 my-3"></div>
+
               {/* PK Contact */}
-              <div className="space-y-1 pt-2 border-t border-neutral-900">
-                <div className="text-xs font-bold text-neutral-300 flex items-center gap-1.5">
-                  <span>🇵🇰</span>
+              <div className="space-y-1">
+                <div className="text-xs font-black text-[#F59E0B] flex items-center gap-1.5 uppercase tracking-wide">
+                  <span className="font-extrabold">PK</span>
                   <span>IMPLEWAY PK</span>
                 </div>
                 <a 
-                  href={`tel:${siteConfig.contact.pk.phone.replace(/\\s+/g, '')}`} 
-                  className="block font-semibold hover:text-[#E50914] transition-colors text-white"
+                  href={`tel:${siteConfig.contact.pk.phone.replace(/\s+/g, '')}`} 
+                  className="block text-base sm:text-lg font-black text-white hover:text-[#E50914] transition-colors tracking-tight"
                 >
                   {siteConfig.contact.pk.phone}
                 </a>
@@ -146,17 +175,18 @@ export const Footer = () => {
                   href={siteConfig.contact.pk.whatsappUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-xs text-emerald-400 hover:underline flex items-center gap-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#10B981] hover:text-emerald-300 transition-colors"
                 >
-                  <MessageSquare className="w-3 h-3" /> WhatsApp PK
+                  <MessageSquare className="w-3.5 h-3.5 fill-[#10B981]" />
+                  <span>WhatsApp PK</span>
                 </a>
               </div>
 
-              {/* Email */}
-              <div className="pt-2 border-t border-neutral-900">
+              {/* Email Inquiry */}
+              <div className="pt-3 border-t border-neutral-800/80">
                 <a 
                   href={`mailto:${siteConfig.contact.email}`} 
-                  className="hover:text-[#E50914] transition-colors flex items-center gap-1.5 text-white font-medium"
+                  className="hover:text-[#E50914] transition-colors flex items-center gap-2 text-neutral-300 font-semibold text-xs sm:text-sm"
                 >
                   <Mail className="w-4 h-4 text-[#E50914]" />
                   <span>{siteConfig.contact.email}</span>

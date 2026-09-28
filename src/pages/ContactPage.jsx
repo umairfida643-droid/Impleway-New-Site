@@ -81,7 +81,7 @@ export const ContactPage = () => {
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-3">
                 <div className="text-xs uppercase font-extrabold tracking-wider text-[#E50914]">
-                  Direct Channels
+                  DIRECT CHANNELS
                 </div>
                 <h2 className="text-3xl font-black text-[#111111]">
                   Regional Offices
@@ -94,7 +94,7 @@ export const ContactPage = () => {
               {/* KSA Contact Card */}
               <div className="bg-[#F6F6F6] rounded-3xl p-8 border border-[#e7e7e7] space-y-4 hover:border-red-500/40 transition-all">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                  <span>🇸🇦 IMPLEWAY KSA (Kingdom of Saudi Arabia)</span>
+                  <span>SA IMPLEWAY KSA (KINGDOM OF SAUDI ARABIA)</span>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-neutral-600">
@@ -124,7 +124,7 @@ export const ContactPage = () => {
               {/* PK Contact Card */}
               <div className="bg-[#F6F6F6] rounded-3xl p-8 border border-[#e7e7e7] space-y-4 hover:border-red-500/40 transition-all">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-200 text-neutral-800 text-xs font-bold uppercase tracking-wider">
-                  <span>🇵🇰 IMPLEWAY PK (Technical Operations)</span>
+                  <span>PK IMPLEWAY PK (TECHNICAL OPERATIONS)</span>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-neutral-600">

@@ -7,6 +7,7 @@ import {
 import { siteConfig } from '../../data/siteConfig';
 import { navigation } from '../../data/navigation';
 import { BrandLogo } from '../ui/BrandLogo';
+import { ServiceIcon } from '../ui/ServiceIcon';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -160,14 +161,24 @@ export const Header = () => {
                           <Link 
                             key={itemIdx} 
                             to={item.path} 
-                            className="group/item block p-2 rounded-lg hover:bg-[#F6F6F6] transition-colors"
+                            className="group/item flex items-center justify-between p-2 rounded-lg hover:bg-[#F6F6F6] transition-all"
                           >
-                            <div className="text-[14px] font-bold text-[#111111] group-hover/item:text-[#E50914] transition-colors">
-                              {item.name}
+                            <div className="flex items-center min-w-0">
+                              <div className="w-0 group-hover/item:w-7 transition-all duration-200 overflow-hidden opacity-0 group-hover/item:opacity-100 flex-shrink-0 flex items-center justify-start">
+                                <div className="w-6 h-6 rounded-md bg-red-50 text-[#E50914] flex items-center justify-center mr-2">
+                                  <ServiceIcon slug={item.path.replace('/', '')} className="w-3.5 h-3.5" />
+                                </div>
+                              </div>
+                              <div className="transition-transform duration-200">
+                                <div className="text-[14px] font-bold text-[#111111] group-hover/item:text-[#E50914] transition-colors leading-tight">
+                                  {item.name}
+                                </div>
+                                <div className="text-[11px] text-[#5F6368] leading-tight truncate">
+                                  {item.desc}
+                                </div>
+                              </div>
                             </div>
-                            <div className="text-[11px] text-[#5F6368] leading-tight">
-                              {item.desc}
-                            </div>
+                            <ArrowRight className="w-3.5 h-3.5 text-[#E50914] opacity-0 group-hover/item:opacity-100 transform -translate-x-1 group-hover/item:translate-x-0 transition-all flex-shrink-0 ml-1.5" />
                           </Link>
                         ))}
                       </div>

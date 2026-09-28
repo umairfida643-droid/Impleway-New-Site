@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowRight, CheckCircle2, TrendingUp, Shield, Activity, 
-  BarChart3, Database, ChevronRight, Layers, Sparkles 
+  ArrowRight, Activity 
 } from 'lucide-react';
-import { industriesList } from '../../data/industriesData';
-import { IndustryIcon } from '../ui/IndustryIcon';
-import { OracleIcon, OdooIcon, Dynamics365Icon, ZatcaIcon } from '../ui/PlatformIcons';
+import { OracleIcon, OdooIcon, Dynamics365Icon } from '../ui/PlatformIcons';
 
 const TYPEWRITER_WORDS = [
   "Oracle ERP Cloud",
@@ -91,8 +88,6 @@ export const HeroSection = () => {
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
               <span className="w-2.5 h-2.5 rounded-full bg-[#E50914] animate-ping"></span>
               <span>ERP & Digital Transformation Partner</span>
-              <span className="text-white/40">•</span>
-              <span className="text-red-400 font-bold">20 Industries Served</span>
             </div>
 
             {/* H1 Heading with Dynamic Typewriter */}
@@ -126,7 +121,7 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            {/* Platform Badges with Official SVG Icons */}
+            {/* Platform Badges with Official Logos */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link 
                 to="/oracle-erp-services"
@@ -247,36 +242,6 @@ export const HeroSection = () => {
             </div>
           </div>
 
-        </div>
-
-        {/* 20 Industries Interactive Ribbon */}
-        <div className="mt-14 pt-8 border-t border-white/10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-neutral-400">
-              <Layers className="w-4 h-4 text-[#E50914]" />
-              <span>Proven Implementations Across 20 Specialized Industries:</span>
-            </div>
-            <Link 
-              to="/industries" 
-              className="text-xs font-bold text-red-400 hover:text-white transition-colors flex items-center gap-1"
-            >
-              <span>Explore All 20 Industries</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {industriesList.map((ind) => (
-              <Link
-                key={ind.slug}
-                to={`/industries`}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-[#E50914] border border-white/10 hover:border-transparent text-xs font-bold text-neutral-300 hover:text-white transition-all group"
-              >
-                <IndustryIcon slug={ind.slug} className="w-3.5 h-3.5 text-red-400 group-hover:text-white transition-colors" />
-                <span>{ind.shortTitle || ind.title.split('for ')[1]}</span>
-              </Link>
-            ))}
-          </div>
         </div>
 
       </div>

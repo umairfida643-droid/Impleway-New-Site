@@ -266,45 +266,6 @@ export const ProcessTimeline = () => {
           </div>
         </div>
 
-        {/* 9 Steps Overview Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {STEPS.map((item, idx) => {
-            const ItemIcon = item.icon;
-            const isCurrent = idx === activeStep;
-
-            return (
-              <div 
-                key={idx}
-                onClick={() => setActiveStep(idx)}
-                className={`rounded-2xl p-6 border transition-all duration-300 cursor-pointer text-left relative overflow-hidden group ${
-                  isCurrent 
-                    ? 'bg-neutral-900 border-red-500 shadow-xl shadow-red-600/10' 
-                    : 'bg-neutral-900/60 border-neutral-800/80 hover:border-neutral-700 hover:bg-neutral-900'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-black ${
-                    isCurrent ? 'bg-[#E50914] text-white' : 'bg-neutral-800 text-neutral-400 group-hover:text-white'
-                  }`}>
-                    Step {item.step}
-                  </span>
-                  <ItemIcon className={`w-4 h-4 transition-colors ${
-                    isCurrent ? 'text-[#E50914]' : 'text-neutral-500 group-hover:text-neutral-300'
-                  }`} />
-                </div>
-
-                <h4 className="text-base font-bold text-white group-hover:text-[#E50914] transition-colors mb-1.5">
-                  {item.title}
-                </h4>
-
-                <p className="text-xs text-neutral-400 leading-relaxed line-clamp-2">
-                  {item.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
       </div>
     </section>
   );

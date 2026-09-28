@@ -3,7 +3,8 @@ import {
   Briefcase, Settings2, RefreshCw, Database, GitMerge, Sliders, 
   GraduationCap, Headphones, Cloud, ShieldCheck, Laptop, 
   Bot, Globe, TrendingUp, PenTool, ShoppingCart, Zap, 
-  Megaphone, Layers 
+  Megaphone, Layers, Smartphone, Layout, Palette, Search, 
+  FileCode, Wrench, ShieldAlert 
 } from 'lucide-react';
 import { OracleIcon, OdooIcon, Dynamics365Icon } from './PlatformIcons';
 
@@ -21,7 +22,14 @@ const ICON_MAP = {
   "custom-software-development": Laptop,
   "ai-automation-solutions": Bot,
   "web-development": Globe,
+  "wordpress-development": FileCode,
+  "ecommerce-development": ShoppingCart,
+  "ui-ux-design": Palette,
+  "seo-services": Search,
   "seo-optimization": TrendingUp,
+  "digital-marketing": Megaphone,
+  "mobile-app-development": Smartphone,
+  "it-support-maintenance": Wrench,
   "content-writing": PenTool,
   "ecommerce-management": ShoppingCart,
   "speed-optimization": Zap,
