@@ -12,11 +12,12 @@ const TYPEWRITER_WORDS = [
   "Cloud Migration"
 ];
 
-const generateSplinePath = (points, width = 420, height = 110) => {
+const generateSplinePath = (points, width = 420, height = 120) => {
   if (!points || points.length === 0) return { path: "", area: "", coords: [] };
+  // Add 38px headroom at the top so line and bars never hit or exceed container ceiling
   const coords = points.map((p, i) => {
-    const x = (i / (points.length - 1)) * (width - 24) + 12;
-    const y = height - 12 - ((p / 100) * (height - 28));
+    const x = (i / (points.length - 1)) * (width - 32) + 16;
+    const y = height - 14 - ((p / 100) * 68);
     return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, val: p };
   });
 
@@ -123,6 +124,27 @@ export const HeroSection = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [activeModule, setActiveModule] = useState("Finance");
+  const [rateVariation, setRateVariation] = useState(0);
+  const [isStreamPaused, setIsStreamPaused] = useState(false);
+  const MODULE_KEYS = useMemo(() => Object.keys(MODULE_DATA), []);
+
+  useEffect(() => {
+    const rateInterval = setInterval(() => {
+      setRateVariation((prev) => (prev + 1) % 10);
+    }, 2200);
+    return () => clearInterval(rateInterval);
+  }, []);
+
+  useEffect(() => {
+    if (isStreamPaused) return;
+    const streamTimer = setInterval(() => {
+      setActiveModule((curr) => {
+        const idx = MODULE_KEYS.indexOf(curr);
+        return MODULE_KEYS[(idx + 1) % MODULE_KEYS.length];
+      });
+    }, 6500);
+    return () => clearInterval(streamTimer);
+  }, [isStreamPaused, MODULE_KEYS]);
 
   useEffect(() => {
     const currentWord = TYPEWRITER_WORDS[wordIndex];
@@ -145,7 +167,26 @@ export const HeroSection = () => {
   }, [displayedText, isDeleting, wordIndex]);
 
   const currentMod = MODULE_DATA[activeModule];
-  const spline = useMemo(() => generateSplinePath(currentMod.curvePoints, 420, 110), [currentMod.curvePoints]);
+  const spline = useMemo(() => generateSplinePath(currentMod.curvePoints, 420, 120), [currentMod.curvePoints]);
+
+  const getLiveRate = () => {
+    if (activeModule === "Finance") {
+      const base = 4820;
+      const offsets = [0, 14, 28, 12, -8, 22, -15, 36, 18, 5];
+      return `${(base + offsets[rateVariation]).toLocaleString()} tx/sec`;
+    }
+    if (activeModule === "Inventory") {
+      const base = 14250;
+      const offsets = [0, 40, -25, 80, 110, -50, 65, 30, -10, 95];
+      return `${(base + offsets[rateVariation]).toLocaleString()} SKUs/min`;
+    }
+    if (activeModule === "Sales") {
+      const base = 1.84;
+      const offsets = [0, 0.02, 0.05, 0.01, -0.02, 0.04, 0.06, 0.03, -0.01, 0.05];
+      return `SAR ${(base + offsets[rateVariation]).toFixed(2)}M/hr`;
+    }
+    return currentMod.telemetryRate;
+  };
 
   return (
     <section className="relative overflow-hidden bg-radial-hero text-white py-16 sm:py-24 lg:py-28">
@@ -291,13 +332,17 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Column: Interactive 3D Cyber-Enterprise Cockpit */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+          <div 
+            className="lg:col-span-5 relative mt-6 lg:mt-0"
+            onMouseEnter={() => setIsStreamPaused(true)}
+            onMouseLeave={() => setIsStreamPaused(false)}
+          >
             
             {/* Ambient Cyber Neon Back-Glow */}
             <div className="absolute -inset-1.5 bg-gradient-to-r from-red-600/30 via-red-900/20 to-neutral-900/40 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
             {/* Floating Satellite Badge 1 (Top-Right): ZATCA Verification */}
-            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-emerald-500/40 shadow-xl backdrop-blur-xl animate-in fade-in slide-in-from-top-4 duration-500 hover:scale-105 transition-transform">
+            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-emerald-500/40 shadow-xl backdrop-blur-xl animate-float-hud hover:scale-105 transition-transform">
               <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck className="w-4 h-4" />
               </div>
@@ -313,7 +358,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Floating Satellite Badge 2 (Bottom-Left): Multi-Cloud ERP Fabric */}
-            <div className="hidden sm:flex absolute -bottom-4 -left-4 z-20 items-center gap-3 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-red-500/30 shadow-xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-4 duration-500 hover:scale-105 transition-transform">
+            <div className="hidden sm:flex absolute -bottom-4 -left-4 z-20 items-center gap-3 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-red-500/30 shadow-xl backdrop-blur-xl animate-float-hud-delay hover:scale-105 transition-transform">
               <div className="flex -space-x-1.5">
                 <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
                   <img src="/logos/oracle-app-icon.png" alt="Oracle" className="w-full h-full object-contain" />
@@ -395,12 +440,12 @@ export const HeroSection = () => {
                 {/* Header row inside chart */}
                 <div className="flex items-center justify-between text-xs text-neutral-400 mb-2">
                   <div className="flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-[#E50914]" />
+                    <Activity className="w-3.5 h-3.5 text-[#E50914] animate-pulse" />
                     <span className="font-semibold text-neutral-300 text-[11.5px]">{currentMod.telemetryTitle}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono font-bold text-white bg-white/10 px-2 py-0.5 rounded-md">
-                      {currentMod.telemetryRate}
+                    <span className="text-[11px] font-mono font-bold text-white bg-white/10 px-2 py-0.5 rounded-md transition-all">
+                      {getLiveRate()}
                     </span>
                     <span className="text-emerald-400 font-mono text-[10.5px]">
                       {currentMod.healthRate}
@@ -419,28 +464,17 @@ export const HeroSection = () => {
                     <div className="w-full border-b border-white/30"></div>
                   </div>
 
-                  {/* Slim Equalizer Bar Columns behind the spline */}
-                  <div className="absolute inset-0 flex items-end justify-between px-3 pointer-events-none">
-                    {currentMod.curvePoints.map((val, idx) => (
-                      <div 
-                        key={idx}
-                        className="w-1.5 sm:w-2 rounded-t-full bg-gradient-to-t from-red-600/30 to-red-400/50 transition-all duration-500 ease-out"
-                        style={{ height: `${val}%` }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* SVG Spline Curve & Neon Area Fill */}
+                  {/* SVG Spline Curve, Integrated Equalizer Bars & Neon Waves */}
                   <svg 
-                    viewBox="0 0 420 110" 
+                    viewBox="0 0 420 120" 
                     preserveAspectRatio="none" 
-                    className="absolute inset-0 w-full h-full overflow-visible"
+                    className="absolute inset-0 w-full h-full overflow-hidden"
                   >
                     <defs>
                       {/* Gradient for Area Fill */}
                       <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#E50914" stopOpacity="0.45" />
-                        <stop offset="60%" stopColor="#E50914" stopOpacity="0.1" />
+                        <stop offset="0%" stopColor="#E50914" stopOpacity="0.4" />
+                        <stop offset="60%" stopColor="#E50914" stopOpacity="0.08" />
                         <stop offset="100%" stopColor="#E50914" stopOpacity="0" />
                       </linearGradient>
 
@@ -451,18 +485,46 @@ export const HeroSection = () => {
                         <stop offset="100%" stopColor="#FFFFFF" />
                       </linearGradient>
 
+                      {/* Equalizer Bar Vertical Gradient */}
+                      <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#FF4D55" stopOpacity="0.5" />
+                        <stop offset="35%" stopColor="#E50914" stopOpacity="0.25" />
+                        <stop offset="100%" stopColor="#E50914" stopOpacity="0.02" />
+                      </linearGradient>
+
                       {/* Glow Filter */}
                       <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
                         <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#E50914" floodOpacity="0.8" />
                       </filter>
                     </defs>
 
+                    {/* Integrated Equalizer Bars - strictly anchored at pt.y + 3 so they NEVER exceed the curve */}
+                    <g className="transition-all duration-500 ease-out">
+                      {spline.coords.map((pt, idx) => {
+                        const barTop = pt.y + 3;
+                        const barHeight = Math.max(0, 120 - barTop);
+                        return (
+                          <rect
+                            key={idx}
+                            x={pt.x - 3.5}
+                            y={barTop}
+                            width="7"
+                            height={barHeight}
+                            rx="3.5"
+                            fill="url(#barGradient)"
+                            className="animate-bar-breath"
+                            style={{ animationDelay: `${idx * 0.12}s` }}
+                          />
+                        );
+                      })}
+                    </g>
+
                     {/* Area Fill */}
                     {spline.area && (
                       <path 
                         d={spline.area} 
                         fill="url(#areaGradient)" 
-                        className="transition-all duration-700 ease-out"
+                        className="transition-all duration-700 ease-out pointer-events-none"
                       />
                     )}
 
@@ -478,31 +540,50 @@ export const HeroSection = () => {
                       />
                     )}
 
-                    {/* Active Peak Beacon */}
+                    {/* Electric Live Current Running Along Spline */}
+                    {spline.path && (
+                      <path 
+                        d={spline.path} 
+                        fill="none" 
+                        stroke="#FFFFFF" 
+                        strokeWidth="1.8" 
+                        strokeLinecap="round"
+                        className="animate-dash-flow opacity-70"
+                      />
+                    )}
+
+                    {/* Active Peak Beacon with Concentric Ripple Radar */}
                     {spline.coords.length > 0 && (
                       <g className="transition-all duration-700 ease-out">
                         <circle 
                           cx={spline.coords[spline.coords.length - 1].x} 
                           cy={spline.coords[spline.coords.length - 1].y} 
-                          r="6" 
+                          r="10" 
                           fill="#E50914" 
                           className="animate-ping"
-                          opacity="0.75"
+                          opacity="0.3"
                         />
                         <circle 
                           cx={spline.coords[spline.coords.length - 1].x} 
                           cy={spline.coords[spline.coords.length - 1].y} 
-                          r="4" 
+                          r="5.5" 
+                          fill="#E50914" 
+                          opacity="0.8"
+                        />
+                        <circle 
+                          cx={spline.coords[spline.coords.length - 1].x} 
+                          cy={spline.coords[spline.coords.length - 1].y} 
+                          r="3" 
                           fill="#FFFFFF" 
                           stroke="#E50914" 
-                          strokeWidth="2"
+                          strokeWidth="1.5"
                         />
                       </g>
                     )}
                   </svg>
 
-                  {/* Floating Micro Tooltip at Peak */}
-                  <div className="absolute top-1 right-2 bg-neutral-900/90 border border-red-500/40 px-2 py-0.5 rounded-full text-[9px] font-mono text-white flex items-center gap-1 shadow-md">
+                  {/* Floating Micro Tooltip at Peak - cleanly positioned with safe top clearance */}
+                  <div className="absolute top-1.5 right-3 bg-neutral-950/90 border border-red-500/40 px-2 py-0.5 rounded-full text-[9px] font-mono text-white flex items-center gap-1 shadow-md pointer-events-none backdrop-blur-xs">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span>
                     <span>Peak Throughput</span>
                   </div>

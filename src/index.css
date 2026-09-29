@@ -143,3 +143,51 @@
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* 3D HUD Floating Satellite Animations */
+@keyframes floatHUD {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float-hud {
+  animation: floatHUD 4.5s ease-in-out infinite;
+}
+
+.animate-float-hud-delay {
+  animation: floatHUD 4.5s ease-in-out infinite 2.25s;
+}
+
+/* Electric Flow Wave on SVG Telemetry Spline */
+@keyframes dashFlow {
+  from {
+    stroke-dashoffset: 60;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-dash-flow {
+  stroke-dasharray: 8 14;
+  animation: dashFlow 2.5s linear infinite;
+}
+
+/* Equalizer Bars Subtle Breathing */
+@keyframes barBreath {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.animate-bar-breath {
+  animation: barBreath 2s ease-in-out infinite;
+}
+
