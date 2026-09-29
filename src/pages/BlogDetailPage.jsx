@@ -101,7 +101,7 @@ export const BlogDetailPage = () => {
 
               {/* Rich Article Prose with Preserved Wikipedia Hyperlinks */}
               <div 
-                className="prose prose-lg max-w-none text-[#111111] leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-black [&_h2]:text-[#111111] [&_h2]:tracking-tight [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-[#111111] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:text-neutral-700 [&_p]:text-base [&_p]:sm:text-lg [&_p]:leading-relaxed [&_ul]:space-y-2.5 [&_ul]:pl-6 [&_li]:text-neutral-700 [&_li]:text-base [&_strong]:text-[#111111] [&_strong]:font-bold [&_a]:text-[#E50914] [&_a]:font-semibold hover:[&_a]:underline"
+                className="blog-prose-content prose prose-lg max-w-none text-[#111111] leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-black [&_h2]:text-[#111111] [&_h2]:tracking-tight [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-[#111111] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:text-neutral-700 [&_p]:text-base [&_p]:sm:text-lg [&_p]:leading-relaxed [&_ul]:space-y-2.5 [&_ul]:pl-6 [&_li]:text-neutral-700 [&_li]:text-base [&_strong]:text-[#111111] [&_strong]:font-bold [&_a]:text-[#E50914] [&_a]:font-semibold hover:[&_a]:underline [&_.bg-neutral-900]:!text-white [&_.bg-neutral-900_p]:!text-neutral-200 [&_.bg-neutral-900_span]:!text-neutral-200 [&_.bg-neutral-900_li]:!text-neutral-200 [&_.bg-neutral-900_strong]:!text-white [&_.bg-neutral-900_h4]:!text-[#E50914]"
                 dangerouslySetInnerHTML={{ __html: blog.contentHtml }}
               />
 

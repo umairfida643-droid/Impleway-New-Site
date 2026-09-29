@@ -191,3 +191,62 @@
   animation: barBreath 2s ease-in-out infinite;
 }
 
+/* High-Contrast Typography for Blog Callout Boxes & Tables */
+.prose .bg-neutral-900,
+.prose [class*="bg-neutral-900"],
+.blog-prose-content .bg-neutral-900,
+.blog-prose-content [class*="bg-neutral-900"] {
+  color: #ffffff !important;
+}
+
+.prose .bg-neutral-900 p,
+.prose [class*="bg-neutral-900"] p,
+.blog-prose-content .bg-neutral-900 p,
+.blog-prose-content [class*="bg-neutral-900"] p {
+  color: #f3f4f6 !important;
+  font-size: 0.975rem !important;
+  line-height: 1.75 !important;
+  opacity: 1 !important;
+}
+
+.prose .bg-neutral-900 strong,
+.prose [class*="bg-neutral-900"] strong,
+.blog-prose-content .bg-neutral-900 strong,
+.blog-prose-content [class*="bg-neutral-900"] strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.prose .bg-neutral-900 h4,
+.prose [class*="bg-neutral-900"] h4,
+.blog-prose-content .bg-neutral-900 h4,
+.blog-prose-content [class*="bg-neutral-900"] h4 {
+  color: #ff3838 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.prose .bg-neutral-900 span,
+.prose [class*="bg-neutral-900"] span,
+.blog-prose-content .bg-neutral-900 span,
+.blog-prose-content [class*="bg-neutral-900"] span {
+  color: #f3f4f6 !important;
+}
+
+.prose .bg-neutral-900 li,
+.prose [class*="bg-neutral-900"] li,
+.blog-prose-content .bg-neutral-900 li,
+.blog-prose-content [class*="bg-neutral-900"] li {
+  color: #f3f4f6 !important;
+}
+
+.prose thead tr,
+.prose thead th {
+  color: #ffffff !important;
+}
+
+.prose table tbody td {
+  color: #374151 !important;
+}
+
+
