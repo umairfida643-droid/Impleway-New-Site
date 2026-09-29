@@ -30,7 +30,7 @@ export const siteConfig = {
 
   stats: [
     { value: "150+", label: "ERP & IT Projects", desc: "Delivered with measurable ROI" },
-    { value: "10+", label: "Industries Served", desc: "Manufacturing, Retail, Logistics, Healthcare" },
+    { value: "20+", label: "Industries Served", desc: "Manufacturing, Retail, Logistics, Healthcare" },
     { value: "3", label: "Core ERP Ecosystems", desc: "Oracle Cloud, Odoo, Dynamics 365" },
     { value: "24/7", label: "SLA Support", desc: "Post go-live managed operations" }
   ],
