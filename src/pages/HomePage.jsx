@@ -4,9 +4,12 @@ import { HeroSection } from '../components/home/HeroSection';
 import { StatsSection } from '../components/home/StatsSection';
 import { PlatformsSection } from '../components/home/PlatformsSection';
 import { ServicesGrid } from '../components/home/ServicesGrid';
+import { IndustriesShowcase } from '../components/home/IndustriesShowcase';
 import { ProcessTimeline } from '../components/home/ProcessTimeline';
+import { WhyChooseUsSection } from '../components/home/WhyChooseUsSection';
 import { TechStackMarquee } from '../components/home/TechStackMarquee';
 import { TestimonialsSlider } from '../components/home/TestimonialsSlider';
+import { FeaturedInsightsSection } from '../components/home/FeaturedInsightsSection';
 import { FAQSection } from '../components/home/FAQSection';
 import { CTABanner } from '../components/home/CTABanner';
 
@@ -25,13 +28,22 @@ export const HomePage = () => {
           <ServicesGrid />
         </div>
         <div className="content-auto">
+          <IndustriesShowcase />
+        </div>
+        <div className="content-auto">
           <ProcessTimeline />
+        </div>
+        <div className="content-auto">
+          <WhyChooseUsSection />
         </div>
         <div className="content-auto">
           <TechStackMarquee />
         </div>
         <div className="content-auto">
           <TestimonialsSlider />
+        </div>
+        <div className="content-auto">
+          <FeaturedInsightsSection />
         </div>
         <div className="content-auto">
           <FAQSection />
