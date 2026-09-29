@@ -18,6 +18,7 @@ const BlogListingPage = lazy(() => import('./pages/BlogListingPage').then(m => (
 const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage').then(m => ({ default: m.BlogDetailPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const BookConsultationPage = lazy(() => import('./pages/BookConsultationPage').then(m => ({ default: m.BookConsultationPage })));
+const SitemapPage = lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 export default function App() {
@@ -48,6 +49,9 @@ export default function App() {
             {/* Contact & Consultation */}
             <Route path="contact" element={<ContactPage />} />
             <Route path="book-free-consultation" element={<BookConsultationPage />} />
+            
+            {/* Detailed Architecture Sitemap */}
+            <Route path="sitemap" element={<SitemapPage />} />
 
             {/* Dynamic Service Routes */}
             <Route path=":slug" element={<ServiceDetailPage />} />

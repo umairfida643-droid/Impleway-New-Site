@@ -145,6 +145,12 @@ export const Footer = () => {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link to="/sitemap" className="hover:text-[#E50914] transition-colors flex items-center gap-1.5 text-neutral-400">
+                  <span>Sitemap</span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 bg-neutral-800 text-neutral-300 rounded border border-neutral-700">INDEX</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -227,7 +233,8 @@ export const Footer = () => {
           <div>
             © {new Date().getFullYear()} Impleway. All rights reserved. Enterprise ERP & IT Digital Solutions.
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <Link to="/sitemap" className="hover:text-white text-neutral-300 font-semibold transition-colors">Sitemap</Link>
             <Link to="/about" className="hover:text-neutral-300 transition-colors">Privacy Policy</Link>
             <Link to="/about" className="hover:text-neutral-300 transition-colors">Terms of Service</Link>
             <Link to="/contact" className="hover:text-neutral-300 transition-colors">Support SLA</Link>
