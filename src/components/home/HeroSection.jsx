@@ -264,14 +264,18 @@ export const HeroSection = () => {
             {/* Platform Ecosystem Logos Strip matching user reference */}
             <div className="pt-5 sm:pt-6">
               <div className="flex flex-wrap items-center gap-7 sm:gap-9 lg:gap-10 pb-4">
-                {/* 1. Oracle Fusion */}
+                {/* 1. Official Oracle Logo */}
                 <Link 
                   to="/oracle-erp-services"
-                  className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
+                  className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-all hover:scale-105 group"
                   title="Oracle Fusion Cloud ERP"
                 >
-                  <svg viewBox="0 0 79 16" className="h-4 sm:h-4.5 w-auto fill-white" fill="currentColor">
-                    <path d="M7.8 15.5C3.5 15.5 0 12 0 7.8 0 3.5 3.5 0 7.8 0c4.3 0 7.8 3.5 7.8 7.8 0 4.3-3.5 7.7-7.8 7.7zm0-3.3c2.4 0 4.4-2 4.4-4.4 0-2.4-2-4.4-4.4-4.4-2.4 0-4.4 2-4.4 4.4 0 2.4 2 4.4 4.4 4.4zm16.5-4.4c1.8-.5 3.1-2 3.1-4 0-2.3-1.8-3.8-4.4-3.8H17v15.5h3.4V10h1.7l3.6 5.5h4.1l-4.5-6.7c-.3-.4-.7-.8-1-1zm-2.8-1.5H20.4V3.3h1.1c1 0 1.7.5 1.7 1.5 0 1.1-.7 1.5-1.7 1.5zm13.6 9.2h3.6l-5.6-15.5h-3.6L24 15.5h3.6l1-3h5.5l1 3zm-5.7-5.9l1.9-5.4 1.9 5.4h-3.8zm19.3.9c-.8.8-1.8 1.3-3 1.3-2.4 0-4.4-2-4.4-4.4 0-2.4 2-4.4 4.4-4.4 1.2 0 2.3.5 3 1.3l2.4-2.3C49.9.8 48.5 0 46.8 0c-4.3 0-7.8 3.5-7.8 7.8 0 4.3 3.5 7.7 7.8 7.7 1.7 0 3.2-.8 4.2-2.1l-2.3-2.1zM53.4 0h3.4v12.2h6.7v3.3H53.4V0zm14.8 0h11.2v3.3H71.6v2.8h6.5v3.3h-6.5v2.8h7.8v3.3H68.2V0z"/>
+                  <svg 
+                    viewBox="0 0 231 30" 
+                    className="h-4 sm:h-4.5 w-auto fill-white group-hover:fill-[#FF4D55] transition-colors" 
+                    fill="currentColor"
+                  >
+                    <path d="M99.61,19.52h15.24l-8.05-13L92,30H85.27l18-28.17a4.29,4.29,0,0,1,7-.05L128.32,30h-6.73l-3.17-5.25H103l-3.36-5.23m69.93,5.23V0.28h-5.72V27.16a2.76,2.76,0,0,0,.85,2,2.89,2.89,0,0,0,2.08.87h26l3.39-5.25H169.54M75,20.38A10,10,0,0,0,75,.28H50V30h5.71V5.54H74.65a4.81,4.81,0,0,1,0,9.62H58.54L75.6,30h8.29L72.43,20.38H75M14.88,30H32.15a14.86,14.86,0,0,0,0-29.71H14.88a14.86,14.86,0,1,0,0,29.71m16.88-5.23H15.26a9.62,9.62,0,0,1,0-19.23h16.5a9.62,9.62,0,1,1,0,19.23M140.25,30h17.63l3.34-5.23H140.64a9.62,9.62,0,1,1,0-19.23h16.75l3.38-5.25H140.25a14.86,14.86,0,1,0,0,29.71m69.87-5.23a9.62,9.62,0,0,1-9.26-7h24.42l3.36-5.24H200.86a9.61,9.61,0,0,1,9.26-7h16.76l3.35-5.25h-20.5a14.86,14.86,0,0,0,0,29.71h17.63l3.35-5.23h-20.6" />
                   </svg>
                   <span className="text-xs sm:text-sm font-medium tracking-normal text-neutral-200">Fusion</span>
                 </Link>
