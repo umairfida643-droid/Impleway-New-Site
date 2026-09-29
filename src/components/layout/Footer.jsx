@@ -242,11 +242,11 @@ export const Footer = () => {
         </div>
 
         {/* Giant Faded Red IMPLEWAY Wordmark at the Very End of Footer */}
-        <div className="pt-6 pb-2 overflow-hidden select-none pointer-events-none text-center relative flex justify-center items-center">
+        <div className="pt-6 pb-2 overflow-hidden select-none pointer-events-none relative flex justify-center items-center w-full">
           {/* Subtle Ambient Red Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-24 bg-[#E50914]/10 blur-3xl pointer-events-none rounded-full"></div>
           
-          <span className="relative z-10 block font-black text-transparent bg-clip-text bg-gradient-to-b from-[#E50914]/30 via-[#E50914]/12 to-transparent text-[13vw] sm:text-[11.5vw] md:text-[10vw] lg:text-[8.5vw] xl:text-[115px] uppercase tracking-tight leading-none select-none font-sans px-2">
+          <span className="relative z-10 block font-black text-transparent bg-clip-text bg-gradient-to-b from-[#E50914]/50 via-[#E50914]/25 to-[#E50914]/5 w-full text-center uppercase tracking-tighter leading-none select-none font-sans" style={{fontSize: 'clamp(72px, 16vw, 200px)', letterSpacing: '-0.02em'}}>
             IMPLEWAY
           </span>
         </div>
