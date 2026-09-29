@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { FloatingCompanyProfile } from './FloatingCompanyProfile';
+import { AccessibilityWidget } from './AccessibilityWidget';
 import { FloatingWhatsApp } from './FloatingWhatsApp';
 import { ScrollToTop } from '../ui/ScrollToTop';
 
@@ -15,6 +16,7 @@ export const Layout = () => {
         <Outlet />
       </main>
       <FloatingCompanyProfile />
+      <AccessibilityWidget />
       <FloatingWhatsApp />
       <div className="content-auto">
         <Footer />
