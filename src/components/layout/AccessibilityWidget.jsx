@@ -132,12 +132,12 @@ export const AccessibilityWidget = () => {
           {/* Controls List */}
           <div className="space-y-4">
             
-            {/* Font Size (Kam / Zada) */}
+            {/* Font Size */}
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs font-bold text-[#111111]">
                 <div className="flex items-center gap-1.5">
                   <Type className="w-3.5 h-3.5 text-[#E50914]" />
-                  <span>Font Size (Kam / Zada)</span>
+                  <span>Font Size</span>
                 </div>
                 <span className="text-[11px] font-extrabold text-[#E50914] bg-neutral-100 px-2 py-0.5 rounded-md">
                   {settings.fontSize}%
