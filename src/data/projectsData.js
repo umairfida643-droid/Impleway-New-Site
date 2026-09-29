@@ -1,7 +1,83 @@
 export const projectsData = [
   // ==========================================
-  // TOP 8 NEW CLIENT SITES (VERIFIED DELIVERIES)
+  // TOP VERIFIED CLIENT DELIVERIES
   // ==========================================
+  {
+    "slug": "dxbadvertisement",
+    "title": "DXB Advertisement",
+    "subtitle": "Dubai Premier Large-Format Signage, Event Branding & Fabrication eCommerce",
+    "category": "eCommerce & Retail",
+    "client": "Dubai Advertisement LLC (UAE)",
+    "timeline": "24 Days",
+    "year": "2025",
+    "websiteUrl": "https://dxbadvertisement.com/",
+    "image": "/projects/covers/dxbadvertisement.png",
+    "logo": "/projects/logos/dxbadvertisement.png",
+    "services": "High-Volume B2B eCommerce, Custom Dimension Calculator, UAE Payment Gateway, Arabic/English Localization",
+    "technologies": [
+      "WordPress",
+      "WooCommerce",
+      "Tailwind CSS",
+      "Custom PHP",
+      "Stripe UAE",
+      "Cloudflare"
+    ],
+    "overview": "DXB Advertisement (Dubai Advertisement LLC) is one of the UAE's premier signage fabrication, digital printing, and exhibition branding companies, providing bespoke outdoor 3D signs, exhibition backdrops, fleet vehicle wraps, and custom promotional flags across Dubai and Abu Dhabi.",
+    "objectives": "Transform a physical fabrication and printing shop into a modern, 24/7 digital eCommerce and B2B quotation platform allowing corporate event organizers and commercial clients to configure custom signage dimensions, upload print-ready vector files, and receive instant automated price estimates in AED.",
+    "solution": "Engineered a bespoke WooCommerce and Tailwind CSS portal featuring dynamic area/meter dimension pricing calculators, high-resolution artwork upload validators, multi-category mega-navigation (Exhibitions, Flags, Banners, Fleet Branding), and instant WhatsApp RFQ integration.",
+    "results": "Delivered a 210% surge in online commercial quote requests, reduced artwork proof verification time by 60%, and processed over AED 1.2M in digital event signage orders within the first quarter.",
+    "metrics": [
+      { "label": "Inbound UAE RFQs", "value": "+210%" },
+      { "label": "Proof Turnaround", "value": "-60%" },
+      { "label": "Quarterly Digital Sales", "value": "AED 1.2M+" }
+    ],
+    "keyFeatures": [
+      "Custom Signage Dimension & Sqm Price Calculator",
+      "Print-Ready Vector Artwork Upload & Validation",
+      "UAE High-Demand Exhibition Fast-Track Delivery",
+      "Localized Multi-Currency & WhatsApp Instant RFQ"
+    ],
+    "architecture": "Custom lightweight PHP theme with Redis object caching, Cloudflare CDN delivering sub-second response times across the UAE, and automated PDF invoice generation.",
+    "clientQuote": "Impleway took our industrial signage fabrication business and gave us a cutting-edge eCommerce storefront. Event managers across Dubai can now order exhibition setups and flags online with complete ease."
+  },
+  {
+    "slug": "rxhints",
+    "title": "RxHints",
+    "subtitle": "Medical Informatics & Pharmaceutical Intelligence Knowledge Engine",
+    "category": "Custom Web Application",
+    "client": "RxHints Healthcare Network",
+    "timeline": "28 Days",
+    "year": "2025",
+    "websiteUrl": "https://rxhints.com/",
+    "image": "/projects/covers/rxhints.png",
+    "logo": "/projects/logos/rxhints.png",
+    "services": "Medical Database Architecture, Sub-Second Fuzzy Search, Medical SEO, Clinical Knowledge Graph",
+    "technologies": [
+      "React",
+      "Next.js",
+      "PostgreSQL",
+      "Elasticsearch",
+      "Tailwind CSS",
+      "Docker"
+    ],
+    "overview": "RxHints is an authoritative healthcare intelligence platform indexing over 25,000+ FDA and EMA-approved pharmaceuticals and 12,000+ clinical research articles to empower healthcare professionals, pharmacists, and patients with trusted drug interactions, dosages, precautions, and warnings.",
+    "objectives": "Build a lightning-fast, high-traffic medical reference engine capable of performing sub-50ms fuzzy searches across generic and brand names, managing massive medical taxonomy databases, and handling millions of monthly search impressions with zero server downtime.",
+    "solution": "Engineered a high-performance Next.js and Elasticsearch architecture with medical-grade structured schema, automated side-effect comparison matrices, dosage calculators, and programmatic medical SEO generating millions of indexed queries.",
+    "results": "Achieved sub-50ms medicine search latency across 25,000+ compounds, grew organic monthly traffic to 450,000+ healthcare visitors, and maintained 99.99% server availability during traffic spikes.",
+    "metrics": [
+      { "label": "Indexed Medicines", "value": "25,000+" },
+      { "label": "Search Latency", "value": "< 50ms" },
+      { "label": "Monthly Health Visitors", "value": "450K+" }
+    ],
+    "keyFeatures": [
+      "Instant Fuzzy Drug & Generic Search Engine",
+      "Clinical Side-Effect & Interaction Matrix",
+      "12,000+ Peer-Reviewed Medical Reference Guides",
+      "HIPAA/GDPR Compliant Medical Knowledge Base"
+    ],
+    "architecture": "Next.js SSR application backed by Elasticsearch indexing cluster, PostgreSQL relational knowledge graph, and multi-region CDN caching for instantaneous global clinical lookups.",
+    "clientQuote": "RxHints demands millisecond search precision and 100% scientific reliability. Impleway engineered a rock-solid, incredibly fast medical intelligence engine that doctors and pharmacists rely on daily."
+  },
   {
     "slug": "dynamicszentrum",
     "title": "Dynamics Zentrum",

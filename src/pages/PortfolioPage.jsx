@@ -61,7 +61,7 @@ export const PortfolioPage = () => {
               Featured Client Portfolios & Live Implementations:
             </span>
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
-              {projectsData.slice(0, 8).map((proj, idx) => (
+              {projectsData.slice(0, 10).map((proj, idx) => (
                 <div key={idx} className="flex items-center gap-2 group/logo" title={proj.title}>
                   {proj.logo && (
                     <img 
