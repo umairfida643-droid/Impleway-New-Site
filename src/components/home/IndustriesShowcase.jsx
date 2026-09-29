@@ -52,8 +52,8 @@ export const IndustriesShowcase = () => {
           </p>
         </div>
 
-        {/* Industry Selector Tabs */}
-        <div className="flex items-center justify-start lg:justify-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        {/* Industry Selector Tabs - Responsive Wrap with Zero Clipping */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 max-w-5xl mx-auto">
           {FEATURED_SLUGS.map((slug) => {
             const ind = industriesData[slug];
             if (!ind) return null;
@@ -63,16 +63,16 @@ export const IndustriesShowcase = () => {
               <button
                 key={slug}
                 onClick={() => setActiveSlug(slug)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 cursor-pointer border ${
+                className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer border ${
                   isActive
-                    ? 'bg-[#111111] text-white border-[#111111] shadow-lg shadow-black/10 scale-105'
-                    : 'bg-neutral-50 text-neutral-600 border-neutral-200/80 hover:bg-neutral-100 hover:text-neutral-900'
+                    ? 'bg-[#111111] text-white border-[#111111] shadow-md shadow-black/10 scale-[1.02]'
+                    : 'bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-50 hover:text-neutral-900 hover:border-neutral-300'
                 }`}
               >
-                <div className={`p-1.5 rounded-lg transition-colors ${
-                  isActive ? 'bg-[#E50914] text-white' : 'bg-white text-neutral-600 border border-neutral-200'
+                <div className={`p-1 rounded-md transition-colors ${
+                  isActive ? 'bg-[#E50914] text-white' : 'bg-neutral-100 text-neutral-600'
                 }`}>
-                  <IndustryIcon slug={slug} className="w-4 h-4" />
+                  <IndustryIcon slug={slug} className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <span>{ind.shortTitle || ind.title}</span>
               </button>
