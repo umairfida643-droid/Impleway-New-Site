@@ -249,86 +249,22 @@
   color: #374151 !important;
 }
 
-/* ================= ACCESSIBILITY SUITE (A11Y) ================= */
+/* ================= ACCESSIBILITY SUITE (CLEAN & CLASSIC) ================= */
 
 /* Greyscale Mode */
 html.a11y-greyscale {
   filter: grayscale(100%) !important;
 }
 
-/* Invert Colors Mode */
-html.a11y-invert {
-  filter: invert(100%) hue-rotate(180deg) !important;
-  background-color: #000000 !important;
-}
-html.a11y-invert img,
-html.a11y-invert video,
-html.a11y-invert [style*="background-image"],
-html.a11y-invert #a11y-widget-root {
-  filter: invert(100%) hue-rotate(180deg) !important;
+/* High Contrast Mode */
+html.a11y-contrast {
+  filter: contrast(130%) !important;
 }
 
-/* High Contrast Dark Mode */
-html.a11y-contrast-dark {
-  filter: contrast(135%) !important;
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-html.a11y-contrast-dark body {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-html.a11y-contrast-dark a {
-  color: #ffde59 !important;
-  text-decoration: underline !important;
+/* Combined Greyscale + High Contrast */
+html.a11y-greyscale.a11y-contrast {
+  filter: grayscale(100%) contrast(135%) !important;
 }
 
-/* High Contrast Light Mode */
-html.a11y-contrast-light {
-  filter: contrast(135%) brightness(95%) !important;
-}
-
-/* Highlight Links */
-html.a11y-highlight-links a {
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 3px !important;
-  background-color: rgba(254, 240, 138, 0.4) !important;
-  color: #b91c1c !important;
-  padding: 0 3px !important;
-  border-radius: 3px !important;
-  outline: 1px solid #eab308 !important;
-}
-
-/* Dyslexia / Ultra-Readable Font */
-html.a11y-dyslexic-font,
-html.a11y-dyslexic-font * {
-  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Verdana', sans-serif !important;
-  letter-spacing: 0.03em !important;
-}
-
-/* Text & Line Spacing */
-html.a11y-text-spacing,
-html.a11y-text-spacing * {
-  line-height: 1.95 !important;
-  letter-spacing: 0.06em !important;
-  word-spacing: 0.12em !important;
-}
-
-/* Big Cursor */
-html.a11y-big-cursor,
-html.a11y-big-cursor * {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="%23111111" stroke="%23ffffff" stroke-width="1.8"><polygon points="0,0 0,20 6,15 12,21 15,19 9,13 16,13"/></svg>'), auto !important;
-}
-
-/* Pause Animations / Reduce Motion */
-html.a11y-reduce-motion *,
-html.a11y-reduce-motion *::before,
-html.a11y-reduce-motion *::after {
-  animation-duration: 0.001ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.001ms !important;
-  scroll-behavior: auto !important;
-}
 
 

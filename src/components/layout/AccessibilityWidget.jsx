@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Accessibility, X, RotateCcw, ZoomIn, ZoomOut, 
-  Sun, Moon, Eye, Type, MousePointer, Sparkles, 
-  Pause, Check, Link as LinkIcon, Sliders, Contrast
-} from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Accessibility, X, RotateCcw, Type, Contrast, Check } from 'lucide-react';
 
 const DEFAULT_SETTINGS = {
-  fontSize: 100, // percentage: 90, 100, 110, 120, 130
-  contrast: 'default', // 'default' | 'contrast-dark' | 'contrast-light' | 'invert'
+  fontSize: 100, // 90, 100, 115, 130
   greyscale: false,
-  highlightLinks: false,
-  dyslexicFont: false,
-  textSpacing: false,
-  bigCursor: false,
-  reduceMotion: false,
+  contrast: false,
 };
 
 export const AccessibilityWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const widgetRef = useRef(null);
+
   const [settings, setSettings] = useState(() => {
     try {
       const saved = localStorage.getItem('impleway_a11y_settings');
@@ -45,56 +38,40 @@ export const AccessibilityWidget = () => {
       html.style.fontSize = '';
     }
 
-    // Contrast modes
-    html.classList.remove('a11y-contrast-dark', 'a11y-contrast-light', 'a11y-invert');
-    if (settings.contrast !== 'default') {
-      html.classList.add(`a11y-${settings.contrast}`);
-    }
-
-    // Greyscale
+    // Greyscale Mode
     if (settings.greyscale) {
       html.classList.add('a11y-greyscale');
     } else {
       html.classList.remove('a11y-greyscale');
     }
 
-    // Highlight links
-    if (settings.highlightLinks) {
-      html.classList.add('a11y-highlight-links');
+    // Contrast Mode
+    if (settings.contrast) {
+      html.classList.add('a11y-contrast');
     } else {
-      html.classList.remove('a11y-highlight-links');
-    }
-
-    // Dyslexic font
-    if (settings.dyslexicFont) {
-      html.classList.add('a11y-dyslexic-font');
-    } else {
-      html.classList.remove('a11y-dyslexic-font');
-    }
-
-    // Text & line spacing
-    if (settings.textSpacing) {
-      html.classList.add('a11y-text-spacing');
-    } else {
-      html.classList.remove('a11y-text-spacing');
-    }
-
-    // Big cursor
-    if (settings.bigCursor) {
-      html.classList.add('a11y-big-cursor');
-    } else {
-      html.classList.remove('a11y-big-cursor');
-    }
-
-    // Reduce motion
-    if (settings.reduceMotion) {
-      html.classList.add('a11y-reduce-motion');
-    } else {
-      html.classList.remove('a11y-reduce-motion');
+      html.classList.remove('a11y-contrast');
     }
   }, [settings]);
 
-  // Close on Escape key
+  // Handle outside clicks to close popover
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (widgetRef.current && !widgetRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Handle Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -105,16 +82,10 @@ export const AccessibilityWidget = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  // Count active non-default customizations
   const activeCount = 
     (settings.fontSize !== 100 ? 1 : 0) +
-    (settings.contrast !== 'default' ? 1 : 0) +
     (settings.greyscale ? 1 : 0) +
-    (settings.highlightLinks ? 1 : 0) +
-    (settings.dyslexicFont ? 1 : 0) +
-    (settings.textSpacing ? 1 : 0) +
-    (settings.bigCursor ? 1 : 0) +
-    (settings.reduceMotion ? 1 : 0);
+    (settings.contrast ? 1 : 0);
 
   const resetAll = () => {
     setSettings(DEFAULT_SETTINGS);
@@ -124,20 +95,153 @@ export const AccessibilityWidget = () => {
     setSettings(prev => ({ ...prev, [key]: value }));
   };
 
-  const changeFontSize = (delta) => {
-    setSettings(prev => {
-      const next = Math.min(140, Math.max(80, prev.fontSize + delta));
-      return { ...prev, fontSize: next };
-    });
-  };
-
   return (
-    <>
-      {/* Floating Trigger Button (Positioned directly ABOVE the Company Profile button on bottom-left) */}
-      <aside 
-        aria-label="Website Accessibility Menu"
-        className="fixed bottom-[88px] sm:bottom-[102px] left-6 z-40 select-none flex items-center"
-      >
+    <aside 
+      ref={widgetRef}
+      aria-label="Accessibility Widget"
+      className="fixed z-50 select-none"
+    >
+      {/* 1. Popover Menu (Floats DIRECTLY above the trigger button, never overlapping it) */}
+      {isOpen && (
+        <div 
+          role="dialog"
+          aria-modal="false"
+          aria-label="Accessibility Options"
+          className="fixed bottom-[154px] sm:bottom-[172px] left-6 z-50 w-[300px] sm:w-[330px] bg-white rounded-3xl shadow-2xl border border-neutral-200/90 p-5 text-[#111111] animate-in fade-in slide-in-from-bottom-3 duration-200"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-neutral-100 pb-3 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-xl bg-red-50 text-[#E50914] flex items-center justify-center font-bold">
+                <Accessibility className="w-4 h-4" />
+              </div>
+              <h3 className="font-extrabold text-sm text-[#111111]">
+                Accessibility Tools
+              </h3>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="w-7 h-7 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Controls List */}
+          <div className="space-y-4">
+            
+            {/* Font Size (Kam / Zada) */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold text-[#111111]">
+                <div className="flex items-center gap-1.5">
+                  <Type className="w-3.5 h-3.5 text-[#E50914]" />
+                  <span>Font Size (Kam / Zada)</span>
+                </div>
+                <span className="text-[11px] font-extrabold text-[#E50914] bg-neutral-100 px-2 py-0.5 rounded-md">
+                  {settings.fontSize}%
+                </span>
+              </div>
+
+              <div className="grid grid-cols-4 gap-1.5 bg-neutral-100/80 p-1 rounded-xl">
+                {[
+                  { label: 'A-', val: 90, title: 'Small' },
+                  { label: 'A', val: 100, title: 'Default' },
+                  { label: 'A+', val: 115, title: 'Large' },
+                  { label: 'A++', val: 130, title: 'Extra Large' },
+                ].map(item => (
+                  <button
+                    key={item.val}
+                    type="button"
+                    title={item.title}
+                    onClick={() => updateSetting('fontSize', item.val)}
+                    className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                      settings.fontSize === item.val
+                        ? 'bg-[#E50914] text-white shadow-xs'
+                        : 'text-neutral-700 hover:bg-white'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Contrast Mode Toggle */}
+            <div>
+              <button
+                type="button"
+                onClick={() => updateSetting('contrast', !settings.contrast)}
+                className={`w-full p-3 rounded-2xl border flex items-center justify-between transition-all cursor-pointer ${
+                  settings.contrast
+                    ? 'bg-neutral-900 border-neutral-900 text-yellow-300 font-bold shadow-xs'
+                    : 'bg-white border-neutral-200 text-neutral-800 hover:border-neutral-300'
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <Contrast className={`w-4 h-4 ${settings.contrast ? 'text-yellow-300' : 'text-[#E50914]'}`} />
+                  <span className="text-xs font-bold">Contrast Mode</span>
+                </div>
+                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${
+                  settings.contrast ? 'bg-yellow-400 text-black' : 'bg-neutral-100 text-neutral-500'
+                }`}>
+                  {settings.contrast ? 'ON' : 'OFF'}
+                </span>
+              </button>
+            </div>
+
+            {/* Greyscale Mode Toggle */}
+            <div>
+              <button
+                type="button"
+                onClick={() => updateSetting('greyscale', !settings.greyscale)}
+                className={`w-full p-3 rounded-2xl border flex items-center justify-between transition-all cursor-pointer ${
+                  settings.greyscale
+                    ? 'bg-neutral-900 border-neutral-900 text-white font-bold shadow-xs'
+                    : 'bg-white border-neutral-200 text-neutral-800 hover:border-neutral-300'
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-4 h-4 rounded-full bg-gradient-to-r from-gray-300 to-gray-700 border border-neutral-400"></div>
+                  <span className="text-xs font-bold">Greyscale (B&W)</span>
+                </div>
+                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${
+                  settings.greyscale ? 'bg-white text-black' : 'bg-neutral-100 text-neutral-500'
+                }`}>
+                  {settings.greyscale ? 'ON' : 'OFF'}
+                </span>
+              </button>
+            </div>
+
+          </div>
+
+          {/* Footer Actions */}
+          <div className="pt-3 mt-4 border-t border-neutral-100 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={resetAll}
+              disabled={activeCount === 0}
+              className="text-xs font-bold text-neutral-500 hover:text-red-600 flex items-center gap-1.5 disabled:opacity-30 disabled:hover:text-neutral-500 transition-colors cursor-pointer"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset All</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="px-3.5 py-1.5 rounded-xl bg-[#111111] hover:bg-[#E50914] text-white text-xs font-bold transition-colors cursor-pointer"
+            >
+              Done
+            </button>
+          </div>
+
+        </div>
+      )}
+
+      {/* 2. Floating Trigger Button (Always fixed at bottom-left directly above Profile button) */}
+      <div className="fixed bottom-[88px] sm:bottom-[100px] left-6 z-50">
         <button
           type="button"
           onClick={() => setIsOpen(prev => !prev)}
@@ -145,394 +249,36 @@ export const AccessibilityWidget = () => {
             activeCount > 0 ? 'border-[#E50914] ring-2 ring-red-500/40' : 'border-white'
           } cursor-pointer`}
           aria-expanded={isOpen}
-          aria-haspopup="dialog"
-          aria-label="Open Accessibility Tools Menu"
+          aria-label="Toggle Accessibility Menu"
           title="Accessibility Tools (Contrast, Greyscale, Font Size)"
         >
-          {/* Subtle pulse ring if active adjustments are enabled */}
+          {/* Subtle pulse if active */}
           {activeCount > 0 && (
             <span className="absolute -inset-1 rounded-full bg-red-500 opacity-30 animate-ping pointer-events-none"></span>
           )}
 
           {/* Center Content: Icon + Label */}
-          <div className="relative z-10 flex flex-col items-center justify-center">
+          <div className="relative z-10 flex flex-col items-center justify-center pointer-events-none">
             <Accessibility className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-[#E50914] transition-colors duration-200" />
             <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-tight text-white leading-none mt-0.5">
               Access
             </span>
           </div>
 
-          {/* Active Customizations Count Badge */}
+          {/* Active Badge */}
           {activeCount > 0 && (
             <span className="absolute -top-1 -right-1 bg-[#E50914] text-white font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-white shadow-md">
               {activeCount}
             </span>
           )}
 
-          {/* Hover Tooltip on Right */}
+          {/* Tooltip on Right */}
           <div className="absolute left-full ml-3 px-3 py-1.5 bg-[#050505] text-white text-xs font-bold rounded-xl shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none border border-neutral-800 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span>
-            <span>Accessibility Settings</span>
-            {activeCount > 0 && <span className="text-red-400 text-[10px]">({activeCount} Active)</span>}
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E50914]"></span>
+            <span>{isOpen ? 'Close Accessibility' : 'Accessibility Tools'}</span>
           </div>
         </button>
-      </aside>
-
-      {/* Accessibility Panel / Modal */}
-      {isOpen && (
-        <div id="a11y-widget-root">
-          {/* Mobile backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 sm:hidden"
-            onClick={() => setIsOpen(false)}
-            aria-hidden="true"
-          />
-
-          {/* Settings Card */}
-          <div 
-            role="dialog"
-            aria-modal="true"
-            aria-label="Accessibility Options"
-            className="fixed bottom-4 sm:bottom-28 left-4 sm:left-6 z-50 w-[calc(100vw-32px)] sm:w-[410px] max-h-[85vh] sm:max-h-[600px] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-neutral-200/80 p-5 sm:p-6 text-[#111111] animate-in fade-in slide-in-from-bottom-4 duration-200"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-neutral-100 pb-3 mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-red-50 text-[#E50914] flex items-center justify-center font-bold">
-                  <Accessibility className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-base text-[#111111] tracking-tight flex items-center gap-1.5">
-                    Accessibility Menu
-                    {activeCount > 0 && (
-                      <span className="text-[10px] bg-red-100 text-[#E50914] px-2 py-0.5 rounded-full font-bold">
-                        {activeCount} Active
-                      </span>
-                    )}
-                  </h3>
-                  <p className="text-[11px] text-neutral-500 font-medium">Custom visual & reading preferences</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Close accessibility menu"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Controls Body */}
-            <div className="space-y-5">
-              
-              {/* 1. Text Size (Font Size Kam / Zada) */}
-              <div className="bg-neutral-50 rounded-2xl p-3.5 border border-neutral-100 space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#111111]">
-                    <Type className="w-4 h-4 text-[#E50914]" />
-                    <span>Font Size (Kam / Zada)</span>
-                  </div>
-                  <span className="text-xs font-extrabold text-[#E50914] bg-white px-2 py-0.5 rounded-lg border border-neutral-200">
-                    {settings.fontSize}%
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-4 gap-1.5">
-                  {[
-                    { label: '90%', val: 90 },
-                    { label: '100%', val: 100 },
-                    { label: '115%', val: 115 },
-                    { label: '130%', val: 130 },
-                  ].map(item => (
-                    <button
-                      key={item.val}
-                      type="button"
-                      onClick={() => updateSetting('fontSize', item.val)}
-                      className={`py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
-                        settings.fontSize === item.val
-                          ? 'bg-[#E50914] text-white border-[#E50914] shadow-sm'
-                          : 'bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400'
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Fine-tuning +/- buttons */}
-                <div className="flex items-center gap-2 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => changeFontSize(-5)}
-                    disabled={settings.fontSize <= 80}
-                    className="flex-1 py-1.5 text-xs font-semibold rounded-xl bg-white border border-neutral-200 hover:bg-neutral-100 flex items-center justify-center gap-1 disabled:opacity-40 cursor-pointer"
-                  >
-                    <ZoomOut className="w-3.5 h-3.5 text-neutral-600" />
-                    <span>Smaller (A-)</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('fontSize', 100)}
-                    className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-white border border-neutral-200 hover:bg-neutral-100 cursor-pointer text-neutral-600"
-                  >
-                    Reset (A)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changeFontSize(5)}
-                    disabled={settings.fontSize >= 140}
-                    className="flex-1 py-1.5 text-xs font-semibold rounded-xl bg-white border border-neutral-200 hover:bg-neutral-100 flex items-center justify-center gap-1 disabled:opacity-40 cursor-pointer"
-                  >
-                    <ZoomIn className="w-3.5 h-3.5 text-neutral-600" />
-                    <span>Larger (A+)</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* 2. Color & Contrast Modes */}
-              <div className="space-y-2">
-                <div className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                  <Contrast className="w-4 h-4 text-[#E50914]" />
-                  <span>Display & Contrast Mode</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  
-                  {/* Default / Normal */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateSetting('contrast', 'default');
-                      updateSetting('greyscale', false);
-                    }}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.contrast === 'default' && !settings.greyscale
-                        ? 'bg-red-50/50 border-[#E50914] text-[#111111] shadow-sm font-bold'
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-white border border-neutral-300 shadow-inner flex items-center justify-center">
-                        <Sun className="w-2.5 h-2.5 text-amber-500" />
-                      </div>
-                      <span className="text-xs">Default Mode</span>
-                    </div>
-                    {settings.contrast === 'default' && !settings.greyscale && (
-                      <Check className="w-3.5 h-3.5 text-[#E50914]" />
-                    )}
-                  </button>
-
-                  {/* Greyscale Mode */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateSetting('greyscale', !settings.greyscale);
-                      if (settings.contrast === 'invert') updateSetting('contrast', 'default');
-                    }}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.greyscale
-                        ? 'bg-neutral-900 border-neutral-900 text-white shadow-sm font-bold'
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-gray-300 to-gray-700"></div>
-                      <span className="text-xs">Greyscale (B&W)</span>
-                    </div>
-                    {settings.greyscale && (
-                      <Check className="w-3.5 h-3.5 text-white" />
-                    )}
-                  </button>
-
-                  {/* High Contrast Dark */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateSetting('contrast', settings.contrast === 'contrast-dark' ? 'default' : 'contrast-dark');
-                    }}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.contrast === 'contrast-dark'
-                        ? 'bg-black border-black text-yellow-300 shadow-sm font-bold'
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-black border border-yellow-400"></div>
-                      <span className="text-xs">Contrast Dark</span>
-                    </div>
-                    {settings.contrast === 'contrast-dark' && (
-                      <Check className="w-3.5 h-3.5 text-yellow-300" />
-                    )}
-                  </button>
-
-                  {/* High Contrast Light */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateSetting('contrast', settings.contrast === 'contrast-light' ? 'default' : 'contrast-light');
-                    }}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.contrast === 'contrast-light'
-                        ? 'bg-yellow-50 border-yellow-500 text-neutral-900 shadow-sm font-bold'
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-white border-2 border-black"></div>
-                      <span className="text-xs">Contrast Light</span>
-                    </div>
-                    {settings.contrast === 'contrast-light' && (
-                      <Check className="w-3.5 h-3.5 text-black" />
-                    )}
-                  </button>
-
-                  {/* Invert Colors */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      updateSetting('contrast', settings.contrast === 'invert' ? 'default' : 'invert');
-                    }}
-                    className={`col-span-2 p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.contrast === 'invert'
-                        ? 'bg-indigo-900 border-indigo-700 text-white shadow-sm font-bold'
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Moon className="w-4 h-4 text-indigo-500" />
-                      <span className="text-xs">Invert Colors (Negative Mode)</span>
-                    </div>
-                    {settings.contrast === 'invert' && (
-                      <Check className="w-3.5 h-3.5 text-white" />
-                    )}
-                  </button>
-
-                </div>
-              </div>
-
-              {/* 3. Reading & Usability Enhancers */}
-              <div className="space-y-2">
-                <div className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                  <Sliders className="w-4 h-4 text-[#E50914]" />
-                  <span>Reading & Navigation Tools</span>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-2">
-                  
-                  {/* Highlight Links */}
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('highlightLinks', !settings.highlightLinks)}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.highlightLinks 
-                        ? 'bg-amber-50 border-amber-400 text-amber-950 font-bold' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <LinkIcon className="w-3.5 h-3.5 text-amber-600" />
-                      <span className="text-xs">Highlight Links</span>
-                    </div>
-                    {settings.highlightLinks && <Check className="w-3.5 h-3.5 text-amber-600" />}
-                  </button>
-
-                  {/* Dyslexic / Readable Font */}
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('dyslexicFont', !settings.dyslexicFont)}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.dyslexicFont 
-                        ? 'bg-emerald-50 border-emerald-400 text-emerald-950 font-bold font-mono' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Type className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-xs">Readable Font</span>
-                    </div>
-                    {settings.dyslexicFont && <Check className="w-3.5 h-3.5 text-emerald-600" />}
-                  </button>
-
-                  {/* Relaxed Text Spacing */}
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('textSpacing', !settings.textSpacing)}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.textSpacing 
-                        ? 'bg-blue-50 border-blue-400 text-blue-950 font-bold' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Eye className="w-3.5 h-3.5 text-blue-600" />
-                      <span className="text-xs">Text Spacing</span>
-                    </div>
-                    {settings.textSpacing && <Check className="w-3.5 h-3.5 text-blue-600" />}
-                  </button>
-
-                  {/* Big Cursor */}
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('bigCursor', !settings.bigCursor)}
-                    className={`p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.bigCursor 
-                        ? 'bg-purple-50 border-purple-400 text-purple-950 font-bold' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <MousePointer className="w-3.5 h-3.5 text-purple-600" />
-                      <span className="text-xs">Big Cursor</span>
-                    </div>
-                    {settings.bigCursor && <Check className="w-3.5 h-3.5 text-purple-600" />}
-                  </button>
-
-                  {/* Pause Animations */}
-                  <button
-                    type="button"
-                    onClick={() => updateSetting('reduceMotion', !settings.reduceMotion)}
-                    className={`col-span-2 p-2.5 rounded-2xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                      settings.reduceMotion 
-                        ? 'bg-rose-50 border-rose-400 text-rose-950 font-bold' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Pause className="w-3.5 h-3.5 text-rose-600" />
-                      <span className="text-xs">Pause Animations & Effects</span>
-                    </div>
-                    {settings.reduceMotion && <Check className="w-3.5 h-3.5 text-rose-600" />}
-                  </button>
-
-                </div>
-              </div>
-
-            </div>
-
-            {/* Footer Actions */}
-            <div className="pt-4 mt-5 border-t border-neutral-100 flex items-center justify-between gap-3">
-              <button
-                type="button"
-                onClick={resetAll}
-                disabled={activeCount === 0}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-neutral-600 hover:text-red-600 hover:bg-red-50 transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-neutral-600 cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset All Defaults</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 rounded-xl text-xs font-bold bg-[#111111] text-white hover:bg-[#E50914] transition-colors cursor-pointer shadow-sm"
-              >
-                Done
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
-    </>
+      </div>
+    </aside>
   );
 };
