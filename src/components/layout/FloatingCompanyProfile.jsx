@@ -9,7 +9,7 @@ export const FloatingCompanyProfile = () => {
       style={{ position: 'fixed', bottom: '24px', left: '24px', zIndex: 40 }}
     >
       <a
-        href="/Impleway-KSA-Company-Profile.pdf"
+        href="/Impleway-KSA-Company-Profile_compressed.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#E50914] via-red-600 to-[#9F0712] text-white shadow-2xl shadow-red-600/50 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white cursor-pointer no-underline"

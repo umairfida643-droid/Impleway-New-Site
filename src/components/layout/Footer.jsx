@@ -116,7 +116,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="/Impleway-KSA-Company-Profile.pdf" 
+                  href="/Impleway-KSA-Company-Profile_compressed.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="hover:text-[#E50914] transition-colors inline-flex items-center gap-1.5"
