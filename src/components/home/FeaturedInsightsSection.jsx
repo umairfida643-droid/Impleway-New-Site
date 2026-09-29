@@ -108,9 +108,11 @@ export const FeaturedInsightsSection = () => {
               {/* Bottom Author & CTA Bar */}
               <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-neutral-100 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#E50914] to-[#9F0712] text-white flex items-center justify-center text-[10px] font-black">
-                    IW
-                  </div>
+                  <img 
+                    src="/favicon.png" 
+                    alt="Impleway" 
+                    className="w-7 h-7 rounded-full object-contain flex-shrink-0 shadow-xs" 
+                  />
                   <span className="text-xs font-bold text-neutral-700">
                     Impleway Advisory
                   </span>

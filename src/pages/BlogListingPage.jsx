@@ -172,13 +172,23 @@ export const BlogListingPage = () => {
                     </p>
                   </div>
 
-                  {/* Read More Link */}
-                  <div className="pt-4 border-t border-neutral-100">
+                  {/* Bottom Author & CTA Bar */}
+                  <div className="pt-4 border-t border-neutral-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <img 
+                        src="/favicon.png" 
+                        alt="Impleway" 
+                        className="w-7 h-7 rounded-full object-contain flex-shrink-0 shadow-xs" 
+                      />
+                      <span className="text-xs font-bold text-neutral-700">
+                        Impleway Advisory
+                      </span>
+                    </div>
                     <Link
                       to={`/blog/${blog.slug}`}
                       className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#E50914] group-hover:underline"
                     >
-                      <span>Read Full Guide</span>
+                      <span>Read Guide</span>
                       <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>

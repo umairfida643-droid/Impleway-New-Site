@@ -107,8 +107,8 @@ export const BlogDetailPage = () => {
 
               {/* Author Footer Bio */}
               <div className="mt-14 p-8 rounded-3xl bg-[#F6F6F6] border border-[#e7e7e7] flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#E50914] to-[#9F0712] text-white flex items-center justify-center font-black text-xl flex-shrink-0 shadow-md">
-                  IW
+                <div className="w-14 h-14 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+                  <img src="/favicon.png" alt="Impleway" className="w-full h-full object-cover" />
                 </div>
                 <div className="space-y-2 text-center sm:text-left">
                   <h4 className="font-extrabold text-base text-[#111111]">{blog.author}</h4>
