@@ -11,11 +11,14 @@ import {
 
 const CATEGORIES = [
   "All Projects", 
+  "React & JavaScript",
+  "WordPress Architecture",
+  "Shopify Stores",
   "Enterprise ERP & Cloud", 
-  "FinTech & Advisory", 
-  "Digital Agencies & Media", 
-  "Custom SaaS Application", 
   "eCommerce & Retail", 
+  "Custom SaaS Application", 
+  "Digital Agencies & Media", 
+  "FinTech & Advisory", 
   "Manufacturing & Industrial",
   "Custom Web Application"
 ];
@@ -25,6 +28,15 @@ export const PortfolioPage = () => {
 
   const filteredProjects = projectsData.filter(p => {
     if (activeFilter === "All Projects") return true;
+    if (activeFilter === "React & JavaScript") {
+      return p.technologies.some(t => t.toLowerCase().includes("react") || t.toLowerCase().includes("javascript"));
+    }
+    if (activeFilter === "WordPress Architecture") {
+      return p.technologies.some(t => t.toLowerCase().includes("wordpress"));
+    }
+    if (activeFilter === "Shopify Stores") {
+      return p.technologies.some(t => t.toLowerCase().includes("shopify"));
+    }
     return p.category.toLowerCase().includes(activeFilter.toLowerCase()) || 
            activeFilter.toLowerCase().includes(p.category.toLowerCase());
   });
