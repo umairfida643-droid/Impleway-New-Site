@@ -4,9 +4,21 @@ import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
 import { projectsData } from '../data/projectsData';
-import { ArrowRight, ExternalLink, Calendar, User, Clock, Layers, Sparkles } from 'lucide-react';
+import { 
+  ArrowRight, ExternalLink, Calendar, User, Clock, 
+  Layers, Sparkles, CheckCircle2, TrendingUp, Globe
+} from 'lucide-react';
 
-const CATEGORIES = ["All Projects", "Custom Web Application", "Shopify Store & Custom Apps", "Custom SaaS Application", "WordPress Architecture", "eCommerce Store", "SaaS Platform"];
+const CATEGORIES = [
+  "All Projects", 
+  "Enterprise ERP & Cloud", 
+  "FinTech & Advisory", 
+  "Digital Agencies & Media", 
+  "Custom SaaS Application", 
+  "eCommerce & Retail", 
+  "Manufacturing & Industrial",
+  "Custom Web Application"
+];
 
 export const PortfolioPage = () => {
   const [activeFilter, setActiveFilter] = useState("All Projects");
@@ -21,7 +33,7 @@ export const PortfolioPage = () => {
     <>
       <SEO 
         title="Portfolio & Case Studies | Proven Enterprise Deliveries"
-        description="Explore Impleway's proven track record of custom CRM development, high-converting eCommerce stores, multi-tenant SaaS platforms, and enterprise web solutions."
+        description="Explore Impleway's proven track record of enterprise ERP integrations, high-converting eCommerce stores, multi-tenant SaaS platforms, and digital ecosystems worldwide."
       />
 
       {/* Hero */}
@@ -29,23 +41,69 @@ export const PortfolioPage = () => {
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 text-white text-xs font-black uppercase tracking-wider">
-            <span>Verified Track Record</span>
+            <Sparkles className="w-3.5 h-3.5 text-[#E50914]" />
+            <span>Verified Track Record & Case Studies</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight max-w-4xl mx-auto leading-tight">
-            Case Studies & Proven Deliveries
+            Proven Digital Architecture & Deliveries
           </h1>
           <p className="text-lg sm:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            Real software architecture, measurable business impact, and rapid go-live milestones delivered for clients worldwide.
+            From tier-1 enterprise Microsoft Dynamics 365 platforms and bespoke cloud SaaS to high-volume eCommerce powerhouses delivered across UK, GCC, and international markets.
           </p>
+        </div>
+      </section>
+
+      {/* Client Logos Trust Strip */}
+      <section className="py-8 bg-neutral-50 border-b border-[#e7e7e7] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-neutral-500 whitespace-nowrap">
+              Featured Client Portfolios & Live Implementations:
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+              {projectsData.slice(0, 8).map((proj, idx) => (
+                <div key={idx} className="flex items-center gap-2 group/logo" title={proj.title}>
+                  {proj.logo && (
+                    <img 
+                      src={proj.logo} 
+                      alt={proj.title} 
+                      className="w-7 h-7 rounded-lg object-contain bg-white border border-neutral-200 p-0.5 shadow-xs grayscale group-hover/logo:grayscale-0 transition-all duration-300"
+                    />
+                  )}
+                  <span className="text-xs font-bold text-neutral-700 group-hover/logo:text-[#E50914] transition-colors">
+                    {proj.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <Breadcrumbs items={[{ name: "Portfolio" }]} />
 
-      {/* Portfolio Grid */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#e7e7e7]">
+      {/* Filter Tabs & Projects Grid */}
+      <section className="py-16 sm:py-24 bg-white border-b border-[#e7e7e7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {CATEGORIES.map((cat, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveFilter(cat)}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeFilter === cat
+                    ? 'bg-[#E50914] text-white shadow-md shadow-red-600/30'
+                    : 'bg-[#F6F6F6] text-neutral-700 hover:bg-neutral-200 border border-[#e7e7e7]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           {/* Projects 2-Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {filteredProjects.map((project, idx) => (
@@ -53,38 +111,75 @@ export const PortfolioPage = () => {
                 key={idx}
                 className="bg-white rounded-3xl border border-[#e7e7e7] shadow-sm hover:shadow-2xl hover:border-red-500/40 transition-all duration-300 overflow-hidden flex flex-col justify-between group"
               >
-                {/* Card Header Media Simulation */}
-                <div className="bg-[#050505] p-8 text-white relative overflow-hidden border-b border-neutral-800">
-                  <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
-                  <div className="relative space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/20 border border-red-500/30 text-red-400">
-                        {project.category}
-                      </span>
-                      <span className="text-xs font-mono text-neutral-400">Year {project.year}</span>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#E50914] transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-neutral-300">
-                      {project.subtitle}
-                    </p>
+                {/* 3D Laptop Mockup Cover Showcase */}
+                <div className="relative bg-[#FAFAFA] border-b border-[#e7e7e7] overflow-hidden">
+                  <Link to={`/project/${project.slug}`} className="block overflow-hidden">
+                    <img 
+                      src={project.image || `/projects/covers/${project.slug}.png`} 
+                      alt={`${project.title} 3D Mockup Cover`}
+                      loading="lazy"
+                      className="w-full h-auto object-cover transform group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                  </Link>
+
+                  {/* Category Pill Overlay */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#E50914] border border-neutral-200 shadow-sm">
+                      {project.category}
+                    </span>
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-neutral-900/85 backdrop-blur-md text-white shadow-sm">
+                      {project.year}
+                    </span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-8 space-y-6 flex-grow flex flex-col justify-between">
+                {/* Card Content */}
+                <div className="p-7 sm:p-8 space-y-6 flex-grow flex flex-col justify-between">
                   
-                  {/* Overview */}
-                  <p className="text-sm text-[#5F6368] leading-relaxed">
-                    {project.overview}
-                  </p>
+                  {/* Header: Logo + Title + Subtitle */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      {project.logo && (
+                        <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 p-1 flex items-center justify-center shadow-xs flex-shrink-0">
+                          <img src={project.logo} alt={project.title} className="w-full h-full object-contain" />
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="text-2xl font-black text-[#111111] group-hover:text-[#E50914] transition-colors leading-tight">
+                          <Link to={`/project/${project.slug}`}>{project.title}</Link>
+                        </h3>
+                        <p className="text-xs font-semibold text-[#5F6368] line-clamp-1">
+                          {project.subtitle}
+                        </p>
+                      </div>
+                    </div>
 
-                  {/* Metadata Chips */}
+                    <p className="text-sm text-[#5F6368] leading-relaxed pt-2 line-clamp-3">
+                      {project.overview}
+                    </p>
+                  </div>
+
+                  {/* Quantitative Metrics Badge Bar (if available) */}
+                  {project.metrics && project.metrics.length > 0 && (
+                    <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-neutral-50 border border-neutral-200/70">
+                      {project.metrics.map((m, mIdx) => (
+                        <div key={mIdx} className="text-center">
+                          <div className="text-base sm:text-lg font-black text-[#E50914] leading-tight">
+                            {m.value}
+                          </div>
+                          <div className="text-[10px] font-bold text-neutral-500 uppercase tracking-tight line-clamp-1 mt-0.5">
+                            {m.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Metadata Row */}
                   <div className="grid grid-cols-3 gap-3 py-3 border-y border-neutral-100 text-xs">
                     <div>
                       <span className="text-neutral-400 block font-medium">Client</span>
-                      <span className="font-bold text-neutral-800">{project.client}</span>
+                      <span className="font-bold text-neutral-800 truncate block">{project.client}</span>
                     </div>
                     <div>
                       <span className="text-neutral-400 block font-medium">Timeline</span>
@@ -96,27 +191,46 @@ export const PortfolioPage = () => {
                     </div>
                   </div>
 
-                  {/* Tech Stack Pills */}
+                  {/* Technologies Used */}
                   <div>
-                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-neutral-500 mb-2">Technologies Used:</div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, tIdx) => (
-                        <span key={tIdx} className="px-3 py-1 rounded-full bg-[#F6F6F6] border border-[#e7e7e7] text-xs font-bold text-neutral-700">
+                    <div className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-500 mb-2">Technologies Deployed:</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.technologies.slice(0, 5).map((tech, tIdx) => (
+                        <span key={tIdx} className="px-2.5 py-1 rounded-lg bg-[#F6F6F6] border border-[#e7e7e7] text-[11px] font-bold text-neutral-700">
                           {tech}
                         </span>
                       ))}
+                      {project.technologies.length > 5 && (
+                        <span className="px-2 py-1 rounded-lg bg-neutral-100 text-[11px] font-bold text-neutral-500">
+                          +{project.technologies.length - 5}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Action Link */}
-                  <div className="pt-4">
+                  {/* Action Link & Live Link */}
+                  <div className="pt-2 flex items-center gap-3">
                     <Link
                       to={`/project/${project.slug}`}
-                      className="w-full inline-flex items-center justify-between py-3.5 px-6 rounded-xl font-bold text-sm text-[#111111] bg-[#F6F6F6] hover:bg-[#E50914] hover:text-white transition-all group/btn"
+                      className="flex-1 inline-flex items-center justify-between py-3 px-5 rounded-xl font-bold text-xs sm:text-sm text-[#111111] bg-[#F6F6F6] hover:bg-[#E50914] hover:text-white transition-all group/btn"
                     >
                       <span>Read Deep-Dive Case Study</span>
                       <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1.5 transition-transform" />
                     </Link>
+
+                    {project.websiteUrl && (
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-neutral-700 bg-white border border-neutral-300 hover:border-red-500 hover:text-[#E50914] transition-all flex items-center gap-1.5 shadow-2xs whitespace-nowrap"
+                        title={`Visit Live Website: ${project.websiteUrl}`}
+                      >
+                        <Globe className="w-4 h-4" />
+                        <span className="hidden sm:inline">Live Site</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-neutral-400" />
+                      </a>
+                    )}
                   </div>
 
                 </div>

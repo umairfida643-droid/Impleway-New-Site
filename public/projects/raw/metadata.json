@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "dynamicszentrum",
+    "url": "https://www.dynamicszentrum.com",
+    "success": true,
+    "title": "Dynamics Zentrum \u2014 UK's Trusted Microsoft Dynamics 365 Partner",
+    "desc": "Enterprise Dynamics 365 consulting, implementation, Copilot and Power Platform. Trusted by 500+ organisations across the UK and EMEA."
+  },
+  {
+    "slug": "staxfin",
+    "url": "https://www.staxfin.com",
+    "success": true,
+    "title": "Staxfin | Cloud Accountants & Financial Advisory",
+    "desc": "Accountants in Cloud, Results on Ground. Integrated bookkeeping, tax preparation, business registration, and CFO advisory."
+  },
+  {
+    "slug": "devdeck",
+    "url": "https://www.devdeck.net",
+    "success": true,
+    "title": "Devdeck \u2014 Marketing, software & brand under one roof",
+    "desc": "Devdeck is a full-service growth studio offering digital marketing, tech solutions, branding, and UI/UX design."
+  },
+  {
+    "slug": "oscargraphix",
+    "url": "https://www.oscargraphix.com",
+    "success": true,
+    "title": "Oscar Graphix \u2014 Best Marketing Agency, Website Developer & Software Development Pakistan",
+    "desc": "Oscar Graphix is Pakistan's premier digital media agency, website developer, and software development company in Lahore. Specializing in custom web applications, AI automation, branding, and performance marketing."
+  },
+  {
+    "slug": "shamapacksolutions",
+    "url": "https://www.shamapacksolutions.com",
+    "success": true,
+    "title": "Shama Pack Solutions",
+    "desc": ""
+  },
+  {
+    "slug": "dezcodesolutions",
+    "url": "https://www.dezcodesolutions.com",
+    "success": true,
+    "title": "DezCode Solutions | Official Site \u2014 dezcodesolutions.com",
+    "desc": "Official website of DezCode Solutions at dezcodesolutions.com \u2014 software development, website design, WordPress, Shopify, SEO, and digital marketing worldwide. Not affiliated with Dezcode Group."
+  },
+  {
+    "slug": "pakdelhisweets",
+    "url": "https://www.pakdelhisweets.com",
+    "success": true,
+    "title": "Pak Delhi Sweets \u2014 Premium Mithai, Cakes, Desserts & Gift Boxes",
+    "desc": "Order authentic mithai, cakes, bakery & gift boxes online. Choose weight from 250g. Freshly crafted Pak Delhi Sweets."
+  },
+  {
+    "slug": "olafox",
+    "url": "https://www.olafox.com",
+    "success": true,
+    "title": "OLA FOX - Branding Solutions",
+    "desc": "OLA FOX is a full-service creative agency specializing in digital marketing, branding, and web development. We help brands stand out."
+  }
+]
