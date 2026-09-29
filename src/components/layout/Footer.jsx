@@ -115,6 +115,17 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <a 
+                  href="/Impleway-KSA-Company-Profile.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#E50914] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>Company Profile</span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 bg-red-500/20 text-red-400 rounded border border-red-500/30">PDF</span>
+                </a>
+              </li>
+              <li>
                 <Link to="/portfolio" className="hover:text-[#E50914] transition-colors block">
                   Portfolio &amp; Case Studies
                 </Link>
