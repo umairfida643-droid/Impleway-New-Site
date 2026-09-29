@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowRight, Activity 
+  ArrowRight, Activity, ShieldCheck, CheckCircle2, TrendingUp, Zap, Server
 } from 'lucide-react';
 
 const TYPEWRITER_WORDS = [
@@ -12,34 +12,108 @@ const TYPEWRITER_WORDS = [
   "Cloud Migration"
 ];
 
+const generateSplinePath = (points, width = 420, height = 110) => {
+  if (!points || points.length === 0) return { path: "", area: "", coords: [] };
+  const coords = points.map((p, i) => {
+    const x = (i / (points.length - 1)) * (width - 24) + 12;
+    const y = height - 12 - ((p / 100) * (height - 28));
+    return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, val: p };
+  });
+
+  let path = `M ${coords[0].x} ${coords[0].y}`;
+  for (let i = 0; i < coords.length - 1; i++) {
+    const curr = coords[i];
+    const next = coords[i + 1];
+    const cpX = (curr.x + next.x) / 2;
+    path += ` C ${cpX} ${curr.y}, ${cpX} ${next.y}, ${next.x} ${next.y}`;
+  }
+
+  const last = coords[coords.length - 1];
+  const area = `${path} L ${last.x} ${height} L ${coords[0].x} ${height} Z`;
+
+  return { path, area, coords };
+};
+
 const MODULE_DATA = {
   Finance: {
-    metric1: "38%",
-    label1: "Faster Month-End Close",
+    tabLabel: "Finance & Tax",
+    title: "Finance & ZATCA Tax Compliance",
+    metric1: "38.6%",
+    label1: "Faster Financial Month-End Close",
+    badge1: "+14.2% MoM",
     metric2: "100%",
-    label2: "ZATCA Phase 2 Cleared",
-    bars: [45, 65, 80, 95, 70]
+    label2: "ZATCA Phase 2 Fatoora Clearance",
+    badge2: "ECDSA SHA-256",
+    telemetryTitle: "Real-Time Ledger Velocity",
+    telemetryRate: "4,820 tx/sec",
+    healthRate: "99.98% Optimal",
+    curvePoints: [35, 42, 58, 52, 68, 85, 74, 92, 88, 96, 91, 98],
+    liveLog: {
+      tag: "ZATCA CLEARANCE API",
+      color: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30",
+      text: "Invoice #INV-2026-9481 Cleared • QR Stamped (18ms)",
+      status: "PASS ✓"
+    }
   },
   Inventory: {
-    metric1: "99.4%",
-    label1: "Stock Accuracy",
-    metric2: "28%",
-    label2: "Lower Carrying Costs",
-    bars: [60, 75, 50, 90, 85]
+    tabLabel: "Inventory & WMS",
+    title: "Autonomous Multi-Hub Supply Chain",
+    metric1: "99.8%",
+    label1: "Multi-Warehouse Stock Accuracy",
+    badge1: "Zero Drift",
+    metric2: "28.4%",
+    label2: "Carrying Cost Reduction",
+    badge2: "FEFO Active",
+    telemetryTitle: "Autonomous Replenishment Velocity",
+    telemetryRate: "14,250 SKUs/min",
+    healthRate: "100% Synced",
+    curvePoints: [48, 55, 62, 70, 65, 82, 88, 80, 91, 87, 95, 99],
+    liveLog: {
+      tag: "WMS CLOUD",
+      color: "text-purple-400 bg-purple-500/15 border-purple-500/30",
+      text: "Jeddah Central Hub: 1,420 Pallets Reconciled via RFID",
+      status: "SYNCED ✓"
+    }
   },
   Sales: {
-    metric1: "42%",
-    label1: "Order Velocity Increase",
+    tabLabel: "Omnichannel",
+    title: "High-Velocity POS & B2B Portals",
+    metric1: "3.4x",
+    label1: "Order Processing Velocity",
+    badge1: "Sub-Second",
     metric2: "24/7",
-    label2: "Omnichannel Sync",
-    bars: [30, 55, 70, 85, 95]
+    label2: "Cross-Branch High Availability",
+    badge2: "99.99% Uptime",
+    telemetryTitle: "Live Regional GMV Stream",
+    telemetryRate: "SAR 1.84M/hr",
+    healthRate: "Zero Latency",
+    curvePoints: [28, 45, 52, 68, 75, 82, 79, 90, 86, 94, 91, 97],
+    liveLog: {
+      tag: "POS GATEWAY",
+      color: "text-blue-400 bg-blue-500/15 border-blue-500/30",
+      text: "Branch #14 (Riyadh): Mada & Apple Pay Settled",
+      status: "SETTLED ✓"
+    }
   },
   Ops: {
-    metric1: "0%",
-    label1: "Unplanned Shop Downtime",
-    metric2: "3.2x",
-    label2: "Workflow Efficiency",
-    bars: [70, 85, 90, 65, 98]
+    tabLabel: "Operations & AI",
+    title: "Manufacturing MES & Copilot Workflows",
+    metric1: "0.02%",
+    label1: "Unplanned Plant & Line Downtime",
+    badge1: "IoT Predictive",
+    metric2: "4.2x",
+    label2: "Autonomous Workflow Efficiency",
+    badge2: "Copilot AI Native",
+    telemetryTitle: "Industrial Equipment OEE Index",
+    telemetryRate: "94.8% Overall OEE",
+    healthRate: "Continuous",
+    curvePoints: [42, 50, 65, 72, 68, 84, 89, 85, 93, 90, 96, 100],
+    liveLog: {
+      tag: "COPILOT AI",
+      color: "text-red-400 bg-red-500/15 border-red-500/30",
+      text: "Automated Supply Chain Anomaly Resolved in 12s",
+      status: "RESOLVED ✓"
+    }
   }
 };
 
@@ -71,6 +145,7 @@ export const HeroSection = () => {
   }, [displayedText, isDeleting, wordIndex]);
 
   const currentMod = MODULE_DATA[activeModule];
+  const spline = useMemo(() => generateSplinePath(currentMod.curvePoints, 420, 110), [currentMod.curvePoints]);
 
   return (
     <section className="relative overflow-hidden bg-radial-hero text-white py-16 sm:py-24 lg:py-28">
@@ -215,80 +290,271 @@ export const HeroSection = () => {
 
           </div>
 
-          {/* Right Column: Interactive 3D Red Dashboard Card */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl bg-neutral-900/80 border border-white/15 p-6 sm:p-7 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-red-500/40">
-              
-              {/* Dashboard Window Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#E50914] animate-pulse"></span>
-                  <span className="w-3 h-3 rounded-full bg-[#E50914]/60"></span>
-                  <span className="w-3 h-3 rounded-full bg-[#E50914]/30"></span>
+          {/* Right Column: Interactive 3D Cyber-Enterprise Cockpit */}
+          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+            
+            {/* Ambient Cyber Neon Back-Glow */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-red-600/30 via-red-900/20 to-neutral-900/40 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+            {/* Floating Satellite Badge 1 (Top-Right): ZATCA Verification */}
+            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-emerald-500/40 shadow-xl backdrop-blur-xl animate-in fade-in slide-in-from-top-4 duration-500 hover:scale-105 transition-transform">
+              <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-[11px] font-black text-white flex items-center gap-1.5">
+                  <span>ZATCA Phase-2 Verified</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                 </div>
-                <div className="text-xs font-mono font-medium text-neutral-400 flex items-center gap-1.5">
-                  <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>LIVE ERP TELEMETRY</span>
+                <div className="text-[9.5px] font-mono text-emerald-400/90">
+                  Instant Clearance • 18ms
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Satellite Badge 2 (Bottom-Left): Multi-Cloud ERP Fabric */}
+            <div className="hidden sm:flex absolute -bottom-4 -left-4 z-20 items-center gap-3 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-red-500/30 shadow-xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-4 duration-500 hover:scale-105 transition-transform">
+              <div className="flex -space-x-1.5">
+                <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
+                  <img src="/logos/oracle-app-icon.png" alt="Oracle" className="w-full h-full object-contain" />
+                </div>
+                <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
+                  <img src="/logos/odoo-app-icon.png" alt="Odoo" className="w-full h-full object-contain" />
+                </div>
+                <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
+                  <img src="/logos/dynamics-app-icon.png" alt="Dynamics" className="w-full h-full object-contain" />
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] font-black text-white flex items-center gap-1">
+                  <span>Multi-Cloud ERP Fabric</span>
+                </div>
+                <div className="text-[9.5px] font-mono text-neutral-400">
+                  99.99% Live Sync • Riyadh
+                </div>
+              </div>
+            </div>
+
+            {/* Main Cockpit Hub Card */}
+            <div className="relative rounded-3xl bg-[#0B0F17]/95 border border-white/15 p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(229,9,20,0.15)] backdrop-blur-2xl transition-all duration-300 hover:border-red-500/50">
+              
+              {/* Window Bar Header */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-[#E50914] shadow-[0_0_8px_rgba(229,9,20,0.8)]"></span>
+                  <span className="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                  <span className="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+                  <span className="text-[10.5px] font-mono text-neutral-400 ml-1.5 hidden sm:inline">
+                    telemetry.sys/live
+                  </span>
+                </div>
+                <div className="text-[11px] font-mono font-bold text-neutral-300 flex items-center gap-2 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-emerald-400 tracking-wider">LIVE TELEMETRY</span>
+                  <span className="text-neutral-500">•</span>
+                  <span className="text-neutral-400 text-[10px]">KSA NODE</span>
                 </div>
               </div>
 
-              {/* Dynamic Interactive Metrics */}
-              <div className="grid grid-cols-2 gap-4 mb-5">
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 transition-all">
-                  <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              {/* Dynamic Interactive Metrics (2 Cards) */}
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 rounded-2xl p-3.5 transition-all hover:border-white/20">
+                  <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                    <span className="truncate">{currentMod.tabLabel}</span>
+                    <span className="text-[9.5px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded">
+                      {currentMod.badge1}
+                    </span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                     {currentMod.metric1}
                   </div>
-                  <div className="text-xs font-semibold text-neutral-400 mt-1">
+                  <div className="text-[11px] font-medium text-neutral-400 mt-1 leading-tight line-clamp-1">
                     {currentMod.label1}
                   </div>
                 </div>
 
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 transition-all">
-                  <div className="text-3xl sm:text-4xl font-black text-[#E50914] tracking-tight">
+                <div className="bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 rounded-2xl p-3.5 transition-all hover:border-red-500/30">
+                  <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-1">
+                    <span className="truncate">Compliance</span>
+                    <span className="text-[9.5px] font-bold text-red-400 bg-red-500/10 border border-red-500/20 px-1.5 py-0.5 rounded">
+                      {currentMod.badge2}
+                    </span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#E50914] tracking-tight drop-shadow-[0_0_12px_rgba(229,9,20,0.4)]">
                     {currentMod.metric2}
                   </div>
-                  <div className="text-xs font-semibold text-neutral-400 mt-1">
+                  <div className="text-[11px] font-medium text-neutral-400 mt-1 leading-tight line-clamp-1">
                     {currentMod.label2}
                   </div>
                 </div>
               </div>
 
-              {/* Dynamic Animated Activity Bars */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-5">
-                <div className="flex items-center justify-between text-xs text-neutral-400 mb-3">
-                  <span>Resource Utilization Index</span>
-                  <span className="text-emerald-400 font-mono">99.8% Optimal</span>
+              {/* Advanced SVG Spline & Telemetry Equalizer Chart */}
+              <div className="bg-gradient-to-b from-black/60 to-black/30 border border-white/10 rounded-2xl p-3.5 mb-4 relative overflow-hidden">
+                
+                {/* Header row inside chart */}
+                <div className="flex items-center justify-between text-xs text-neutral-400 mb-2">
+                  <div className="flex items-center gap-1.5">
+                    <Activity className="w-3.5 h-3.5 text-[#E50914]" />
+                    <span className="font-semibold text-neutral-300 text-[11.5px]">{currentMod.telemetryTitle}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono font-bold text-white bg-white/10 px-2 py-0.5 rounded-md">
+                      {currentMod.telemetryRate}
+                    </span>
+                    <span className="text-emerald-400 font-mono text-[10.5px]">
+                      {currentMod.healthRate}
+                    </span>
+                  </div>
                 </div>
-                <div className="h-24 flex items-end justify-between gap-3 px-2">
-                  {currentMod.bars.map((height, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+
+                {/* SVG Visualizer Container */}
+                <div className="relative h-28 w-full">
+                  
+                  {/* Subtle Grid Guidelines */}
+                  <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+                    <div className="w-full border-b border-white/30 border-dashed"></div>
+                    <div className="w-full border-b border-white/30 border-dashed"></div>
+                    <div className="w-full border-b border-white/30 border-dashed"></div>
+                    <div className="w-full border-b border-white/30"></div>
+                  </div>
+
+                  {/* Slim Equalizer Bar Columns behind the spline */}
+                  <div className="absolute inset-0 flex items-end justify-between px-3 pointer-events-none">
+                    {currentMod.curvePoints.map((val, idx) => (
                       <div 
-                        className="w-full rounded-t-lg bg-gradient-to-t from-[#E50914] to-red-400 transition-all duration-500 ease-out shadow-lg shadow-red-600/30"
-                        style={{ height: `${height}%` }}
-                      ></div>
-                      <span className="text-[10px] text-neutral-500 font-mono">P{i + 1}</span>
-                    </div>
-                  ))}
+                        key={idx}
+                        className="w-1.5 sm:w-2 rounded-t-full bg-gradient-to-t from-red-600/30 to-red-400/50 transition-all duration-500 ease-out"
+                        style={{ height: `${val}%` }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* SVG Spline Curve & Neon Area Fill */}
+                  <svg 
+                    viewBox="0 0 420 110" 
+                    preserveAspectRatio="none" 
+                    className="absolute inset-0 w-full h-full overflow-visible"
+                  >
+                    <defs>
+                      {/* Gradient for Area Fill */}
+                      <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#E50914" stopOpacity="0.45" />
+                        <stop offset="60%" stopColor="#E50914" stopOpacity="0.1" />
+                        <stop offset="100%" stopColor="#E50914" stopOpacity="0" />
+                      </linearGradient>
+
+                      {/* Gradient for Line Stroke */}
+                      <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#FF6B72" />
+                        <stop offset="50%" stopColor="#E50914" />
+                        <stop offset="100%" stopColor="#FFFFFF" />
+                      </linearGradient>
+
+                      {/* Glow Filter */}
+                      <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#E50914" floodOpacity="0.8" />
+                      </filter>
+                    </defs>
+
+                    {/* Area Fill */}
+                    {spline.area && (
+                      <path 
+                        d={spline.area} 
+                        fill="url(#areaGradient)" 
+                        className="transition-all duration-700 ease-out"
+                      />
+                    )}
+
+                    {/* Neon Spline Path */}
+                    {spline.path && (
+                      <path 
+                        d={spline.path} 
+                        fill="none" 
+                        stroke="url(#lineGradient)" 
+                        strokeWidth="2.5" 
+                        filter="url(#neonGlow)"
+                        className="transition-all duration-700 ease-out"
+                      />
+                    )}
+
+                    {/* Active Peak Beacon */}
+                    {spline.coords.length > 0 && (
+                      <g className="transition-all duration-700 ease-out">
+                        <circle 
+                          cx={spline.coords[spline.coords.length - 1].x} 
+                          cy={spline.coords[spline.coords.length - 1].y} 
+                          r="6" 
+                          fill="#E50914" 
+                          className="animate-ping"
+                          opacity="0.75"
+                        />
+                        <circle 
+                          cx={spline.coords[spline.coords.length - 1].x} 
+                          cy={spline.coords[spline.coords.length - 1].y} 
+                          r="4" 
+                          fill="#FFFFFF" 
+                          stroke="#E50914" 
+                          strokeWidth="2"
+                        />
+                      </g>
+                    )}
+                  </svg>
+
+                  {/* Floating Micro Tooltip at Peak */}
+                  <div className="absolute top-1 right-2 bg-neutral-900/90 border border-red-500/40 px-2 py-0.5 rounded-full text-[9px] font-mono text-white flex items-center gap-1 shadow-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span>
+                    <span>Peak Throughput</span>
+                  </div>
+
                 </div>
+
+                {/* Timeline axis labels */}
+                <div className="flex items-center justify-between text-[9.5px] font-mono text-neutral-500 mt-2 px-1">
+                  <span>00:00</span>
+                  <span>04:00</span>
+                  <span>08:00</span>
+                  <span>12:00</span>
+                  <span>16:00</span>
+                  <span>20:00</span>
+                  <span className="text-emerald-400 font-bold">LIVE NOW</span>
+                </div>
+
+                {/* Cryptographic Event Log Ticker */}
+                <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[10.5px] font-mono">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold border uppercase flex-shrink-0 ${currentMod.liveLog.color}`}>
+                      {currentMod.liveLog.tag}
+                    </span>
+                    <span className="text-neutral-300 truncate">
+                      {currentMod.liveLog.text}
+                    </span>
+                  </div>
+                  <span className="text-emerald-400 font-bold flex-shrink-0 ml-2">
+                    {currentMod.liveLog.status}
+                  </span>
+                </div>
+
               </div>
 
-              {/* Interactive Pipeline Module Selector */}
+              {/* Business Stream Tabs (Selector) */}
               <div>
-                <div className="text-[11px] uppercase font-bold text-neutral-400 tracking-wider mb-2">
-                  Select Business Stream:
+                <div className="flex items-center justify-between text-[10.5px] uppercase font-bold text-neutral-400 tracking-wider mb-2">
+                  <span>Active Architecture Stream:</span>
+                  <span className="text-[#E50914] font-semibold text-[10px] lowercase font-sans">click to switch view</span>
                 </div>
-                <div className="grid grid-cols-4 gap-1.5 bg-black/40 p-1.5 rounded-xl border border-white/10">
+                <div className="grid grid-cols-4 gap-1.5 bg-black/50 p-1.5 rounded-2xl border border-white/10">
                   {Object.keys(MODULE_DATA).map((mod) => (
                     <button
                       key={mod}
                       onClick={() => setActiveModule(mod)}
-                      className={`py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                      className={`py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
                         activeModule === mod 
-                          ? 'bg-gradient-to-r from-[#E50914] to-[#9F0712] text-white shadow-md' 
+                          ? 'bg-gradient-to-r from-[#E50914] to-[#9F0712] text-white shadow-lg shadow-red-600/30 border border-red-400/40 scale-[1.02]' 
                           : 'text-neutral-400 hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      {mod}
+                      {MODULE_DATA[mod].tabLabel}
                     </button>
                   ))}
                 </div>
