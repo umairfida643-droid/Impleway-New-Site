@@ -203,7 +203,7 @@ export const HeroSection = () => {
             <div className="flex items-center gap-5 sm:gap-7 pb-1">
               <img 
                 src="/logos/zatca-logo.svg" 
-                alt="ZATCA Official" 
+                alt="ZATCA logo — Saudi Zakat, Tax and Customs Authority" 
                 width="140"
                 height="44"
                 loading="eager"
@@ -214,7 +214,7 @@ export const HeroSection = () => {
               <div className="h-8 w-px bg-white/20"></div>
               <img 
                 src="/logos/saudi-vision-2030.svg" 
-                alt="Saudi Vision 2030" 
+                alt="Saudi Vision 2030 logo" 
                 width="140"
                 height="44"
                 loading="eager"
@@ -282,13 +282,13 @@ export const HeroSection = () => {
 
                 {/* 2. Odoo */}
                 <Link 
-                  to="/odoo-erp-services"
+                  to="/odoo-erp-services" 
                   className="flex items-center opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
                   title="Odoo ERP Solutions"
                 >
                   <img 
                     src="/logos/odoo-official.svg" 
-                    alt="odoo" 
+                    alt="Odoo official logo" 
                     width="60"
                     height="20"
                     loading="eager"
@@ -299,7 +299,7 @@ export const HeroSection = () => {
 
                 {/* 3. SAP Business One */}
                 <Link 
-                  to="/services"
+                  to="/services" 
                   className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
                   title="SAP Business One ERP"
                 >
@@ -315,7 +315,7 @@ export const HeroSection = () => {
 
                 {/* 4. Dynamics 365 */}
                 <Link 
-                  to="/dynamics-365-services"
+                  to="/dynamics-365-services" 
                   className="flex items-center gap-1.5 opacity-85 hover:opacity-100 transition-all hover:scale-105 group"
                   title="Microsoft Dynamics 365"
                 >
@@ -365,13 +365,13 @@ export const HeroSection = () => {
             <div className="hidden sm:flex absolute -bottom-4 -left-4 z-20 items-center gap-3 px-3.5 py-2 rounded-2xl bg-[#0E1520]/95 border border-red-500/30 shadow-xl backdrop-blur-xl animate-float-hud-delay hover:scale-105 transition-transform">
               <div className="flex -space-x-1.5">
                 <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
-                  <img src="/logos/oracle-app-icon.png" alt="Oracle" className="w-full h-full object-contain" />
+                  <img src="/logos/oracle-app-icon.png" alt="Oracle logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
-                  <img src="/logos/odoo-app-icon.png" alt="Odoo" className="w-full h-full object-contain" />
+                  <img src="/logos/odoo-app-icon.png" alt="Odoo logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="w-6 h-6 rounded-lg overflow-hidden border border-white/20 shadow-xs">
-                  <img src="/logos/dynamics-app-icon.png" alt="Dynamics" className="w-full h-full object-contain" />
+                  <img src="/logos/dynamics-app-icon.png" alt="Microsoft Dynamics 365 logo" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div>

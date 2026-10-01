@@ -7,7 +7,7 @@ import { BrandLogo } from '../ui/BrandLogo';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#050505] text-[#e5e5e5] pt-16 pb-0 border-t border-neutral-900 relative overflow-hidden">
+    <footer className="bg-[#050505] text-[#e5e5e5] pt-16 pb-16 sm:pb-20 border-t border-neutral-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid: 5 Separate Columns */}
@@ -27,7 +27,7 @@ export const Footer = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-emerald-500/50 transition-colors">
                 <img 
                   src="/logos/zatca-logo.svg" 
-                  alt="Official ZATCA Logo" 
+                  alt="ZATCA logo — Saudi Zakat, Tax and Customs Authority" 
                   className="h-5 w-auto object-contain brightness-0 invert opacity-95" 
                 />
                 <span className="text-[11px] font-bold text-neutral-300">Phase 2 Certified</span>
@@ -35,7 +35,7 @@ export const Footer = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-emerald-500/50 transition-colors">
                 <img 
                   src="/logos/saudi-vision-2030.svg" 
-                  alt="Official Saudi Vision 2030 Logo" 
+                  alt="Saudi Vision 2030 logo" 
                   className="h-5 w-auto object-contain brightness-0 invert opacity-95" 
                 />
                 <span className="text-[11px] font-bold text-neutral-300">Vision 2030</span>
@@ -145,12 +145,6 @@ export const Footer = () => {
                   Contact Us
                 </Link>
               </li>
-              <li>
-                <Link to="/sitemap" className="hover:text-[#E50914] transition-colors flex items-center gap-1.5 text-neutral-400">
-                  <span>Sitemap</span>
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 bg-neutral-800 text-neutral-300 rounded border border-neutral-700">INDEX</span>
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -235,8 +229,8 @@ export const Footer = () => {
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <Link to="/sitemap" className="hover:text-white text-neutral-300 font-semibold transition-colors">Sitemap</Link>
-            <Link to="/about" className="hover:text-neutral-300 transition-colors">Privacy Policy</Link>
-            <Link to="/about" className="hover:text-neutral-300 transition-colors">Terms of Service</Link>
+            <Link to="/contact" className="hover:text-neutral-300 transition-colors">Privacy Policy</Link>
+            <Link to="/contact" className="hover:text-neutral-300 transition-colors">Terms of Service</Link>
             <Link to="/contact" className="hover:text-neutral-300 transition-colors">Support SLA</Link>
           </div>
         </div>

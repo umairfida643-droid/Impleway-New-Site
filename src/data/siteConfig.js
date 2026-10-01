@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Impleway",
-  tagline: "Simplify, Implementation.",
+  tagline: "Simplify Implementation.",
   subtitle: "Enterprise ERP & Digital Transformation Partner",
   description: "Impleway delivers enterprise-grade ERP consulting, seamless implementation, data migration, and cloud IT solutions for forward-thinking businesses across the Kingdom of Saudi Arabia and international markets.",
   domain: "https://impleway.com",

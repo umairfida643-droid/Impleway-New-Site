@@ -17,7 +17,7 @@ export const HomePage = () => {
   return (
     <>
       <SEO 
-        title="Simplify, Implementation | Enterprise ERP & IT Transformation Partner"
+        title="Impleway – Simplify Implementation | Enterprise ERP & IT"
         description="Impleway provides certified enterprise ERP consulting, implementation, data migration, and ZATCA compliance across Oracle Cloud, Odoo, and Microsoft Dynamics 365 in Saudi Arabia and global markets."
       />
       <div className="flex flex-col">

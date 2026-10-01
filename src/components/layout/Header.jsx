@@ -22,7 +22,17 @@ export const Header = () => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
     setPlatformsDropdownOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -124,14 +134,14 @@ export const Header = () => {
               <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 border border-white/10" title="ZATCA Phase-2 Certified">
                 <img 
                   src="/logos/zatca-logo.svg" 
-                  alt="ZATCA Official" 
+                  alt="ZATCA logo — Saudi Zakat, Tax and Customs Authority" 
                   className="h-3.5 w-auto object-contain brightness-0 invert opacity-95" 
                 />
               </div>
               <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 border border-white/10" title="Saudi Vision 2030 Partner">
                 <img 
                   src="/logos/saudi-vision-2030.svg" 
-                  alt="Saudi Vision 2030 Official" 
+                  alt="Saudi Vision 2030 logo" 
                   className="h-3.5 w-auto object-contain brightness-0 invert opacity-95" 
                 />
               </div>
@@ -296,7 +306,7 @@ export const Header = () => {
                         <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-xs flex-shrink-0 group-hover/p:scale-105 transition-transform bg-white border border-neutral-100">
                           <img 
                             src="/logos/oracle-app-icon.png" 
-                            alt="Oracle ERP Cloud Logo" 
+                            alt="Oracle logo" 
                             className="w-full h-full object-contain"
                           />
                         </div>
@@ -332,7 +342,7 @@ export const Header = () => {
                         <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-xs flex-shrink-0 group-hover/p:scale-105 transition-transform bg-white border border-neutral-100">
                           <img 
                             src="/logos/odoo-app-icon.png" 
-                            alt="Official Odoo Logo" 
+                            alt="Odoo logo" 
                             className="w-full h-full object-contain"
                           />
                         </div>
@@ -368,7 +378,7 @@ export const Header = () => {
                         <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-xs flex-shrink-0 group-hover/p:scale-105 transition-transform bg-white border border-neutral-100">
                           <img 
                             src="/logos/dynamics-app-icon.png" 
-                            alt="Microsoft Dynamics 365 Logo" 
+                            alt="Microsoft Dynamics 365 logo" 
                             className="w-full h-full object-contain"
                           />
                         </div>
@@ -525,12 +535,12 @@ export const Header = () => {
       {mobileMenuOpen && (
         <div className="xl:hidden bg-white border-b border-[#e7e7e7] shadow-xl px-5 py-6 max-h-[85vh] overflow-y-auto space-y-4">
           <div className="space-y-1 border-b border-[#e7e7e7] pb-4">
-            <Link to="/" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Home</Link>
-            <Link to="/about" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">About Us</Link>
-            <Link to="/portfolio" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Portfolio & Case Studies</Link>
-            <Link to="/industries" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Industries Served</Link>
-            <Link to="/blog" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Insights & Blog</Link>
-            <Link to="/contact" className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Contact Us</Link>
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Home</Link>
+            <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">About Us</Link>
+            <Link to="/portfolio" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Portfolio & Case Studies</Link>
+            <Link to="/industries" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Industries Served</Link>
+            <Link to="/blog" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Insights & Blog</Link>
+            <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-base font-bold text-[#111111] hover:text-[#E50914]">Contact Us</Link>
           </div>
 
           {/* Platforms in Mobile Drawer with Official Brand Icons */}
@@ -540,9 +550,9 @@ export const Header = () => {
               <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">ZATCA Ready</span>
             </div>
             <div className="space-y-2 pt-1">
-              <Link to="/oracle-erp-services" className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-red-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+              <Link to="/oracle-erp-services" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-red-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
                 <div className="w-9 h-9 rounded-xl overflow-hidden shadow-xs flex-shrink-0 bg-white border border-neutral-200/80">
-                  <img src="/logos/oracle-app-icon.png" alt="Oracle ERP Cloud" className="w-full h-full object-contain" />
+                  <img src="/logos/oracle-app-icon.png" alt="Oracle logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between">
@@ -553,9 +563,9 @@ export const Header = () => {
                 </div>
               </Link>
 
-              <Link to="/odoo-erp-services" className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-purple-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+              <Link to="/odoo-erp-services" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-purple-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
                 <div className="w-9 h-9 rounded-xl overflow-hidden shadow-xs flex-shrink-0 bg-white border border-neutral-200/80">
-                  <img src="/logos/odoo-app-icon.png" alt="Odoo ERP Solutions" className="w-full h-full object-contain" />
+                  <img src="/logos/odoo-app-icon.png" alt="Odoo logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between">
@@ -566,9 +576,9 @@ export const Header = () => {
                 </div>
               </Link>
 
-              <Link to="/dynamics-365-services" className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-blue-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
+              <Link to="/dynamics-365-services" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-50 hover:bg-blue-50 text-sm font-bold text-neutral-800 hover:text-[#E50914] transition-colors">
                 <div className="w-9 h-9 rounded-xl overflow-hidden shadow-xs flex-shrink-0 bg-white border border-neutral-200/80">
-                  <img src="/logos/dynamics-app-icon.png" alt="Microsoft Dynamics 365" className="w-full h-full object-contain" />
+                  <img src="/logos/dynamics-app-icon.png" alt="Microsoft Dynamics 365 logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between">
@@ -599,6 +609,7 @@ export const Header = () => {
                 <Link 
                   key={sIdx}
                   to={service.path} 
+                  onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-red-50 text-sm font-semibold text-neutral-700 hover:text-[#E50914] transition-colors"
                 >
                   <div className="w-6 h-6 rounded-md bg-red-50 text-[#E50914] flex items-center justify-center flex-shrink-0">
@@ -609,7 +620,7 @@ export const Header = () => {
               ))}
             </div>
             <div className="pt-2">
-              <Link to="/services" className="text-xs font-bold text-[#E50914] hover:underline flex items-center gap-1">
+              <Link to="/services" onClick={() => setMobileMenuOpen(false)} className="text-xs font-bold text-[#E50914] hover:underline flex items-center gap-1">
                 View All Services <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -619,6 +630,7 @@ export const Header = () => {
           <div className="space-y-3 pt-2">
             <Link 
               to="/book-free-consultation"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full inline-flex items-center justify-center py-3 rounded-xl font-bold text-white bg-gradient-to-r from-[#E50914] to-[#9F0712] text-sm shadow-md"
             >
               Book Free Consultation

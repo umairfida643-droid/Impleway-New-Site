@@ -4,11 +4,14 @@ import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
 import { projectsData } from '../data/projectsData';
+import { getProjectCoverAlt, getProjectLogoAlt } from '../data/altTexts';
 import { 
   ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, 
   Calendar, User, Clock, Layers, Sparkles, Building2,
   Globe, ExternalLink, Quote, Cpu, Award, BarChart3, Check
 } from 'lucide-react';
+
+import { NotFoundPage } from './NotFoundPage';
 
 export const ProjectDetailPage = () => {
   const { slug } = useParams();
@@ -16,7 +19,7 @@ export const ProjectDetailPage = () => {
   const project = projectsData[projectIndex];
 
   if (!project) {
-    return <Navigate to="/portfolio" replace />;
+    return <NotFoundPage />;
   }
 
   // Next and Previous projects for seamless case study navigation
@@ -49,7 +52,7 @@ export const ProjectDetailPage = () => {
               <div className="flex flex-wrap items-center gap-2.5">
                 {project.logo && (
                   <div className="w-9 h-9 rounded-xl bg-white p-1 flex items-center justify-center shadow-md">
-                    <img src={project.logo} alt={project.title} className="w-full h-full object-contain" />
+                    <img src={project.logo} alt={getProjectLogoAlt(project.slug, project.title)} className="w-full h-full object-contain" />
                   </div>
                 )}
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 text-xs font-black uppercase tracking-wider">
@@ -118,7 +121,7 @@ export const ProjectDetailPage = () => {
           <div className="rounded-3xl overflow-hidden border border-neutral-200 shadow-2xl bg-[#FAFAFA]">
             <img 
               src={project.image || `/projects/covers/${project.slug}.png`} 
-              alt={`${project.title} 3D Laptop Mockup Presentation`}
+              alt={getProjectCoverAlt(project.slug, project.title)}
               className="w-full h-auto object-cover"
             />
           </div>
@@ -248,7 +251,7 @@ export const ProjectDetailPage = () => {
               </blockquote>
               <div className="pt-2 flex items-center gap-3">
                 {project.logo && (
-                  <img src={project.logo} alt={project.title} className="w-8 h-8 rounded-lg object-contain bg-white border border-neutral-200 p-0.5" />
+                  <img src={project.logo} alt={getProjectLogoAlt(project.slug, project.title)} className="w-8 h-8 rounded-lg object-contain bg-white border border-neutral-200 p-0.5" />
                 )}
                 <div>
                   <div className="font-extrabold text-sm text-[#111111]">{project.client}</div>

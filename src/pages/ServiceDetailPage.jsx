@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { ServiceIcon } from '../components/ui/ServiceIcon';
 import { ServiceTechStack } from '../components/services/ServiceTechStack';
+import { NotFoundPage } from './NotFoundPage';
 
 export const ServiceDetailPage = () => {
   const { slug } = useParams();
@@ -18,7 +19,7 @@ export const ServiceDetailPage = () => {
   const service = servicesData.find(s => s.slug === slug);
 
   if (!service) {
-    return <Navigate to="/services" replace />;
+    return <NotFoundPage />;
   }
 
   // Related services objects
@@ -26,11 +27,25 @@ export const ServiceDetailPage = () => {
     .map(relSlug => servicesData.find(s => s.slug === relSlug))
     .filter(Boolean);
 
+  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <>
       <SEO 
-        title={`${service.title} | Impleway`}
+        title={service.title}
         description={service.metaDescription}
+        schema={faqSchema}
       />
 
       {/* 1. Service Hero */}

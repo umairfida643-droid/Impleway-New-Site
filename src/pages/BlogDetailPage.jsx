@@ -1,21 +1,23 @@
-import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
 import { blogsData } from '../data/blogsData';
+import { getBlogCoverAlt } from '../data/altTexts';
 import { siteConfig } from '../data/siteConfig';
 import { 
   Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, 
   MessageSquare, Phone, BookOpen, Layers, CheckCircle2 
 } from 'lucide-react';
+import { NotFoundPage } from './NotFoundPage';
 
 export const BlogDetailPage = () => {
   const { slug } = useParams();
   const blog = blogsData.find(b => b.slug === slug);
 
   if (!blog) {
-    return <Navigate to="/blog" replace />;
+    return <NotFoundPage />;
   }
 
   // Related articles
@@ -23,13 +25,35 @@ export const BlogDetailPage = () => {
     .filter(b => b.slug !== slug && (b.category === blog.category || Math.random() > 0.5))
     .slice(0, 3);
 
+  // Extract FAQs from blog.contentHtml if present matching visible Q&A text exactly
+  const faqSchema = useMemo(() => {
+    if (!blog.contentHtml || !blog.contentHtml.includes('Frequently Asked Questions')) return null;
+    const faqSection = blog.contentHtml.split(/id=["']faqs["']/i)[1];
+    if (!faqSection) return null;
+    const matches = [...faqSection.matchAll(/<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gis)];
+    if (!matches.length) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": matches.map(m => ({
+        "@type": "Question",
+        "name": m[1].replace(/<[^>]+>/g, '').trim(),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": m[2].replace(/<[^>]+>/g, '').trim()
+        }
+      }))
+    };
+  }, [blog.contentHtml]);
+
   return (
     <>
       <SEO 
-        title={`${blog.title} | Impleway Insights`}
+        title={blog.title}
         description={blog.metaDescription || blog.excerpt}
         ogType="article"
         ogImage={blog.featuredImage}
+        schema={faqSchema}
       />
 
       {/* Hero Header */}
@@ -91,7 +115,7 @@ export const BlogDetailPage = () => {
                 <div className="rounded-3xl overflow-hidden border border-[#e7e7e7] shadow-lg max-h-[460px] w-full bg-neutral-100">
                   <img 
                     src={blog.featuredImage} 
-                    alt={blog.title} 
+                    alt={getBlogCoverAlt(blog.featuredImage, blog.title)} 
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover"
@@ -108,7 +132,7 @@ export const BlogDetailPage = () => {
               {/* Author Footer Bio */}
               <div className="mt-14 p-8 rounded-3xl bg-[#F6F6F6] border border-[#e7e7e7] flex flex-col sm:flex-row items-center sm:items-start gap-5">
                 <div className="w-14 h-14 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
-                  <img src="/favicon.png" alt="Impleway" className="w-full h-full object-cover" />
+                  <img src="/favicon.png" alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="space-y-2 text-center sm:text-left">
                   <h4 className="font-extrabold text-base text-[#111111]">{blog.author}</h4>

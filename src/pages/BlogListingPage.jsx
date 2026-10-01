@@ -4,6 +4,7 @@ import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
 import { blogsData } from '../data/blogsData';
+import { getBlogCoverAlt } from '../data/altTexts';
 import { Search, Calendar, Clock, ArrowRight, User, Sparkles, BookOpen } from 'lucide-react';
 
 const POSTS_PER_PAGE = 12;
@@ -131,7 +132,7 @@ export const BlogListingPage = () => {
                 <div className="relative h-52 w-full overflow-hidden bg-neutral-100">
                   <img 
                     src={blog.featuredImage} 
-                    alt={blog.title} 
+                    alt={getBlogCoverAlt(blog.featuredImage, blog.title)} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
@@ -177,7 +178,7 @@ export const BlogListingPage = () => {
                     <div className="flex items-center gap-2">
                       <img 
                         src="/favicon.png" 
-                        alt="Impleway" 
+                        alt="" 
                         className="w-7 h-7 rounded-full object-contain flex-shrink-0 shadow-xs" 
                       />
                       <span className="text-xs font-bold text-neutral-700">

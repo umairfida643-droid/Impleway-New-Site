@@ -1,5 +1,48 @@
 {
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "impleway.vercel.app"
+        }
+      ],
+      "destination": "https://impleway.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.impleway.com"
+        }
+      ],
+      "destination": "https://impleway.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/book-free-consultation",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/services", "destination": "/index.html" },
+    { "source": "/industries", "destination": "/index.html" },
+    { "source": "/portfolio", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/sitemap", "destination": "/index.html" },
+    { "source": "/oracle-erp-services", "destination": "/index.html" },
+    { "source": "/odoo-erp-services", "destination": "/index.html" },
+    { "source": "/dynamics-365-services", "destination": "/index.html" },
+    { "source": "/project/:slug", "destination": "/index.html" },
+    { "source": "/blog", "destination": "/index.html" },
+    { "source": "/blog/:slug", "destination": "/index.html" },
+    { "source": "/:slug(ai-automation-solutions|cloud-solutions|custom-software-development|custom-website|cyber-security|data-migration|digital-marketing|ecommerce-development|erp-consulting|erp-customization|erp-implementation|erp-integration|erp-migration|it-support-maintenance|managed-support|mobile-app-development|seo-services|ui-ux-design|user-training|web-development|wordpress-development)", "destination": "/index.html" }
   ]
 }

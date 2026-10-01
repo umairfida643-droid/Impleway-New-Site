@@ -130,7 +130,7 @@ export const ServicesPage = () => {
                     {service.keyFocusAreas.slice(0, 3).map((area, aIdx) => (
                       <div key={aIdx} className="flex items-center gap-2 text-xs font-semibold text-neutral-700">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#E50914] flex-shrink-0" />
-                        <span className="truncate">{area}</span>
+                        <span className="line-clamp-1 break-words">{area}</span>
                       </div>
                     ))}
                   </div>

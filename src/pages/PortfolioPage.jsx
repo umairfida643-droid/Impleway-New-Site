@@ -4,6 +4,7 @@ import { SEO } from '../components/ui/SEO';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { CTABanner } from '../components/home/CTABanner';
 import { projectsData } from '../data/projectsData';
+import { getProjectCoverAlt, getProjectLogoAlt } from '../data/altTexts';
 import { 
   ArrowRight, ExternalLink, Calendar, User, Clock, 
   Layers, Sparkles, CheckCircle2, TrendingUp, Globe
@@ -78,7 +79,7 @@ export const PortfolioPage = () => {
                   {proj.logo && (
                     <img 
                       src={proj.logo} 
-                      alt={proj.title} 
+                      alt={getProjectLogoAlt(proj.slug, proj.title)} 
                       className="w-7 h-7 rounded-lg object-contain bg-white border border-neutral-200 p-0.5 shadow-xs grayscale group-hover/logo:grayscale-0 transition-all duration-300"
                     />
                   )}
@@ -128,7 +129,7 @@ export const PortfolioPage = () => {
                   <Link to={`/project/${project.slug}`} className="block overflow-hidden">
                     <img 
                       src={project.image || `/projects/covers/${project.slug}.png`} 
-                      alt={`${project.title} 3D Mockup Cover`}
+                      alt={getProjectCoverAlt(project.slug, project.title)}
                       loading="lazy"
                       className="w-full h-auto object-cover transform group-hover:scale-[1.03] transition-transform duration-500"
                     />
@@ -153,7 +154,7 @@ export const PortfolioPage = () => {
                     <div className="flex items-center gap-3">
                       {project.logo && (
                         <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 p-1 flex items-center justify-center shadow-xs flex-shrink-0">
-                          <img src={project.logo} alt={project.title} className="w-full h-full object-contain" />
+                          <img src={project.logo} alt={getProjectLogoAlt(project.slug, project.title)} className="w-full h-full object-contain" />
                         </div>
                       )}
                       <div>

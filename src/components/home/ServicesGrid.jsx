@@ -78,8 +78,8 @@ export const ServicesGrid = () => {
                 <div className="space-y-1.5 pt-2 border-t border-neutral-100">
                   {service.keyFocusAreas.slice(0, 2).map((item, pIdx) => (
                     <div key={pIdx} className="flex items-center gap-2 text-[11px] font-semibold text-neutral-600">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E50914]"></span>
-                      <span className="truncate">{item}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] flex-shrink-0"></span>
+                      <span className="line-clamp-1 break-words">{item}</span>
                     </div>
                   ))}
                 </div>

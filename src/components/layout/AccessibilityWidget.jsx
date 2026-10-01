@@ -107,7 +107,7 @@ export const AccessibilityWidget = () => {
           role="dialog"
           aria-modal="false"
           aria-label="Accessibility Options"
-          className="fixed bottom-[154px] sm:bottom-[172px] left-6 z-50 w-[300px] sm:w-[330px] bg-white rounded-3xl shadow-2xl border border-neutral-200/90 p-5 text-[#111111] animate-in fade-in slide-in-from-bottom-3 duration-200"
+          className="fixed bottom-[150px] sm:bottom-[172px] left-3 sm:left-4 2xl:left-[calc((100vw-1280px)/2-84px)] z-50 w-[300px] sm:w-[330px] bg-white rounded-3xl shadow-2xl border border-neutral-200/90 p-5 text-[#111111] animate-in fade-in slide-in-from-bottom-3 duration-200"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-neutral-100 pb-3 mb-4">
@@ -241,7 +241,7 @@ export const AccessibilityWidget = () => {
       )}
 
       {/* 2. Floating Trigger Button (Always fixed at bottom-left directly above Profile button) */}
-      <div className="fixed bottom-[88px] sm:bottom-[100px] left-6 z-50">
+      <div className="fixed bottom-[84px] sm:bottom-[100px] left-3 sm:left-4 2xl:left-[calc((100vw-1280px)/2-84px)] z-50">
         <button
           type="button"
           onClick={() => setIsOpen(prev => !prev)}

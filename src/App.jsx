@@ -1,12 +1,10 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { PageLoader } from './components/ui/PageLoader';
 
-// Core Landing Page - loaded eagerly for instant FCP (First Contentful Paint)
-import { HomePage } from './pages/HomePage';
-
-// Route-level Code Splitting for secondary pages & heavy data engines
+// Route-level Code Splitting for all pages
+const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
 const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
@@ -17,7 +15,6 @@ const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(m 
 const BlogListingPage = lazy(() => import('./pages/BlogListingPage').then(m => ({ default: m.BlogListingPage })));
 const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage').then(m => ({ default: m.BlogDetailPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
-const BookConsultationPage = lazy(() => import('./pages/BookConsultationPage').then(m => ({ default: m.BookConsultationPage })));
 const SitemapPage = lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
@@ -48,7 +45,7 @@ export default function App() {
 
             {/* Contact & Consultation */}
             <Route path="contact" element={<ContactPage />} />
-            <Route path="book-free-consultation" element={<BookConsultationPage />} />
+            <Route path="book-free-consultation" element={<Navigate to="/contact" replace />} />
             
             {/* Detailed Architecture Sitemap */}
             <Route path="sitemap" element={<SitemapPage />} />

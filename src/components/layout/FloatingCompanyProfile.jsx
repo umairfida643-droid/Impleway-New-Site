@@ -5,8 +5,7 @@ export const FloatingCompanyProfile = () => {
   return (
     <aside 
       aria-label="Enterprise Company Profile"
-      className="fixed bottom-6 left-6 z-40 select-none flex items-center"
-      style={{ position: 'fixed', bottom: '24px', left: '24px', zIndex: 40 }}
+      className="fixed bottom-4 left-3 sm:bottom-6 sm:left-4 2xl:left-[calc((100vw-1280px)/2-84px)] z-40 select-none flex items-center"
     >
       <a
         href="/Impleway-KSA-Company-Profile_compressed.pdf"

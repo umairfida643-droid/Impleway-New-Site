@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { blogsData } from '../../data/blogsData';
+import { getBlogCoverAlt } from '../../data/altTexts';
 import { ArrowRight, Clock, Calendar, Sparkles, BookOpen } from 'lucide-react';
 
 const FEATURED_SLUGS = [
@@ -57,7 +58,7 @@ export const FeaturedInsightsSection = () => {
                 <Link to={`/blog/${article.slug}`} className="block relative aspect-video overflow-hidden bg-neutral-900">
                   <img 
                     src={article.featuredImage} 
-                    alt={article.title}
+                    alt={getBlogCoverAlt(article.featuredImage, article.title)}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -110,7 +111,7 @@ export const FeaturedInsightsSection = () => {
                 <div className="flex items-center gap-2">
                   <img 
                     src="/favicon.png" 
-                    alt="Impleway" 
+                    alt="" 
                     className="w-7 h-7 rounded-full object-contain flex-shrink-0 shadow-xs" 
                   />
                   <span className="text-xs font-bold text-neutral-700">

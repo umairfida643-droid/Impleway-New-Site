@@ -8,7 +8,7 @@ export const BrandLogo = ({ variant = 'dark', className = 'h-8 sm:h-9' }) => {
     <div className={`relative inline-flex items-center select-none ${className}`}>
       <img
         src={src}
-        alt="Impleway – Simplify, Implementation"
+        alt="Impleway logo"
         width="160"
         height="36"
         loading="eager"

@@ -7,6 +7,45 @@ import {
   ShieldCheck, Clock, Building2 
 } from 'lucide-react';
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "Impleway - Saudi Arabia",
+      "url": "https://impleway.com/contact",
+      "logo": "https://impleway.com/logo.png",
+      "image": "https://impleway.com/og-image.png",
+      "telephone": "+966 59 814 5042",
+      "email": "hey@impleway.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Riyadh",
+        "addressRegion": "Eastern Province",
+        "addressCountry": "SA"
+      },
+      "priceRange": "$$$$",
+      "areaServed": ["Saudi Arabia", "GCC"]
+    },
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "name": "Impleway - Pakistan",
+      "url": "https://impleway.com/contact",
+      "logo": "https://impleway.com/logo.png",
+      "image": "https://impleway.com/og-image.png",
+      "telephone": "+92 339 2244790",
+      "email": "hey@impleway.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lahore & Islamabad",
+        "addressCountry": "PK"
+      },
+      "priceRange": "$$$$",
+      "areaServed": "Pakistan"
+    }
+  ]
+};
+
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -52,6 +91,7 @@ export const ContactPage = () => {
       <SEO 
         title="Contact Us | Impleway KSA & PK Advisory"
         description="Connect with Impleway's enterprise ERP consulting and technology teams in Riyadh, Saudi Arabia (+966 59 814 5042) and Pakistan (+92 339 2244790)."
+        schema={contactSchema}
       />
 
       {/* Hero */}
@@ -205,10 +245,12 @@ export const ContactPage = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-name" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Your Full Name *
                       </label>
                       <input
+                        id="contact-name"
+                        name="name"
                         type="text"
                         required
                         value={formData.name}
@@ -219,10 +261,12 @@ export const ContactPage = () => {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-email" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Business Email *
                       </label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
                         required
                         value={formData.email}
@@ -235,11 +279,15 @@ export const ContactPage = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-phone" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Phone / WhatsApp *
                       </label>
                       <input
+                        id="contact-phone"
+                        name="phone"
                         type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -249,10 +297,12 @@ export const ContactPage = () => {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-company" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Company Name
                       </label>
                       <input
+                        id="contact-company"
+                        name="company"
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -264,10 +314,13 @@ export const ContactPage = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-region" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Your Region
                       </label>
                       <select
+                        id="contact-region"
+                        name="region"
+                        aria-label="Select your region"
                         value={formData.region}
                         onChange={(e) => setFormData({ ...formData, region: e.target.value })}
                         className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
@@ -281,10 +334,13 @@ export const ContactPage = () => {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                      <label htmlFor="contact-service" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                         Service of Interest
                       </label>
                       <select
+                        id="contact-service"
+                        name="service"
+                        aria-label="Select service of interest"
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-white border border-[#e5e5e5] text-sm text-[#111111] focus:outline-none focus:border-[#E50914] transition-colors"
@@ -302,10 +358,12 @@ export const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
+                    <label htmlFor="contact-message" className="block text-[11px] font-bold uppercase tracking-wider text-[#111111] mb-1">
                       Project Scope &amp; Expected Timeline
                     </label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       rows="3"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}

@@ -67,7 +67,7 @@ export const TECH_CATALOG = {
     color: "#0B4E38",
     svg: (
       <div className="w-8 h-8 rounded-xl bg-[#0B4E38] p-1 flex items-center justify-center">
-        <img src="/logos/zatca-logo.svg" alt="ZATCA" className="w-full h-auto brightness-0 invert" />
+        <img src="/logos/zatca-logo.svg" alt="ZATCA logo — Saudi Zakat, Tax and Customs Authority" className="w-full h-auto brightness-0 invert" />
       </div>
     )
   },
@@ -78,7 +78,7 @@ export const TECH_CATALOG = {
     color: "#1B4F35",
     svg: (
       <div className="w-8 h-8 rounded-xl bg-neutral-900 p-1 flex items-center justify-center">
-        <img src="/logos/saudi-vision-2030.svg" alt="Vision 2030" className="w-full h-auto brightness-0 invert" />
+        <img src="/logos/saudi-vision-2030.svg" alt="Saudi Vision 2030 logo" className="w-full h-auto brightness-0 invert" />
       </div>
     )
   },
